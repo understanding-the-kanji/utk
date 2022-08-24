@@ -3,10 +3,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.Group;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import util.Logger;
 
@@ -41,6 +43,20 @@ public class Main extends Application
 
         this.canvasContext.setFill(Color.RED);
         this.canvasContext.fillRect(100, 100, 200, 200);
+
+        this.canvas.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                logger.ConsoleInformation("The mouse is being clicked!");
+            }
+        });
+
+        this.canvas.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                logger.ConsoleInformation("The mouse is being dragged!");
+            }
+        });
 
         this.group.getChildren().add(this.canvas);
 
