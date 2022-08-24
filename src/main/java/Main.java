@@ -2,30 +2,31 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.Group;
 import javafx.stage.Stage;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
-import util.MessageDialog;
 import util.Logger;
 
 public class Main extends Application
 {
-    private final String windowTitle = "Hello World";
-    private final int windowWidth = 600;
-    private final int windowHeight = 400;
+    private final String windowTitle = "Understanding the Kanji";
+    private final int windowWidth = 800;
+    private final int windowHeight = 600;
 
     private Scene scene;
-    private StackPane layout;
-    private Button button;
-
+    private Group group;
+    private Canvas canvas;
+    private GraphicsContext canvasContext;
     private Logger logger;
 
     public Main()
     {
-        this.button = new Button();
-        this.layout = new StackPane();
-        this.scene = new Scene(this.layout, 300, 250);
+        this.group = new Group();
+        this.scene = new Scene(this.group, windowWidth, windowHeight);
+        this.canvas = new Canvas(windowWidth, windowHeight);
 
         this.logger = new Logger("./log.txt");
     }
@@ -34,19 +35,14 @@ public class Main extends Application
 
     @Override public void start(Stage primaryStage) throws Exception
     {
-        primaryStage.setTitle("The Stage of the JavaFX Application");
+        primaryStage.setTitle(windowTitle);
 
-        this.button = new Button();
-        this.button.setText("The Button's Text");
+        this.canvasContext = this.canvas.getGraphicsContext2D();
 
-        this.button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                logger.Information("Hey There! Thanks for Clicking on Me.");
-            }
-        });
+        this.canvasContext.setFill(Color.RED);
+        this.canvasContext.fillRect(100, 100, 200, 200);
 
-        this.layout.getChildren().add(this.button);
+        this.group.getChildren().add(this.canvas);
 
         primaryStage.setScene(this.scene);
         primaryStage.show();
