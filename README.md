@@ -7,3 +7,33 @@ This tool is meant to aid the learner of the Japanese language in understanding 
 
 ## How to Use This Program
 This program is not meant to teach the Japanese language. Additional tools can be used for that (such as grammar textbooks, lecture videos, etc.). However, this tool is meant to _aid_ the learner in Japanese.
+
+
+### Dependency Installation
+To build this program, you will need to have OpenJDK17 installed on your machine. This program may work well with other versions of Java, but this app is only officially supported on the OpenJDK17 platform.
+
+#### Windows (Chocolatey)
+To install OpenJDK17 using the Chocolatey package manager, you can type in the following in a Powershell session running as Administrator:
+```
+choco install openjdk17 -y
+```
+
+#### Ubuntu (apt)
+If you are running Ubuntu, you can type in the following on the terminal:
+```
+sudo apt install openjdk-17-jdk openjdk-17-jre -y
+```
+
+### Running the Project
+
+#### Windows
+If you are on Windows, you can type in the following in the command prompt:
+```
+.\gradlew.bat
+```
+
+#### Ubuntu (or any other Linux platform)
+If you are on Ubuntu (or any other Linux distrobution for that matter), you can type in the following in the terminal:
+```
+./gradlew
+```
