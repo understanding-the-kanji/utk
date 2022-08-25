@@ -1,4 +1,8 @@
 # Understanding the Kanji
+
+[![Gradle](https://github.com/samuelcmace/understanding-the-kanji/actions/workflows/gradle.yml/badge.svg)](https://github.com/samuelcmace/understanding-the-kanji/actions/workflows/gradle.yml)
+[![Doxygen](https://github.com/samuelcmace/understanding-the-kanji/actions/workflows/doxygen.yml/badge.svg?branch=main)](https://github.com/samuelcmace/understanding-the-kanji/actions/workflows/doxygen.yml)
+
 This tool is meant to aid the learner of the Japanese language in understanding the meaning behind the Kanji characters. Many students of Japanese feel as there are too many Kanji characters to remember. However, it turns out that the Kanji characters (based on the Chinese writing system), can be broken down into smaller, more-memorable "radicals" (as they are called). By piecing these radicals together and coming up with stories to go along with these radicals, one can drastically reduce the time and effort required to master the Kanji.
 
 ## How to Use This Program
