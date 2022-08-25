@@ -13,7 +13,7 @@ This program is not meant to teach the Japanese language. Additional tools can b
 To build this program, you will need to have OpenJDK17 installed on your machine. This program may work well with other versions of Java, but this app is only officially supported on the OpenJDK17 platform.
 
 #### Windows (Chocolatey)
-To install OpenJDK17 using the Chocolatey package manager, you can type in the following in a Powershell session running as Administrator:
+To install OpenJDK17 using the [Chocolatey package manager](https://chocolatey.org/), you can type in the following in a Powershell session running as Administrator:
 ```
 choco install openjdk17 -y
 ```
