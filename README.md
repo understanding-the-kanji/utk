@@ -32,7 +32,7 @@ If you are on Windows, you can type in the following in the command prompt:
 ```
 
 #### Ubuntu (or any other Linux platform)
-If you are on Ubuntu (or any other Linux distrobution for that matter), you can type in the following in the terminal:
+If you are on Ubuntu (or any other Linux distribution for that matter), you can type in the following in the terminal:
 ```
 ./gradlew
 ```
