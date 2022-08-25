@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'idea'
 }
 
 group 'net.samuelcmace'
@@ -23,8 +24,18 @@ test {
 mainClassName = 'Main'
 
 javafx {
-    version = "18.0.2"
+    version = "11.0.2"
     modules = [ 'javafx.controls' ]
 }
 
-apply plugin: 'idea'
+jar {
+    duplicatesStrategy  = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
