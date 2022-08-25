@@ -28,12 +28,34 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
         name: understanding-the-kanji.jar
         path: build/libs/understanding-the-kanji-1.0-SNAPSHOT.jar
+
+    - name: Doxygen Action
+      id: doxygen_build
+      uses: mattnotmitt/doxygen-action@edge
+      with:
+        working-directory: 'docs/'
+        doxyfile-path: './Doxyfile'
+        enable-latex: true
+
+    - name: Upload Latex Documentation
+      uses: actions/upload-artifact@v3
+      with:
+        name: PDF Documentation
+        path: './docs/build/latex/refman.pdf'
+
+    - name: Upload HTML Documentation
+      uses: actions/upload-artifact@v3
+      with:
+        name: HTML Documentation
+        path: './docs/build/html/'
