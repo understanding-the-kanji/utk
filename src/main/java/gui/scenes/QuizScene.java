@@ -1,4 +1,4 @@
-package gui;
+package gui.scenes;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
