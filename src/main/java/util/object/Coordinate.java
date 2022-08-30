@@ -42,4 +42,12 @@ public class Coordinate
         this.SetX(coordinate.GetX());
         this.SetY(coordinate.GetY());
     }
+
+    public static Coordinate CalculateCoordinateOffset(Coordinate a, Coordinate b)
+    {
+        Coordinate offset = new Coordinate();
+        offset.SetX((a.GetX() - b.GetX()) * -1);
+        offset.SetY((a.GetY() - b.GetY()) * -1);
+        return offset;
+    }
 }

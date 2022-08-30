@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import util.Logger;
+import util.object.Coordinate;
 
 public class Main extends Application
 {
@@ -21,8 +22,9 @@ public class Main extends Application
 
     private Rectangle rect;
 
-    private double clickX;
-    private double clickY;
+    private Coordinate eventCoordinate;
+    private Coordinate targetCoordinate;
+    private Coordinate offsetCoordinate;
 
     public Main()
     {
@@ -33,8 +35,9 @@ public class Main extends Application
 
         this.rect = new Rectangle();
 
-        this.clickX = 0.0d;
-        this.clickY = 0.0d;
+        this.eventCoordinate = new Coordinate();
+        this.targetCoordinate = new Coordinate();
+        this.offsetCoordinate = new Coordinate();
     }
 
     public static void main(String args[]) { launch(args); }
@@ -58,8 +61,20 @@ public class Main extends Application
             public void handle(MouseEvent event) {
                 try {
                     System.out.println("Clicked Coordinates: " + event.getX() + ", " + event.getY());
-                    clickX = event.getX();
-                    clickY = event.getY();
+                    eventCoordinate.SetCoordinate(event.getX(), event.getY());
+
+                    try {
+                        Rectangle clickedObject = (Rectangle) event.getTarget();
+                        targetCoordinate.SetCoordinate(clickedObject.getX(), clickedObject.getY());
+
+                        offsetCoordinate = Coordinate.CalculateCoordinateOffset(eventCoordinate, targetCoordinate);
+
+                        clickedObject.setX(eventCoordinate.GetX() + offsetCoordinate.GetX());
+                        clickedObject.setY(eventCoordinate.GetY() + offsetCoordinate.GetY());
+                    } catch (Exception ex)
+                    {
+                        logger.ConsoleInformation("Error in Retrieving Rectangle Coordinates on Mouse Click");
+                    }
                 }
                 catch(Exception ex)
                 {
@@ -74,13 +89,25 @@ public class Main extends Application
                 try {
                     System.out.println("Set Coordinates: " + event.getX() + ", " + event.getY());
 
-                    clickX = event.getX();
-                    clickY = event.getY();
+                    eventCoordinate.SetCoordinate(event.getX(), event.getY());
 
-                    Rectangle testRect = (Rectangle) event.getTarget();
+                    try {
+                        Rectangle testRect = (Rectangle) event.getTarget();
+                        targetCoordinate.SetCoordinate(testRect.getX(), testRect.getY());
+                    } catch (Exception e)
+                    {
+                        logger.ConsoleInformation("Error in Retrieving Rectangle Coordinates on Mouse Drag");
+                    }
 
-                    testRect.setX(clickX);
-                    testRect.setY(clickY);
+                    try {
+                        Rectangle testRect = (Rectangle) event.getTarget();
+
+                        testRect.setX(eventCoordinate.GetX() + offsetCoordinate.GetX());
+                        testRect.setY(eventCoordinate.GetY() + offsetCoordinate.GetY());
+                    } catch (Exception e)
+                    {
+                        logger.ConsoleInformation("Error in Setting New Rectangle Coordinates on Mouse Drag");
+                    }
                 }
                 catch(Exception ex)
                 {
