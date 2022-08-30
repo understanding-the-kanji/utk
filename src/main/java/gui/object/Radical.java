@@ -1,4 +1,7 @@
 package gui.object;
 
-public class Radical {
+import javafx.scene.shape.Rectangle;
+
+public class Radical extends Rectangle {
+
 }
