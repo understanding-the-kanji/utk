@@ -1,4 +1,4 @@
-package gui.scenes;
+package gui.scene;
 
 import javafx.scene.Group;
 import javafx.scene.Parent;

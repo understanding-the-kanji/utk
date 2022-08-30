@@ -2,11 +2,11 @@
 
 class Main
 
-Main --> gui.scenes.LoadScene
-Main --> gui.scenes.QuizScene
+Main --> gui.scene.LoadScene
+Main --> gui.scene.QuizScene
 
-gui.scenes.QuizScene --> gui.objects.Radical
-gui.scenes.QuizScene --> gui.objects.RadicalTarget
+gui.scene.QuizScene --> gui.object.Radical
+gui.scene.QuizScene --> gui.object.RadicalTarget
 
 Main --> util.Logger
 Main --> util.DBConnection

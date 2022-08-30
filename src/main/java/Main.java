@@ -2,7 +2,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 
-import gui.scenes.QuizScene;
+import gui.scene.QuizScene;
 import util.object.AppData;
 import util.Logger;
 

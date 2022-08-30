@@ -1,4 +1,4 @@
-package gui.objects;
+package gui.object;
 
 public class Radical {
 }
