@@ -7,10 +7,12 @@ import gui.scene.QuizScene;
 import gui.scene.EditorScene;
 
 import util.Logger;
+import util.Scheduler;
 
 public class Main extends Application
 {
     private Logger logger;
+    private Scheduler scheduler;
 
     private Group objectCollection;
 
@@ -21,6 +23,7 @@ public class Main extends Application
     public Main()
     {
         this.logger = new Logger();
+        this.scheduler = new Scheduler(this.logger);
 
         this.objectCollection = new Group();
         this.quizScene = new QuizScene(this.objectCollection, this.logger.ApplicationData.WindowWidth, this.logger.ApplicationData.WindowHeight, this.logger);

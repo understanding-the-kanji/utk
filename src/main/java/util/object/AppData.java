@@ -23,5 +23,4 @@ public class AppData {
 
         System.out.println(AppStorageDir);
     }
-
 }
