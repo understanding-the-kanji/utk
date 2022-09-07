@@ -3,8 +3,6 @@ import javafx.scene.Group;
 import javafx.stage.Stage;
 
 import gui.scene.LoadScene;
-import gui.scene.QuizScene;
-import gui.scene.EditorScene;
 
 import util.Logger;
 import util.Scheduler;
@@ -17,8 +15,6 @@ public class Main extends Application
     private Group objectCollection;
 
     private LoadScene loadScene;
-    private QuizScene quizScene;
-    private EditorScene editorScene;
 
     public Main()
     {
@@ -26,7 +22,6 @@ public class Main extends Application
         this.scheduler = new Scheduler(this.logger);
 
         this.objectCollection = new Group();
-        this.quizScene = new QuizScene(this.objectCollection, this.logger.ApplicationData.WindowWidth, this.logger.ApplicationData.WindowHeight, this.logger);
     }
 
     public static void main(String args[]) { launch(args); }
@@ -35,7 +30,7 @@ public class Main extends Application
     {
         primaryStage.setTitle(this.logger.ApplicationData.WindowName);
         primaryStage.setResizable(false);
-        primaryStage.setScene(this.quizScene);
+        primaryStage.setScene(this.loadScene);
         primaryStage.show();
     }
 }

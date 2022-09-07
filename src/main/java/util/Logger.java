@@ -9,6 +9,8 @@ public class Logger
 
     private FileWriter fileWriter;
 
+    private String getLocalTime() { return java.time.LocalDate.now() + " " + java.time.LocalTime.now(); }
+
     private void logMessage(String message)
     {
         try {
@@ -25,6 +27,7 @@ public class Logger
     public Logger()
     {
         this.ApplicationData = new AppData();
+        this.logMessage("Application Started at " + this.getLocalTime());
     }
 
     public void Information(String m_message)
