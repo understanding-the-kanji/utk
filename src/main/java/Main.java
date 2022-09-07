@@ -2,7 +2,10 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.stage.Stage;
 
+import gui.scene.LoadScene;
 import gui.scene.QuizScene;
+import gui.scene.EditorScene;
+
 import util.object.AppData;
 import util.Logger;
 
@@ -12,7 +15,10 @@ public class Main extends Application
     private Logger logger;
 
     private Group objectCollection;
-    private QuizScene scene;
+
+    private LoadScene loadScene;
+    private QuizScene quizScene;
+    private EditorScene editorScene;
 
     public Main()
     {
@@ -20,7 +26,7 @@ public class Main extends Application
         this.logger = new Logger("./log.txt");
 
         this.objectCollection = new Group();
-        this.scene = new QuizScene(this.objectCollection, applicationData.WindowWidth, applicationData.WindowHeight, this.logger);
+        this.quizScene = new QuizScene(this.objectCollection, applicationData.WindowWidth, applicationData.WindowHeight, this.logger);
     }
 
     public static void main(String args[]) { launch(args); }
@@ -29,7 +35,7 @@ public class Main extends Application
     {
         primaryStage.setTitle(applicationData.WindowName);
         primaryStage.setResizable(false);
-        primaryStage.setScene(this.scene);
+        primaryStage.setScene(this.quizScene);
         primaryStage.show();
     }
 }
