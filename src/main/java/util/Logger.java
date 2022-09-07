@@ -1,21 +1,18 @@
 package util;
 
 import util.object.AppData;
-
 import java.io.FileWriter;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Logger
 {
-    public AppData applicationData;
-    private Path filePath;
+    public AppData ApplicationData;
+
     private FileWriter fileWriter;
 
     private void logMessage(String message)
     {
         try {
-            this.fileWriter = new FileWriter(this.filePath.toString(), true);
+            this.fileWriter = new FileWriter(this.ApplicationData.LogFilePath, true);
             this.fileWriter.write(message + "\n");
             this.fileWriter.close();
         }
@@ -27,9 +24,7 @@ public class Logger
 
     public Logger()
     {
-        this.applicationData = new AppData();
-        this.filePath = Paths.get(String.valueOf(this.applicationData.AppStorageDir), "foo.txt");
-        logMessage("Test");
+        this.ApplicationData = new AppData();
     }
 
     public void Information(String m_message)
