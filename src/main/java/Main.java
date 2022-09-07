@@ -23,7 +23,7 @@ public class Main extends Application
     public Main()
     {
         this.applicationData = new AppData();
-        this.logger = new Logger("./log.txt");
+        this.logger = new Logger();
 
         this.objectCollection = new Group();
         this.quizScene = new QuizScene(this.objectCollection, applicationData.WindowWidth, applicationData.WindowHeight, this.logger);

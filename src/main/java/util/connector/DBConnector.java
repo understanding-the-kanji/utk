@@ -1,12 +1,12 @@
-package util;
+package util.connector;
 
 import java.sql.*;
 
-public class DBConnection {
+public class DBConnector {
 
     private Connection dbConnection;
 
-    public DBConnection()
+    public DBConnector()
     {
 
     }

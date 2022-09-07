@@ -4,7 +4,9 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
+
 import util.Logger;
+import util.object.AppData;
 import util.object.Coordinate;
 
 public class LoadScene extends Scene {
@@ -18,7 +20,7 @@ public class LoadScene extends Scene {
 
     Logger logger;
 
-    public LoadScene(Parent parent, double width, double height, Logger loggerObject)
+    public LoadScene(Parent parent, double width, double height, Logger loggerObject, AppData objectCollection)
     {
         super(parent, width, height);
 

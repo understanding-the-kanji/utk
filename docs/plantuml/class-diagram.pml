@@ -3,14 +3,16 @@
 class Main
 
 Main --> gui.scene.LoadScene
-Main --> gui.scene.QuizScene
+gui.scene.LoadScene --> gui.scene.QuizScene
+gui.scene.LoadScene --> gui.scene.EditorScene
 
 gui.scene.QuizScene --> gui.object.Radical
 gui.scene.QuizScene --> gui.object.RadicalTarget
 
 Main --> util.Logger
-Main --> util.DBConnection
+util.Logger --> util.object.AppData
 
-Main --> util.object.AppData
+Main --> util.Scheduler
+
 
 @enduml
