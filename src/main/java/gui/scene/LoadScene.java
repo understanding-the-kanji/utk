@@ -2,28 +2,55 @@ package gui.scene;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.Group;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import util.Logger;
-import util.object.Coordinate;
+
+import java.awt.*;
 
 public class LoadScene extends Scene {
 
     private Logger logger;
-    private Rectangle rect;
 
-    private Coordinate eventCoordinate;
-    private Coordinate targetCoordinate;
-    private Coordinate offsetCoordinate;
+    private Group mainGroup;
 
-    private QuizScene quizScene;
-    private EditorScene editorScene;
+    private Text titleText;
+
+    private VBox mainLayout;
+
+    private HBox quizSceneHBox;
+    private Label quizSceneLabel;
+    public Button QuizSceneButton;
+
+    private HBox editorSceneHBox;
+    private Label editorSceneButton;
+    public Button EditorSceneButton;
 
     public LoadScene(Parent parent, double width, double height, Logger m_logger)
     {
         super(parent, width, height);
         this.logger = m_logger;
 
-        this.quizScene = new QuizScene(parent, this.logger.ApplicationData.WindowWidth, this.logger.ApplicationData.WindowHeight, this.logger);
+        this.mainGroup = new Group();
+
+        this.mainLayout = new VBox();
+        this.titleText = new Text("Welcome to the LoadScene!");
+        this.mainLayout.getChildren().add(titleText);
+
+        this.quizSceneHBox = new HBox();
+        this.QuizSceneButton = new Button("Quiz Myself");
+        this.quizSceneHBox.getChildren().add(this.QuizSceneButton);
+        this.mainGroup.getChildren().add(this.quizSceneHBox);
+
+        this.editorSceneHBox = new HBox();
+        this.EditorSceneButton = new Button("Kanji Builder");
+        this.editorSceneHBox.getChildren().add(this.EditorSceneButton);
+        this.mainGroup.getChildren().add(this.editorSceneHBox);
+
+        this.mainGroup.getChildren().add(this.mainLayout);
     }
 }
