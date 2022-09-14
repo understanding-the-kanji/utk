@@ -1,4 +1,4 @@
-package util.object;
+package net.samuelcmace.demo.util.object;
 
 public class Coordinate
 {

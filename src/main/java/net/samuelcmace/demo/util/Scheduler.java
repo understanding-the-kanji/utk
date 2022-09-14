@@ -1,6 +1,6 @@
-package util;
+package net.samuelcmace.demo.util;
 
-import util.connector.DBConnector;
+import net.samuelcmace.demo.util.connector.DBConnector;
 
 public class Scheduler {
 

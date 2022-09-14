@@ -1,16 +1,15 @@
-package gui.scene;
+package net.samuelcmace.demo.gui.scene;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import util.Logger;
-
-import java.awt.*;
+import net.samuelcmace.demo.util.Logger;
 
 public class LoadScene extends Scene {
 

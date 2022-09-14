@@ -1,4 +1,4 @@
-package gui.scene;
+package net.samuelcmace.demo.gui.scene;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -6,10 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import util.Logger;
-import util.object.Coordinate;
 
-import gui.object.Radical;
+import net.samuelcmace.demo.util.Logger;
+import net.samuelcmace.demo.util.object.Coordinate;
+
+import net.samuelcmace.demo.gui.object.Radical;
 
 public class QuizScene extends Scene {
 

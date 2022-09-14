@@ -1,4 +1,4 @@
-package util;
+package net.samuelcmace.demo.util;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

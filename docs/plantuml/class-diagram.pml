@@ -9,8 +9,8 @@ gui.scene.LoadScene --> gui.scene.EditorScene
 gui.scene.QuizScene --> gui.object.Radical
 gui.scene.QuizScene --> gui.object.RadicalTarget
 
-Main --> util.Logger
-util.Logger --> util.object.AppData
+Main --> util.net.samuelcmace.demo.util.Logger
+util.net.samuelcmace.demo.util.Logger --> util.object.AppData
 
 Main --> util.Scheduler
 

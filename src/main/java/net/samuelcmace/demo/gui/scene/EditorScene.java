@@ -1,4 +1,4 @@
-package gui.scene;
+package net.samuelcmace.demo.gui.scene;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -7,7 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-import util.Logger;
+import net.samuelcmace.demo.util.Logger;
 
 public class EditorScene extends Scene {
 

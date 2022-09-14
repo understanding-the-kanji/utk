@@ -1,15 +1,18 @@
-import gui.scene.EditorScene;
-import gui.scene.QuizScene;
+package net.samuelcmace.demo;
+
+import net.samuelcmace.demo.gui.scene.EditorScene;
+import net.samuelcmace.demo.gui.scene.QuizScene;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import gui.scene.LoadScene;
+import net.samuelcmace.demo.gui.scene.LoadScene;
 
-import util.Logger;
-import util.Scheduler;
+import net.samuelcmace.demo.util.Logger;
+import net.samuelcmace.demo.util.Scheduler;
 
 public class Main extends Application
 {
