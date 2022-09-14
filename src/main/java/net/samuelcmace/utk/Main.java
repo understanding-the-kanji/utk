@@ -39,7 +39,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Hello!");
-        stage.setScene(this.quizScene);
+        stage.setScene(this.loadScene);
         stage.show();
     }
 
