@@ -1,4 +1,4 @@
-package net.samuelcmace.demo.util.connector;
+package net.samuelcmace.utk.util.connector;
 
 public class DBConnector {
 

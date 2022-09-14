@@ -1,4 +1,4 @@
-package net.samuelcmace.demo.gui.object;
+package net.samuelcmace.utk.gui.object;
 
 import javafx.scene.shape.Rectangle;
 

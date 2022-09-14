@@ -1,4 +1,4 @@
-package net.samuelcmace.demo;
+package net.samuelcmace.utk;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

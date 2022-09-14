@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'net.samuelcmace.demo'
-    mainClass = 'net.samuelcmace.demo.HelloApplication'
+    mainModule = 'net.samuelcmace.utk'
+    mainClass = 'net.samuelcmace.utk.HelloApplication'
 }
 
 javafx {

@@ -1,7 +1,7 @@
-package net.samuelcmace.demo;
+package net.samuelcmace.utk;
 
-import net.samuelcmace.demo.gui.scene.EditorScene;
-import net.samuelcmace.demo.gui.scene.QuizScene;
+import net.samuelcmace.utk.gui.scene.EditorScene;
+import net.samuelcmace.utk.gui.scene.QuizScene;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -9,10 +9,10 @@ import javafx.scene.Group;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import net.samuelcmace.demo.gui.scene.LoadScene;
+import net.samuelcmace.utk.gui.scene.LoadScene;
 
-import net.samuelcmace.demo.util.Logger;
-import net.samuelcmace.demo.util.Scheduler;
+import net.samuelcmace.utk.util.Logger;
+import net.samuelcmace.utk.util.Scheduler;
 
 public class Main extends Application
 {

@@ -1,4 +1,4 @@
-package net.samuelcmace.demo.gui.scene;
+package net.samuelcmace.utk.gui.scene;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import net.samuelcmace.demo.util.Logger;
+import net.samuelcmace.utk.util.Logger;
 
 public class LoadScene extends Scene {
 

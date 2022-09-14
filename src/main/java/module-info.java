@@ -1,10 +1,10 @@
-module net.samuelcmace.demo {
+module net.samuelcmace.utk {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens net.samuelcmace.demo to javafx.fxml;
-    exports net.samuelcmace.demo;
-    exports net.samuelcmace.demo.util;
-    opens net.samuelcmace.demo.util to javafx.fxml;
+    opens net.samuelcmace.utk to javafx.fxml;
+    exports net.samuelcmace.utk;
+    exports net.samuelcmace.utk.util;
+    opens net.samuelcmace.utk.util to javafx.fxml;
 }

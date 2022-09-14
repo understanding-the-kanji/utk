@@ -1,4 +1,4 @@
-package net.samuelcmace.demo.util.object;
+package net.samuelcmace.utk.util.object;
 
 import java.io.File;
 import java.nio.file.Paths;

@@ -1,4 +1,4 @@
-package net.samuelcmace.demo;
+package net.samuelcmace.utk;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
