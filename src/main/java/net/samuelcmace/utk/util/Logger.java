@@ -1,5 +1,6 @@
 package net.samuelcmace.utk.util;
 
+import net.samuelcmace.utk.util.MessageDialog;
 import net.samuelcmace.utk.util.object.AppData;
 import java.io.FileWriter;
 
