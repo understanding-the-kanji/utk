@@ -5,10 +5,13 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="net.samuelcmace.utk.gui.scene.QuizScene"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="net.samuelcmace.utk.gui.controller.QuizController"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <Group fx:id="objectCollection"></Group>
 
 </AnchorPane>

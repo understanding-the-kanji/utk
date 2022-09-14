@@ -1,19 +1,20 @@
-package net.samuelcmace.utk.gui.scene;
+package net.samuelcmace.utk.gui.controller;
 
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-
+import net.samuelcmace.utk.gui.object.Radical;
 import net.samuelcmace.utk.util.Logger;
+import net.samuelcmace.utk.util.MessageDialog;
 import net.samuelcmace.utk.util.object.Coordinate;
 
-import net.samuelcmace.utk.gui.object.Radical;
+public class QuizController {
 
-public class QuizScene extends Scene {
+    Logger logger;
 
+    @FXML
     private Group objectCollection;
     private Radical rect;
 
@@ -21,15 +22,10 @@ public class QuizScene extends Scene {
     private Coordinate targetCoordinate;
     private Coordinate offsetCoordinate;
 
-    Logger logger;
-
-    public QuizScene(Parent parent, double width, double height, Logger loggerObject)
+    public QuizController()
     {
-        super(parent, width, height);
-
-        this.logger = loggerObject;
-
-        this.objectCollection = (Group) parent;
+        this.objectCollection = new Group();
+        this.logger = new Logger();
         this.rect = new Radical();
 
         this.eventCoordinate = new Coordinate();
@@ -62,7 +58,7 @@ public class QuizScene extends Scene {
                         clickedObject.setY(eventCoordinate.GetY() + offsetCoordinate.GetY());
                     } catch (Exception ex)
                     {
-                        logger.ConsoleInformation("Error in Retrieving Rectangle Coordinates on Mouse Click");
+                        MessageDialog.ShowInfoDialog("Error in Retrieving Rectangle Coordinates on Mouse Click");
                     }
                 }
                 catch(Exception ex)
@@ -85,7 +81,7 @@ public class QuizScene extends Scene {
                         targetCoordinate.SetCoordinate(testRect.getX(), testRect.getY());
                     } catch (Exception e)
                     {
-                        logger.ConsoleInformation("Error in Retrieving Rectangle Coordinates on Mouse Drag");
+                        MessageDialog.ShowInfoDialog("Error in Retrieving Rectangle Coordinates on Mouse Drag");
                     }
 
                     try {
@@ -95,7 +91,7 @@ public class QuizScene extends Scene {
                         testRect.setY(eventCoordinate.GetY() + offsetCoordinate.GetY());
                     } catch (Exception e)
                     {
-                        logger.ConsoleInformation("Error in Setting New Rectangle Coordinates on Mouse Drag");
+                        MessageDialog.ShowInfoDialog("Error in Setting New Rectangle Coordinates on Mouse Drag");
                     }
                 }
                 catch(Exception ex)

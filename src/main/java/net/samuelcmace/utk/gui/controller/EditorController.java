@@ -1,9 +1,9 @@
-package net.samuelcmace.utk.gui.scene;
+package net.samuelcmace.utk.gui.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class LoadScene {
+public class EditorController {
     @FXML
     private Label welcomeText;
 
