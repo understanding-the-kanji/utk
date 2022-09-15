@@ -1,6 +1,5 @@
 package net.samuelcmace.utk.util;
 
-import net.samuelcmace.utk.util.object.AppData;
 import java.io.FileWriter;
 
 public class Logger
