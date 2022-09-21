@@ -63,7 +63,7 @@ sudo apt install openjdk-17-jdk openjdk-17-jre -y
 If you are on Windows, you can type in the following in the command prompt:
 
 ```
-.\gradlew.bat
+.\gradlew.bat run
 ```
 
 #### Ubuntu (or any other Linux platform)
@@ -71,5 +71,5 @@ If you are on Windows, you can type in the following in the command prompt:
 If you are on Ubuntu (or any other Linux distribution for that matter), you can type in the following in the terminal:
 
 ```
-./gradlew
+./gradlew run
 ```
