@@ -3,7 +3,7 @@ package net.samuelcmace.utk.gui.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class QuizController {
+public class KanjiBrowserController {
     @FXML
     private Label welcomeText;
 

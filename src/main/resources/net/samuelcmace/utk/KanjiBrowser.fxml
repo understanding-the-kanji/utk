@@ -5,13 +5,10 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.canvas.Canvas?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="net.samuelcmace.utk.gui.controller.QuizController"
+            fx:controller="net.samuelcmace.utk.gui.controller.KanjiBrowserController"
             prefHeight="600.0" prefWidth="800.0">
-
-    <Group fx:id="objectCollection"></Group>
 
 </AnchorPane>

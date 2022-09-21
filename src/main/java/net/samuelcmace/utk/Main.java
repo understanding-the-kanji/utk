@@ -15,25 +15,33 @@ public class Main extends Application {
     private Logger logger;
     private Scheduler scheduler;
 
-    private FXMLLoader loadSceneLoader;
-    private FXMLLoader quizSceneLoader;
-    private FXMLLoader editorSceneLoader;
+    private FXMLLoader loadFXMLLoader;
+    private FXMLLoader quizFXMLLoader;
+    private FXMLLoader kanjiBrowserFXMLLoader;
+    private FXMLLoader kanjiEditorFXMLLoader;
+    private FXMLLoader aboutFXMLLoader;
 
     private Scene loadScene;
     private Scene quizScene;
-    private Scene editorScene;
+    private Scene kanjiBrowserScene;
+    private Scene kanjiEditorScene;
+    private Scene aboutScene;
 
     public Main() throws IOException {
         this.logger = new Logger();
         this.scheduler = new Scheduler(this.logger);
 
-        this.loadSceneLoader = new FXMLLoader(Main.class.getResource("LoadScene.fxml"));
-        this.quizSceneLoader = new FXMLLoader(Main.class.getResource("QuizScene.fxml"));
-        this.editorSceneLoader = new FXMLLoader(Main.class.getResource("EditorScene.fxml"));
+        this.loadFXMLLoader = new FXMLLoader(Main.class.getResource("Load.fxml"));
+        this.quizFXMLLoader = new FXMLLoader(Main.class.getResource("Quiz.fxml"));
+        this.kanjiBrowserFXMLLoader = new FXMLLoader(Main.class.getResource("KanjiBrowser.fxml"));
+        this.kanjiEditorFXMLLoader = new FXMLLoader(Main.class.getResource("KanjiEditor.fxml"));
+        this.aboutFXMLLoader = new FXMLLoader(Main.class.getResource("About.fxml"));
 
-        this.loadScene = new Scene(this.loadSceneLoader.load(), 800, 600);
-        this.quizScene = new Scene(this.quizSceneLoader.load(), 800, 600);
-        this.editorScene = new Scene(this.editorSceneLoader.load(), 800, 600);
+        this.loadScene = new Scene(this.loadFXMLLoader.load(), 800, 600);
+        this.quizScene = new Scene(this.quizFXMLLoader.load(), 800, 600);
+        this.kanjiBrowserScene = new Scene(this.kanjiBrowserFXMLLoader.load(), 800, 600);
+        this.kanjiEditorScene = new Scene(this.kanjiEditorFXMLLoader.load(), 800, 600);
+        this.aboutScene = new Scene(this.aboutFXMLLoader.load(), 800, 600);
     }
 
     @Override
