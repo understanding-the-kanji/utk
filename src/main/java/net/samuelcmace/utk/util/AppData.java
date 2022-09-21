@@ -12,12 +12,13 @@ public class AppData {
     public String AppStorageDir;
     public String LogFilePath;
 
-    public AppData()
-    {
+    public AppData() {
         this.AppStorageDir = Paths.get(System.getProperty("user.home") + "/.understanding-the-kanji/").toAbsolutePath().toString();
 
         File appStorageDirectory = new File(this.AppStorageDir);
-        if(!appStorageDirectory.exists()) { appStorageDirectory.mkdir(); }
+        if (!appStorageDirectory.exists()) {
+            appStorageDirectory.mkdir();
+        }
 
         this.LogFilePath = Paths.get(this.AppStorageDir, "log.txt").toAbsolutePath().toString();
 

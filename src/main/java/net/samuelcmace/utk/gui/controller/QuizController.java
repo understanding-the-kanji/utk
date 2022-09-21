@@ -22,8 +22,7 @@ public class QuizController {
     private Coordinate targetCoordinate;
     private Coordinate offsetCoordinate;
 
-    public QuizController()
-    {
+    public QuizController() {
         this.objectCollection = new Group();
         this.logger = new Logger();
         this.rect = new Radical();
@@ -56,13 +55,10 @@ public class QuizController {
 
                         clickedObject.setX(eventCoordinate.GetX() + offsetCoordinate.GetX());
                         clickedObject.setY(eventCoordinate.GetY() + offsetCoordinate.GetY());
-                    } catch (Exception ex)
-                    {
+                    } catch (Exception ex) {
                         MessageDialog.ShowInfoDialog("Error in Retrieving Rectangle Coordinates on Mouse Click");
                     }
-                }
-                catch(Exception ex)
-                {
+                } catch (Exception ex) {
                     System.out.println("There was an error in getting the origin coordinates of the Rectangle object.");
                 }
             }
@@ -79,8 +75,7 @@ public class QuizController {
                     try {
                         Radical testRect = (Radical) event.getTarget();
                         targetCoordinate.SetCoordinate(testRect.getX(), testRect.getY());
-                    } catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         MessageDialog.ShowInfoDialog("Error in Retrieving Rectangle Coordinates on Mouse Drag");
                     }
 
@@ -89,13 +84,10 @@ public class QuizController {
 
                         testRect.setX(eventCoordinate.GetX() + offsetCoordinate.GetX());
                         testRect.setY(eventCoordinate.GetY() + offsetCoordinate.GetY());
-                    } catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         MessageDialog.ShowInfoDialog("Error in Setting New Rectangle Coordinates on Mouse Drag");
                     }
-                }
-                catch(Exception ex)
-                {
+                } catch (Exception ex) {
                     System.out.println("There was an error in setting the Rectangle's new coordinates.");
                 }
             }
