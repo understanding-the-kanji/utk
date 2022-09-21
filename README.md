@@ -6,7 +6,16 @@
 This tool is meant to aid the learner of the Japanese language in understanding the meaning behind the Kanji characters. Many students of Japanese feel as there are too many Kanji characters to remember. However, it turns out that the Kanji characters (based on the Chinese writing system), can be broken down into smaller, more-memorable "radicals" (as they are called). By piecing these radicals together and coming up with stories to go along with these radicals, one can drastically reduce the time and effort required to master the Kanji.
 
 ## License
-All of the code for this project is licensed under the MIT license (a copy of which should be included in this project under the LICENSE file). The Noto Sans Japanese Font included with this project is licensed separately under the SIL OPEN FONT LICENSE Version 1.1 and is created by Google.
+All of the code for this project is licensed under the MIT license (a copy of which should be included in this project under the LICENSE file).
+
+### External Attributed License
+All external assets should contain a LICENSE file in the directory in which they are stored.
+
+#### Noto Sans Japanese Font
+The Noto Sans Japanese Font included with this project is licensed separately under the SIL OPEN FONT LICENSE Version 1.1 and is created by Google.
+
+#### Default Database and SVG Primitives
+Although the schema for the database is licensed under the same license as the project source code (the MIT license), the content stored in that default database is licensed under the CC0 1.0 Universal license.
 
 ## How to Use This Program
 This program is not meant to a complete source for Japanese language learning. Many good learning sources already exist (such as grammar textbooks, lecture videos, etc.) and this program is not meant to entirely replace those tools. However, this tool is meant to _aid_ the learner in Japanese (specifically in remembering the Kanji characters).
