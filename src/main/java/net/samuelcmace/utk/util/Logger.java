@@ -29,7 +29,7 @@ public class Logger {
 
     public void Information(String m_message) {
         System.out.println("Information: " + m_message);
-        MessageDialog.ShowInfoDialog(m_message);
+        MessageBox.ShowInfoDialog(m_message);
         this.logMessage("Information: " + m_message);
     }
 
@@ -40,7 +40,7 @@ public class Logger {
 
     public void Warning(String m_message) {
         System.out.println("Warning: " + m_message);
-        MessageDialog.ShowWarningDialog(m_message);
+        MessageBox.ShowWarningDialog(m_message);
         this.logMessage("Warning: " + m_message);
     }
 
@@ -51,7 +51,7 @@ public class Logger {
 
     public void Error(String m_message) {
         System.out.println("Error: " + m_message);
-        MessageDialog.ShowErrorDialog(m_message);
+        MessageBox.ShowErrorDialog(m_message);
         this.logMessage("Error: " + m_message);
     }
 

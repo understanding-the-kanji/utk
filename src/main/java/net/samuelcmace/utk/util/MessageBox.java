@@ -3,7 +3,7 @@ package net.samuelcmace.utk.util;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class MessageDialog {
+public class MessageBox {
     /**
      * Displays a basic modal info dialog.
      *

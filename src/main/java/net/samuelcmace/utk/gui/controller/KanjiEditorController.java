@@ -1,7 +1,10 @@
 package net.samuelcmace.utk.gui.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import net.samuelcmace.utk.gui.ControllerManager;
+import net.samuelcmace.utk.gui.Controllers;
 
 public class KanjiEditorController {
     @FXML
@@ -10,5 +13,9 @@ public class KanjiEditorController {
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
+    }
+
+    public void onClick_returnButton(ActionEvent actionEvent) {
+        ControllerManager.SwitchScene(Controllers.LOAD);
     }
 }
