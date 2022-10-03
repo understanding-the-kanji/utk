@@ -1,6 +1,7 @@
 package net.samuelcmace.utk.util;
 
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class Logger {
     public AppData ApplicationData;
@@ -22,7 +23,7 @@ public class Logger {
         }
     }
 
-    public Logger() {
+    public Logger() throws IOException {
         this.ApplicationData = new AppData();
         this.logMessage("Application Started at " + this.getLocalTime());
     }
