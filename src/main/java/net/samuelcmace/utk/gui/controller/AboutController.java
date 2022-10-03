@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import net.samuelcmace.utk.gui.ControllerManager;
 import net.samuelcmace.utk.gui.Controllers;
+import net.samuelcmace.utk.util.MessageBox;
 
 public class AboutController {
     @FXML
@@ -17,5 +18,9 @@ public class AboutController {
 
     public void onClick_returnButton(ActionEvent actionEvent) {
         ControllerManager.SwitchScene(Controllers.LOAD);
+    }
+
+    public void onClick_licenseButton(ActionEvent actionEvent) {
+        MessageBox.ShowErrorDialog("Sorry, but this feature has not yet been implemented yet.");
     }
 }
