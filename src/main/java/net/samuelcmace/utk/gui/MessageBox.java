@@ -1,4 +1,4 @@
-package net.samuelcmace.utk.util;
+package net.samuelcmace.utk.gui;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -170,7 +170,7 @@ public class MessageBox {
      * @param message       The message to be displayed to the user.
      * @param title         The title of the message box.
      * @param headerContent The header content of the message box.
-     * @param isModal       Specifies whether or not the message box is modal. The default value is true.
+     * @param isModal       Specifies whether the message box is modal. The default value is true.
      */
     public static void ShowErrorDialog(String message, String title, String headerContent, boolean isModal) {
         Alert dialog = new Alert(AlertType.ERROR);

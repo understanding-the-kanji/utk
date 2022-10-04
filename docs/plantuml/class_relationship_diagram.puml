@@ -1,4 +1,4 @@
-@startuml
+﻿@startuml
 
 class Main
 
@@ -10,18 +10,21 @@ class gui.controller.LoadScene
 class gui.controller.KanjiBrowser
 class gui.controller.KanjiEditor
 
-class util.Model <<Singleton>>
-class util.Logger
 class util.Scheduler
-class util.DatabaseConnection
+
+class util.Configuration <<Singleton>>
+class util.Logger <<Singleton>>
+class util.DatabaseConnection <<Singleton>>
+
+Main --> util.Configuration
+Main --> util.Logger
 
 Main ..> gui.controller.LoadScene
 Main ..> gui.controller.QuizScene
 Main ..> gui.controller.KanjiBrowser
 Main ..> gui.controller.KanjiEditor
 
-util.Model --> util.DatabaseConnection
-util.Model --> util.Logger
-util.Model --> util.Scheduler
+gui.controller.QuizScene --> util.Scheduler
+util.Scheduler --> util.DatabaseConnection
 
 @enduml

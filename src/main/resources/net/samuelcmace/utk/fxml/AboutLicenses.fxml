@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="net.samuelcmace.utk.gui.controller.AboutLicensesController" prefHeight="600.0" prefWidth="800.0">
+
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
+
+    <Label text="Understanding the Kanji"/>
+    <Label text="Samuel Mace, 2022"/>
+    <Label wrapText="true"
+           text="The kanji characters, keywords, and primitives used in the database were created by James W. Heisig. The use of his material in this program is covered under fair use under US copyright law, since the material contained here is only part of his original work and is used for educational purposes."/>
+
+    <Label wrapText="true"
+           text="The SQLITE database is based on some CSV files provided by Aleksa Sarai and is licensed under the CC0 1.0 Universal license contained in the resources directory where it is contained."/>
+
+    <Label wrapText="true"
+           text="The Noto Sans CJK Font is created by Google and is licensed under the SIL OPEN FONT LICENSE Version 1.1 and is contained in the project's resources directory where it is contained."/>
+
+    <Label wrapText="true"
+           text="The Kanji Stroke Order Font is created by Ulrich Apel, the AAAA project, and the Wadoku project and is licensed under a modified version of The 3-Clause BSD License contained in the project's resources directory where it is contained."/>
+
+    <Label wrapText="true" text="All of the source code contained in this project is licensed under the MIT license and is included in the root directory."/>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <Button fx:id="returnButton" text="Return" onAction="#onClick_returnButton"/>
+        <Button fx:id="homeButton" text="Home" onAction="#onClick_homeButton"/>
+    </HBox>
+
+</VBox>
