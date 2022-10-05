@@ -29,7 +29,7 @@ jobs:
         id: doxygen_build
         uses: mattnotmitt/doxygen-action@edge
         with:
-          working-directory: 'docs/'
+          working-directory: 'docs/doxygen/'
           doxyfile-path: './Doxyfile'
           enable-latex: true
 
@@ -37,10 +37,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: PDF Documentation
-          path: './docs/build/latex/refman.pdf'
+          path: './docs/doxygen/build/latex/refman.pdf'
 
       - name: Upload HTML Documentation
         uses: actions/upload-artifact@v3
         with:
           name: HTML Documentation
-          path: './docs/build/html/'
+          path: './docs/doxygen/build/html/'
