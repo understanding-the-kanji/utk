@@ -60,7 +60,7 @@ public class Configuration {
 
         File databaseFile = new File(this.DBFilePath);
         if (!databaseFile.exists()) {
-            Files.copy(Paths.get(Main.class.getResource("kanji/default.db").toExternalForm()), Paths.get(this.DBFilePath));
+            Files.copy(Main.class.getResourceAsStream("kanji/default.db"), Paths.get(this.DBFilePath));
         }
     }
 
