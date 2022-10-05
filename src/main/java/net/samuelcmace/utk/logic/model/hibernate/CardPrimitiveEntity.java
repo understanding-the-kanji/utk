@@ -10,12 +10,18 @@ import java.util.Objects;
 public class CardPrimitiveEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "CARD_ID")
+    @Column(name = "CARD_ID", nullable = false)
     private Object cardId;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "PRIMITIVE_ID")
+    @Column(name = "PRIMITIVE_ID", nullable = false)
     private Object primitiveId;
+    @ManyToOne
+    @JoinColumn(name = "CARD_ID", referencedColumnName = "CARD_ID", nullable = false)
+    private CardEntity cardByCardId;
+    @ManyToOne
+    @JoinColumn(name = "PRIMITIVE_ID", referencedColumnName = "PRIMITIVE_ID", nullable = false)
+    private PrimitiveEntity primitiveByPrimitiveId;
 
     public Object getCardId() {
         return cardId;
@@ -44,5 +50,21 @@ public class CardPrimitiveEntity {
     @Override
     public int hashCode() {
         return Objects.hash(cardId, primitiveId);
+    }
+
+    public CardEntity getCardByCardId() {
+        return cardByCardId;
+    }
+
+    public void setCardByCardId(CardEntity cardByCardId) {
+        this.cardByCardId = cardByCardId;
+    }
+
+    public PrimitiveEntity getPrimitiveByPrimitiveId() {
+        return primitiveByPrimitiveId;
+    }
+
+    public void setPrimitiveByPrimitiveId(PrimitiveEntity primitiveByPrimitiveId) {
+        this.primitiveByPrimitiveId = primitiveByPrimitiveId;
     }
 }

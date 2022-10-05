@@ -2,6 +2,7 @@ package net.samuelcmace.utk.logic.model.hibernate;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -9,17 +10,22 @@ import java.util.Objects;
 public class PrimitiveEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "PRIMITIVE_ID")
+    @Column(name = "PRIMITIVE_ID", nullable = false)
     private int primitiveId;
     @Basic
-    @Column(name = "NEXT_FRAME")
+    @Column(name = "NEXT_FRAME", nullable = false)
     private Object nextFrame;
     @Basic
-    @Column(name = "SVG_PATH")
+    @Column(name = "SVG_PATH", nullable = false, length = 2048)
     private Object svgPath;
     @Basic
-    @Column(name = "KEYWORD")
+    @Column(name = "KEYWORD", nullable = true, length = 20)
     private Object keyword;
+    @OneToMany(mappedBy = "primitiveByPrimitiveId")
+    private Collection<CardPrimitiveEntity> cardPrimitivesByPrimitiveId;
+    @ManyToOne
+    @JoinColumn(name = "NEXT_FRAME", referencedColumnName = "CARD_ID", nullable = false)
+    private CardEntity cardByNextFrame;
 
     public int getPrimitiveId() {
         return primitiveId;
@@ -64,5 +70,21 @@ public class PrimitiveEntity {
     @Override
     public int hashCode() {
         return Objects.hash(primitiveId, nextFrame, svgPath, keyword);
+    }
+
+    public Collection<CardPrimitiveEntity> getCardPrimitivesByPrimitiveId() {
+        return cardPrimitivesByPrimitiveId;
+    }
+
+    public void setCardPrimitivesByPrimitiveId(Collection<CardPrimitiveEntity> cardPrimitivesByPrimitiveId) {
+        this.cardPrimitivesByPrimitiveId = cardPrimitivesByPrimitiveId;
+    }
+
+    public CardEntity getCardByNextFrame() {
+        return cardByNextFrame;
+    }
+
+    public void setCardByNextFrame(CardEntity cardByNextFrame) {
+        this.cardByNextFrame = cardByNextFrame;
     }
 }

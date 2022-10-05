@@ -9,11 +9,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class CardPrimitiveEntityPK implements Serializable {
-    @Column(name = "CARD_ID")
+    @Column(name = "CARD_ID", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Object cardId;
-    @Column(name = "PRIMITIVE_ID")
+    @Column(name = "PRIMITIVE_ID", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Object primitiveId;

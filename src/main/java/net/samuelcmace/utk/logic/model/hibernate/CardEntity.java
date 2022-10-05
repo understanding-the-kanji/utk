@@ -2,6 +2,7 @@ package net.samuelcmace.utk.logic.model.hibernate;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -9,29 +10,39 @@ import java.util.Objects;
 public class CardEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "CARD_ID")
+    @Column(name = "CARD_ID", nullable = false)
     private Object cardId;
     @Basic
-    @Column(name = "CARD_KANJI")
+    @Column(name = "CARD_KANJI", nullable = false, length = 1)
     private Object cardKanji;
     @Basic
-    @Column(name = "HEISIG_INDEX_5_EDITION")
+    @Column(name = "HEISIG_INDEX_5_EDITION", nullable = true)
     private Object heisigIndex5Edition;
     @Basic
-    @Column(name = "HEISIG_INDEX_6_EDITION")
+    @Column(name = "HEISIG_INDEX_6_EDITION", nullable = true)
     private Object heisigIndex6Edition;
     @Basic
-    @Column(name = "KEYWORD_5_EDITION")
+    @Column(name = "KEYWORD_5_EDITION", nullable = true, length = 20)
     private Object keyword5Edition;
     @Basic
-    @Column(name = "KEYWORD_6_EDITION")
+    @Column(name = "KEYWORD_6_EDITION", nullable = true, length = 20)
     private Object keyword6Edition;
     @Basic
-    @Column(name = "ON_READING")
+    @Column(name = "ON_READING", nullable = true, length = 20)
     private Object onReading;
     @Basic
-    @Column(name = "KUN_READING")
+    @Column(name = "KUN_READING", nullable = true, length = 20)
     private Object kunReading;
+    @OneToMany(mappedBy = "cardByCardId")
+    private Collection<CardPrimitiveEntity> cardPrimitivesByCardId;
+    @OneToMany(mappedBy = "cardByCardId")
+    private Collection<CardTagEntity> cardTagsByCardId;
+    @OneToMany(mappedBy = "cardByLastFrame")
+    private Collection<LessonEntity> lessonsByCardId;
+    @OneToMany(mappedBy = "cardByCardId")
+    private Collection<NoteEntity> notesByCardId;
+    @OneToMany(mappedBy = "cardByNextFrame")
+    private Collection<PrimitiveEntity> primitivesByCardId;
 
     public Object getCardId() {
         return cardId;
@@ -101,12 +112,52 @@ public class CardEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CardEntity that = (CardEntity) o;
-        return Objects.equals(cardId, that.cardId) && Objects.equals(cardKanji, that.cardKanji) && Objects.equals(heisigIndex5Edition, that.heisigIndex5Edition) && Objects.equals(heisigIndex6Edition, that.heisigIndex6Edition) && Objects.equals(keyword5Edition, that.keyword5Edition) && Objects.equals(keyword6Edition, that.keyword6Edition) && Objects.equals(onReading, that.onReading) && Objects.equals(kunReading, that.kunReading);
+        CardEntity entity = (CardEntity) o;
+        return Objects.equals(cardId, entity.cardId) && Objects.equals(cardKanji, entity.cardKanji) && Objects.equals(heisigIndex5Edition, entity.heisigIndex5Edition) && Objects.equals(heisigIndex6Edition, entity.heisigIndex6Edition) && Objects.equals(keyword5Edition, entity.keyword5Edition) && Objects.equals(keyword6Edition, entity.keyword6Edition) && Objects.equals(onReading, entity.onReading) && Objects.equals(kunReading, entity.kunReading);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(cardId, cardKanji, heisigIndex5Edition, heisigIndex6Edition, keyword5Edition, keyword6Edition, onReading, kunReading);
+    }
+
+    public Collection<CardPrimitiveEntity> getCardPrimitivesByCardId() {
+        return cardPrimitivesByCardId;
+    }
+
+    public void setCardPrimitivesByCardId(Collection<CardPrimitiveEntity> cardPrimitivesByCardId) {
+        this.cardPrimitivesByCardId = cardPrimitivesByCardId;
+    }
+
+    public Collection<CardTagEntity> getCardTagsByCardId() {
+        return cardTagsByCardId;
+    }
+
+    public void setCardTagsByCardId(Collection<CardTagEntity> cardTagsByCardId) {
+        this.cardTagsByCardId = cardTagsByCardId;
+    }
+
+    public Collection<LessonEntity> getLessonsByCardId() {
+        return lessonsByCardId;
+    }
+
+    public void setLessonsByCardId(Collection<LessonEntity> lessonsByCardId) {
+        this.lessonsByCardId = lessonsByCardId;
+    }
+
+    public Collection<NoteEntity> getNotesByCardId() {
+        return notesByCardId;
+    }
+
+    public void setNotesByCardId(Collection<NoteEntity> notesByCardId) {
+        this.notesByCardId = notesByCardId;
+    }
+
+    public Collection<PrimitiveEntity> getPrimitivesByCardId() {
+        return primitivesByCardId;
+    }
+
+    public void setPrimitivesByCardId(Collection<PrimitiveEntity> primitivesByCardId) {
+        this.primitivesByCardId = primitivesByCardId;
     }
 }

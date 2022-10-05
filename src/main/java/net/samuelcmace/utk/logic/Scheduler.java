@@ -1,5 +1,7 @@
 package net.samuelcmace.utk.logic;
 
+import net.samuelcmace.utk.logic.model.DatabaseConnection;
+
 import java.io.IOException;
 import java.sql.SQLException;
 

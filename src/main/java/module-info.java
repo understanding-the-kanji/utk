@@ -12,4 +12,8 @@ module net.samuelcmace.utk {
     opens net.samuelcmace.utk.gui.controller to javafx.fxml;
     exports net.samuelcmace.utk.gui;
     opens net.samuelcmace.utk.gui to javafx.fxml;
+    exports net.samuelcmace.utk.logic.model;
+    opens net.samuelcmace.utk.logic.model to javafx.fxml;
+    exports net.samuelcmace.utk.logic.model.hibernate;
+    opens net.samuelcmace.utk.logic.model.hibernate to org.hibernate.orm.core;
 }

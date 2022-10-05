@@ -6,8 +6,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import net.samuelcmace.utk.gui.ControllerManager;
 import net.samuelcmace.utk.gui.Controllers;
+import net.samuelcmace.utk.logic.model.DatabaseConnection;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * The main class for the program.
@@ -24,7 +26,7 @@ public class Main extends Application {
      *
      * @throws IOException Thrown if the main program scene was unable to load.
      */
-    public Main() throws IOException {
+    public Main() throws IOException, SQLException {
         this.applicationScene = new Scene(new Pane(), 600, 400);
 
         ControllerManager.SetScene(this.applicationScene);

@@ -9,11 +9,14 @@ import java.util.Objects;
 public class NoteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "NOTE_ID")
+    @Column(name = "NOTE_ID", nullable = false)
     private Object noteId;
     @Basic
-    @Column(name = "CARD_ID")
+    @Column(name = "CARD_ID", nullable = true)
     private Object cardId;
+    @ManyToOne
+    @JoinColumn(name = "CARD_ID", referencedColumnName = "CARD_ID")
+    private CardEntity cardByCardId;
 
     public Object getNoteId() {
         return noteId;
@@ -42,5 +45,13 @@ public class NoteEntity {
     @Override
     public int hashCode() {
         return Objects.hash(noteId, cardId);
+    }
+
+    public CardEntity getCardByCardId() {
+        return cardByCardId;
+    }
+
+    public void setCardByCardId(CardEntity cardByCardId) {
+        this.cardByCardId = cardByCardId;
     }
 }

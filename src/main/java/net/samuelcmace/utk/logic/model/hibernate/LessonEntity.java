@@ -9,11 +9,14 @@ import java.util.Objects;
 public class LessonEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "LESSON_ID")
+    @Column(name = "LESSON_ID", nullable = false)
     private Object lessonId;
     @Basic
-    @Column(name = "LAST_FRAME")
+    @Column(name = "LAST_FRAME", nullable = false)
     private Object lastFrame;
+    @ManyToOne
+    @JoinColumn(name = "LAST_FRAME", referencedColumnName = "CARD_ID", nullable = false)
+    private CardEntity cardByLastFrame;
 
     public Object getLessonId() {
         return lessonId;
@@ -42,5 +45,13 @@ public class LessonEntity {
     @Override
     public int hashCode() {
         return Objects.hash(lessonId, lastFrame);
+    }
+
+    public CardEntity getCardByLastFrame() {
+        return cardByLastFrame;
+    }
+
+    public void setCardByLastFrame(CardEntity cardByLastFrame) {
+        this.cardByLastFrame = cardByLastFrame;
     }
 }

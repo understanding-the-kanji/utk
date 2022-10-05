@@ -2,6 +2,7 @@ package net.samuelcmace.utk.logic.model.hibernate;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -9,14 +10,16 @@ import java.util.Objects;
 public class TagEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "TAG_ID")
+    @Column(name = "TAG_ID", nullable = false)
     private Object tagId;
     @Basic
-    @Column(name = "TAG_NAME")
+    @Column(name = "TAG_NAME", nullable = false, length = 50)
     private Object tagName;
     @Basic
-    @Column(name = "TAG_DESCRIPTION")
+    @Column(name = "TAG_DESCRIPTION", nullable = true, length = 500)
     private Object tagDescription;
+    @OneToMany(mappedBy = "tagByTagId")
+    private Collection<CardTagEntity> cardTagsByTagId;
 
     public Object getTagId() {
         return tagId;
@@ -53,5 +56,13 @@ public class TagEntity {
     @Override
     public int hashCode() {
         return Objects.hash(tagId, tagName, tagDescription);
+    }
+
+    public Collection<CardTagEntity> getCardTagsByTagId() {
+        return cardTagsByTagId;
+    }
+
+    public void setCardTagsByTagId(Collection<CardTagEntity> cardTagsByTagId) {
+        this.cardTagsByTagId = cardTagsByTagId;
     }
 }
