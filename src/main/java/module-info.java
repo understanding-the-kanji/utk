@@ -2,6 +2,7 @@ module net.samuelcmace.utk {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires jakarta.persistence;
 
     opens net.samuelcmace.utk to javafx.fxml;
     exports net.samuelcmace.utk;
