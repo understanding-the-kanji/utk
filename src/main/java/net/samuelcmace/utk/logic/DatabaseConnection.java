@@ -1,11 +1,9 @@
 package net.samuelcmace.utk.logic;
 
-import jakarta.persistence.*;
 import net.samuelcmace.utk.logic.model.CardEntity;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 /**
  * Defines a direct connection to the SQLite project database.
