@@ -6,7 +6,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import net.samuelcmace.utk.gui.ControllerManager;
 import net.samuelcmace.utk.gui.Controllers;
-import net.samuelcmace.utk.logic.model.DatabaseConnection;
 
 import java.io.IOException;
 import java.sql.SQLException;

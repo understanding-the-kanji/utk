@@ -1,9 +1,7 @@
-package net.samuelcmace.utk.logic.model;
+package net.samuelcmace.utk.logic;
 
 import jakarta.persistence.*;
-import net.samuelcmace.utk.logic.Configuration;
-import net.samuelcmace.utk.logic.Logger;
-import net.samuelcmace.utk.logic.model.hibernate.CardEntity;
+import net.samuelcmace.utk.logic.model.CardEntity;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -35,17 +33,6 @@ public class DatabaseConnection {
     private String dbConnectionString;
 
     /**
-     * Contains a map of properties to be sent to the EntityManagerFactory upon instantiation.
-     * In this case, it only contains the connection string object, although more can be added if needed.
-     */
-    private HashMap<String, String> dbConnectionProperties;
-
-    /**
-     * The entity manager factory (persistence API) for the DatabaseConnection object.
-     */
-    private EntityManagerFactory entityManagerFactory;
-
-    /**
      * Initializes a new instance of DatabaseConnection.
      *
      * @throws IOException  Thrown if either the Configuration or Logger singleton instances failed to instantiate.
@@ -57,8 +44,7 @@ public class DatabaseConnection {
 
         this.dbConnectionString = "jdbc:sqlite:" + this.configuration.DBFilePath;
 
-        this.dbConnectionProperties = new HashMap<String, String>();
-        this.dbConnectionProperties.put("jakarta.persistence.jdbc.url", this.dbConnectionString);
+
 
         this.logger.ConsoleInformation("Database Connection Succeeded");
     }
@@ -82,27 +68,11 @@ public class DatabaseConnection {
      */
     public CardEntity getCardByKanji(char m_kanji)
     {
-        this.entityManagerFactory = Persistence.createEntityManagerFactory("utk", this.dbConnectionProperties);
+        CardEntity cardEntity = null;
 
-        EntityManager entityManager = this.entityManagerFactory.createEntityManager();
-        String query = "SELECT c FROM CARD c WHERE c.CARD_KANJI = :cardKanji";
 
-        TypedQuery<CardEntity> typedQuery = entityManager.createQuery(query, CardEntity.class);
-        typedQuery.setParameter("cardKanji", m_kanji);
-        CardEntity card = null;
 
-        try {
-            card = typedQuery.getSingleResult();
-            System.out.println(card.getKeyword6Edition());
-        }
-        catch (Exception ex)
-        {
-            System.out.println("There was an error in the query.");
-        }
-
-        this.entityManagerFactory.close();
-
-        return card;
+        return cardEntity;
     }
 
     /**

@@ -1,6 +1,6 @@
 package net.samuelcmace.utk;
 
-import net.samuelcmace.utk.logic.model.DatabaseConnection;
+import net.samuelcmace.utk.logic.DatabaseConnection;
 import org.junit.jupiter.api.Test;
 
 public class DatabaseConnectionTests {
