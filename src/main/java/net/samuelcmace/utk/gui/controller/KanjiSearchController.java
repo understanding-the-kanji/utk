@@ -7,7 +7,7 @@ import net.samuelcmace.utk.gui.Controllers;
 /**
  * The controller that corresponds to the Quiz view.
  */
-public class QuizController {
+public class KanjiSearchController {
 
     /**
      * Called when the return button is pressed.

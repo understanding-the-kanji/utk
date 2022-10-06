@@ -5,26 +5,29 @@ class Main
 abstract gui.ControllerManager
 enum gui.Controllers
 
-class gui.controller.EditorScene
-class gui.controller.LoadScene
-class gui.controller.KanjiBrowser
-class gui.controller.KanjiEditor
+class gui.controller.LoadSceneController
+class gui.controller.AboutController
+class gui.controller.AboutLicensesController
+class gui.controller.KanjiSearchController
+class gui.controller.KanjiBrowserController
+class gui.controller.KanjiEditorController
 
-class util.Scheduler
+class util.AppState <<Singleton>>
 
-class util.Configuration <<Singleton>>
-class util.Logger <<Singleton>>
-class util.DatabaseConnection <<Singleton>>
+abstract util.Logger
+class util.DatabaseConnection
 
-Main --> util.Configuration
-Main --> util.Logger
+gui.ControllerManager ..> gui.controller.LoadSceneController
+gui.ControllerManager ..> gui.controller.AboutController
+gui.ControllerManager ..> gui.controller.AboutLicensesController
+gui.ControllerManager ..> gui.controller.KanjiSearchController
+gui.ControllerManager ..> gui.controller.KanjiBrowserController
+gui.ControllerManager ..> gui.controller.KanjiEditorController
 
-Main ..> gui.controller.LoadScene
-Main ..> gui.controller.QuizScene
-Main ..> gui.controller.KanjiBrowser
-Main ..> gui.controller.KanjiEditor
+util.AppState --> util.DatabaseConnection
 
-gui.controller.QuizScene --> util.Scheduler
-util.Scheduler --> util.DatabaseConnection
+gui.controller.KanjiSearchController --> util.AppState
+gui.controller.KanjiBrowserController --> util.AppState
+gui.controller.KanjiEditorController --> util.AppState
 
 @enduml

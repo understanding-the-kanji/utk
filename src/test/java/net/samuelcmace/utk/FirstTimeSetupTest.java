@@ -1,6 +1,6 @@
 package net.samuelcmace.utk;
 
-import net.samuelcmace.utk.logic.Configuration;
+import net.samuelcmace.utk.logic.AppState;
 import net.samuelcmace.utk.logic.DatabaseConnection;
 import net.samuelcmace.utk.logic.model.CardEntity;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ public class FirstTimeSetupTest {
     @Test
     public void firstTimeSetupTest() {
         try {
-            Configuration configuration = Configuration.GetInstance();
+            AppState appState = AppState.GetInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +33,7 @@ public class FirstTimeSetupTest {
     @Test
     public void getCardByKanjiTest() {
         try {
-            DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+            DatabaseConnection dbConnection = new DatabaseConnection();
             CardEntity cardEntity = dbConnection.getCardByKanji('覚');
 
 

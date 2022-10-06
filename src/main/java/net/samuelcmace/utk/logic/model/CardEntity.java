@@ -1,5 +1,10 @@
 package net.samuelcmace.utk.logic.model;
 
+import net.samuelcmace.utk.logic.AppState;
+
+import java.io.IOException;
+import java.util.HashMap;
+
 /**
  * Class that describes the CARD entity in the database.
  * Once the CardEntity object has been created, it cannot be modified, since all the Kanji characters in Heisig's works have already been added to the database.
@@ -7,7 +12,9 @@ package net.samuelcmace.utk.logic.model;
 public class CardEntity {
 
     /**
-     * Represents the card ID according to the schema.
+     * The primary key of the CARD object.
+     * The primary keys for the first 3,000 kanji characters map to the 6th edition Heisig index.
+     * As for the additional characters contained in Heisig's previous works, they are incrementally indexed thereafter.
      */
     private int CARD_ID;
 
@@ -51,8 +58,42 @@ public class CardEntity {
      */
     private String KUN_READING;
 
-    public CardEntity(int m_cardID, char m_cardKanji, int m_heisigIndex5thEdition, int m_heisigIndex6thEdition, String m_keyword5thEdition, String m_keyword6thEdition, String m_onReading, String m_kunReading) {
+    /**
+     * Represents the note that the user takes on the given card.
+     */
+    private String NOTE;
 
+    /**
+     * Represents all the tag entities that are associated with the given CARD instance.
+     */
+    private HashMap<Integer, TagEntity> CARD_TAG;
+
+    /**
+     * Represents all the primitives that are associated with the given CARD instance.
+     * The user may add or subtract primitives, but may not modify the primitives themselves.
+     */
+    private HashMap<Integer, PrimitiveEntity> CARD_PRIMITIVE;
+
+    /**
+     * The application state associated with the CardEntity object.
+     * This ensures that if the setters are called, the corresponding data in the database can be updated.
+     */
+    private AppState appState;
+
+    /**
+     * Initializes a new instance of CardEntity
+     *
+     * @param m_cardID                The primary key associated with the card.
+     * @param m_cardKanji             The kanji character for the card.
+     * @param m_heisigIndex5thEdition The Heisig index used in the 5th edition of Heisig's Remembering the Kanji.
+     * @param m_heisigIndex6thEdition The Heisig index used in the 6th edition of Heisig's Remembering the Kanji.
+     * @param m_keyword5thEdition     The keyword used in the 5th edition of Heisig's Remembering the Kanji.
+     * @param m_keyword6thEdition     The keyword used in the 6th edition of Heisig's Remembering the Kanji.
+     * @param m_onReading             The reading of the Kanji character that was borrowed from Middle Chinese.
+     * @param m_kunReading            The reading of the Kanji character that is unique to the Japanese language.
+     */
+    public CardEntity(int m_cardID, char m_cardKanji, int m_heisigIndex5thEdition, int m_heisigIndex6thEdition, String m_keyword5thEdition, String m_keyword6thEdition, String m_onReading, String m_kunReading) throws IOException {
+        this.appState = AppState.GetInstance();
     }
 
     /**

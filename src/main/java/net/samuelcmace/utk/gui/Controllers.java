@@ -20,7 +20,7 @@ public enum Controllers {
                 filePath = "fxml/Load.fxml";
                 break;
             case QUIZ:
-                filePath = "fxml/Quiz.fxml";
+                filePath = "fxml/KanjiSearch.fxml";
                 break;
             case ABOUT:
                 filePath = "fxml/About.fxml";

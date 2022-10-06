@@ -13,14 +13,9 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     /**
-     * Singleton instance of DatabaseConnection.
-     */
-    private static DatabaseConnection instance = null;
-
-    /**
      * Configuration object for the DatabaseConnection class.
      */
-    private Configuration configuration;
+    private AppState appState;
 
     /**
      * Logger object for the DatabaseConnection class.
@@ -38,27 +33,12 @@ public class DatabaseConnection {
      * @throws IOException  Thrown if either the Configuration or Logger singleton instances failed to instantiate.
      * @throws SQLException Thrown if the database connection failed.
      */
-    private DatabaseConnection() throws IOException {
-        this.configuration = Configuration.GetInstance();
-        this.logger = Logger.GetInstance();
-
-        this.dbConnectionString = "jdbc:sqlite:" + this.configuration.DBFilePath;
-
-
+    public DatabaseConnection() throws IOException {
+        this.appState = AppState.GetInstance();
+        this.dbConnectionString = "jdbc:sqlite:" + this.appState.DBFilePath;
 
         this.logger.ConsoleInformation("Database Connection Succeeded");
-    }
-
-    /**
-     * Retrieves the singleton instance of DatabaseConnection.
-     *
-     * @return The singleton instance of DatabaseConnection.
-     * @throws IOException Thrown if the DatabaseConnection singleton instance was unable to instantiate.
-     */
-    public static DatabaseConnection getInstance() throws IOException {
-        if (DatabaseConnection.instance == null) DatabaseConnection.instance = new DatabaseConnection();
-
-        return DatabaseConnection.instance;
+        this.logger.ConsoleInformation("Database Connection String: " + this.dbConnectionString);
     }
 
     /**

@@ -18,7 +18,7 @@ public class DatabaseConnectionTests {
     @Test
     public void databaseConnectionTest() {
         try {
-            DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+            DatabaseConnection databaseConnection = new DatabaseConnection();
             databaseConnection.getCardByKanji('覚');
             assert true;
         } catch (Exception e) {

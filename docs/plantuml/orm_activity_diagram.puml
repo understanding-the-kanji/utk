@@ -1,0 +1,22 @@
+@startuml
+
+start
+
+:Program queries for Kanji Card;
+:Program retrieves Kanji fields and Creates Model Object;
+:Program retrieves linked tags and populates Model HashMap;
+:Program retrieves linked primitives and populates Model HashMap;
+
+if (User Changes Note) then (yes)
+
+:Entity Class Calls Database to Update Field;
+
+endif
+
+if (User Adds Tag) then (yes)
+
+endif
+
+end
+
+@enduml

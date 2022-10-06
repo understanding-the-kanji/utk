@@ -1,9 +1,0 @@
-@startuml
-
-start
-
-:User clicks on main screen;
-
-end
-
-@enduml

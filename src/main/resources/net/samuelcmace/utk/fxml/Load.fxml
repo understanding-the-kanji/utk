@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
-
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="net.samuelcmace.utk.gui.controller.LoadController">
 
     <padding>
@@ -16,10 +13,7 @@
     <Label text="Understanding the Kanji"/>
     <Label text="A Tool to Help Remember the Construction of Kanji Characters"/>
 
-    <HBox alignment="CENTER" spacing="20.0">
-        <Button fx:id="quizButton" text="Spaced Repetition Quiz" onAction="#onClick_quizButton"/>
-        <Button fx:id="browserButton" text="Kanji Browser" onAction="#onClick_browserButton"/>
-    </HBox>
+    <Button fx:id="browserButton" text="Kanji Browser" onAction="#onClick_browserButton"/>
 
     <HBox alignment="CENTER" spacing="20.0">
         <Button fx:id="aboutButton" text="About" onAction="#onClick_aboutButton"/>

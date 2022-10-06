@@ -5,6 +5,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="net.samuelcmace.utk.gui.controller.KanjiBrowserController" prefHeight="600.0" prefWidth="800.0">
 
     <padding>
@@ -12,6 +13,8 @@
     </padding>
 
     <Label text="Kanji Browser"/>
+
+    <ListView />
 
     <Button fx:id="returnButton" text="Return" onAction="#onClick_returnButton"/>
 
