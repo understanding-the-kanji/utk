@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Initializes a new instance of Logger
+ * Logs messages both to the program and to the console.
  */
 public class Logger {
 

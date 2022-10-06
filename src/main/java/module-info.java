@@ -2,7 +2,6 @@ module net.samuelcmace.utk {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires jakarta.persistence;
 
     opens net.samuelcmace.utk to javafx.fxml;
     exports net.samuelcmace.utk;
@@ -14,6 +13,4 @@ module net.samuelcmace.utk {
     opens net.samuelcmace.utk.gui to javafx.fxml;
     exports net.samuelcmace.utk.logic.model;
     opens net.samuelcmace.utk.logic.model to javafx.fxml;
-    exports net.samuelcmace.utk.logic.model.hibernate;
-    opens net.samuelcmace.utk.logic.model.hibernate to org.hibernate.orm.core;
 }

@@ -3,6 +3,8 @@ package net.samuelcmace.utk.logic;
 import net.samuelcmace.utk.logic.model.CardEntity;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
@@ -53,7 +55,7 @@ public class DatabaseConnection {
      * @return The singleton instance of DatabaseConnection.
      * @throws IOException Thrown if the DatabaseConnection singleton instance was unable to instantiate.
      */
-    public static DatabaseConnection getInstance() throws IOException, SQLException {
+    public static DatabaseConnection getInstance() throws IOException {
         if (DatabaseConnection.instance == null) DatabaseConnection.instance = new DatabaseConnection();
 
         return DatabaseConnection.instance;
@@ -61,14 +63,21 @@ public class DatabaseConnection {
 
     /**
      * Fetch a card object from the database by Kanji character.
+     *
      * @param m_kanji The Kanji character in question.
      * @return The card entity.
      */
-    public CardEntity getCardByKanji(char m_kanji)
-    {
+    public CardEntity getCardByKanji(char m_kanji) throws SQLException {
         CardEntity cardEntity = null;
+        Connection connection;
 
-
+        try {
+            connection = DriverManager.getConnection(this.dbConnectionString);
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            this.logger.ConsoleInformation("The connection to the database failed. This is possibly due to an invalid file path.");
+        }
 
         return cardEntity;
     }
