@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import net.samuelcmace.utk.Main;
+import net.samuelcmace.utk.logic.Logger;
 
 /**
  * Abstract class to control the switching behavior of the FXML views and their corresponding controllers.
@@ -32,7 +33,7 @@ public abstract class ControllerManager {
             Parent fxmlLoader = FXMLLoader.load(Main.class.getResource(Controllers.FilePath(m_controller)));
             ControllerManager.applicationScene.setRoot(fxmlLoader);
         } catch (Exception e) {
-            MessageBox.ShowErrorDialog("The View Failed to Switch!\n" + e.toString());
+            Logger.Error("The View Failed to Switch: " + e.getLocalizedMessage());
         }
     }
 }

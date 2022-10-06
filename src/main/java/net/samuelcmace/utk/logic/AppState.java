@@ -55,7 +55,7 @@ public class AppState {
      *
      * @throws IOException Thrown if either the default directory failed to create or the template database file failed to copy.
      */
-    private void firstTimeSetup() throws IOException {
+    public void FirstTimeSetup() throws IOException {
         File appStorageDirectory = new File(this.AppStorageDir);
         if (!appStorageDirectory.exists()) {
             appStorageDirectory.mkdir();
@@ -74,18 +74,6 @@ public class AppState {
         this.AppStorageDir = Paths.get(System.getProperty("user.home") + "/.understanding-the-kanji/").toAbsolutePath().toString();
         this.LogFilePath = Paths.get(this.AppStorageDir, "log.txt").toAbsolutePath().toString();
         this.DBFilePath = Paths.get(this.AppStorageDir, "utk.db").toAbsolutePath().toString();
-
-        try {
-            this.firstTimeSetup();
-        }
-        catch (IOException e)
-        {
-            Logger.ConsoleError("The program was unable to complete the first-time setup process: " + e.getLocalizedMessage());
-        }
-
-        Logger.ConsoleInformation("Application Storage Directory: " + this.AppStorageDir);
-        Logger.ConsoleInformation("Application Log File Path: " + this.LogFilePath);
-        Logger.ConsoleInformation("Application Database Path: " + this.DBFilePath);
     }
 
     /**

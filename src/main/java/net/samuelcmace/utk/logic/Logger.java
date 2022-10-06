@@ -27,7 +27,7 @@ public abstract class Logger {
         try {
             FileWriter fileWriter;
             fileWriter = new FileWriter(AppState.GetInstance().LogFilePath, true);
-            fileWriter.write("[ " + Logger.getLocalTime() + "] " + message + "\n");
+            fileWriter.write("[" + Logger.getLocalTime() + "] " + message + "\n");
             fileWriter.close();
         } catch (Exception ex) {
             System.out.println("Error: Failed to Write Line to File!");
