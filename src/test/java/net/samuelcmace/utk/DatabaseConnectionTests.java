@@ -40,19 +40,19 @@ public class DatabaseConnectionTests {
             DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardByKanji("何");
 
-            while (dbConnection.activeResultSet.next()) {
-                System.out.println(dbConnection.activeResultSet.getInt("CARD_ID"));
-                System.out.println(dbConnection.activeResultSet.getString("CARD_KANJI"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("ON_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("KUN_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("NOTE"));
+            while (dbConnection.ActiveResultSet.next()) {
+                System.out.println(dbConnection.ActiveResultSet.getInt("CARD_ID"));
+                System.out.println(dbConnection.ActiveResultSet.getString("CARD_KANJI"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("ON_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KUN_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("NOTE"));
             }
 
-            dbConnection.activeConnection.close();
+            dbConnection.ActiveConnection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,19 +69,19 @@ public class DatabaseConnectionTests {
             DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardBy5thEditionIndex(345);
 
-            while (dbConnection.activeResultSet.next()) {
-                System.out.println(dbConnection.activeResultSet.getInt("CARD_ID"));
-                System.out.println(dbConnection.activeResultSet.getString("CARD_KANJI"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("ON_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("KUN_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("NOTE"));
+            while (dbConnection.ActiveResultSet.next()) {
+                System.out.println(dbConnection.ActiveResultSet.getInt("CARD_ID"));
+                System.out.println(dbConnection.ActiveResultSet.getString("CARD_KANJI"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("ON_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KUN_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("NOTE"));
             }
 
-            dbConnection.activeConnection.close();
+            dbConnection.ActiveConnection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,19 +98,19 @@ public class DatabaseConnectionTests {
             DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardBy5thEditionIndex(234);
 
-            while (dbConnection.activeResultSet.next()) {
-                System.out.println(dbConnection.activeResultSet.getInt("CARD_ID"));
-                System.out.println(dbConnection.activeResultSet.getString("CARD_KANJI"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("ON_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("KUN_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("NOTE"));
+            while (dbConnection.ActiveResultSet.next()) {
+                System.out.println(dbConnection.ActiveResultSet.getInt("CARD_ID"));
+                System.out.println(dbConnection.ActiveResultSet.getString("CARD_KANJI"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("ON_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KUN_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("NOTE"));
             }
 
-            dbConnection.activeConnection.close();
+            dbConnection.ActiveConnection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -127,19 +127,19 @@ public class DatabaseConnectionTests {
             DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardBy5thEditionKeyword("peach tree");
 
-            while (dbConnection.activeResultSet.next()) {
-                System.out.println(dbConnection.activeResultSet.getInt("CARD_ID"));
-                System.out.println(dbConnection.activeResultSet.getString("CARD_KANJI"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("ON_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("KUN_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("NOTE"));
+            while (dbConnection.ActiveResultSet.next()) {
+                System.out.println(dbConnection.ActiveResultSet.getInt("CARD_ID"));
+                System.out.println(dbConnection.ActiveResultSet.getString("CARD_KANJI"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("ON_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KUN_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("NOTE"));
             }
 
-            dbConnection.activeConnection.close();
+            dbConnection.ActiveConnection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -156,19 +156,19 @@ public class DatabaseConnectionTests {
             DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardBy6thEditionKeyword("about that time");
 
-            while (dbConnection.activeResultSet.next()) {
-                System.out.println(dbConnection.activeResultSet.getInt("CARD_ID"));
-                System.out.println(dbConnection.activeResultSet.getString("CARD_KANJI"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("ON_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("KUN_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("NOTE"));
+            while (dbConnection.ActiveResultSet.next()) {
+                System.out.println(dbConnection.ActiveResultSet.getInt("CARD_ID"));
+                System.out.println(dbConnection.ActiveResultSet.getString("CARD_KANJI"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getInt("HEISIG_INDEX_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
+                System.out.println(dbConnection.ActiveResultSet.getString("ON_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("KUN_READING"));
+                System.out.println(dbConnection.ActiveResultSet.getString("NOTE"));
             }
 
-            dbConnection.activeConnection.close();
+            dbConnection.ActiveConnection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

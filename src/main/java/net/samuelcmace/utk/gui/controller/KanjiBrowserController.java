@@ -25,18 +25,21 @@ public class KanjiBrowserController {
     {
         try {
             this.dbConnectionPool = DBConnectionPool.GetInstance();
+            String queryResult = "";
 
-            while (this.dbConnectionPool.dbConnection.activeResultSet.next()) {
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getInt("CARD_ID"));
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("CARD_KANJI"));
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("ON_READING"));
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("KUN_READING"));
-                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("NOTE"));
+            while (this.dbConnectionPool.dbConnection.ActiveResultSet.next()) {
+                queryResult += "Card ID: " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("CARD_ID") + '\n';
+                queryResult += "Kanji Character: " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("CARD_KANJI") + '\n';
+                queryResult += "Heisig Index (5th Edition): " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("HEISIG_INDEX_5_EDITION") + '\n';
+                queryResult += "Heisig Index (6th Edition): " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("HEISIG_INDEX_6_EDITION") + '\n';
+                queryResult += "Keyword (5th Edition): " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("KEYWORD_5_EDITION") + '\n';
+                queryResult += "Keyword (6th Edition): " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("KEYWORD_6_EDITION") + '\n';
+                queryResult += "On-Reading (Chinese Reading): " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("ON_READING") + '\n';
+                queryResult += "Kun-Reading (Japanese Reading): " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("KUN_READING") + '\n';
+                queryResult += "Note: " + this.dbConnectionPool.dbConnection.ActiveResultSet.getString("NOTE") + '\n';
             }
+
+            Logger.Information(queryResult);
         } catch (SQLException e) {
             Logger.Error("There was an error in connecting to the database: " + e.getLocalizedMessage());
         }

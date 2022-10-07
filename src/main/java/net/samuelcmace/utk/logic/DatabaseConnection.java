@@ -15,22 +15,22 @@ public class DatabaseConnection {
     /**
      * The connection object associated with the instance of DatabaseConnection.
      */
-    public Connection activeConnection;
+    public Connection ActiveConnection;
 
     /**
      * The statement associated with the instance of DatabaseConnection.
      */
-    public Statement activeStatement;
-
-    /**
-     *
-     */
-    private String activeQuery;
+    public Statement ActiveStatement;
 
     /**
      * The active result set containing the query results.
      */
-    public ResultSet activeResultSet;
+    public ResultSet ActiveResultSet;
+
+    /**
+     * The currently active query string used to generate the activeResultSet.
+     */
+    private String activeQuery;
 
     /**
      * Initializes a new instance of DatabaseConnection.
@@ -39,7 +39,7 @@ public class DatabaseConnection {
         this.dbConnectionString = m_dbConnectionString;
         Logger.ConsoleInformation("Database Connection String Set: " + this.dbConnectionString);
 
-        this.activeConnection = DriverManager.getConnection(this.dbConnectionString);
+        this.ActiveConnection = DriverManager.getConnection(this.dbConnectionString);
     }
 
     /**
@@ -49,7 +49,7 @@ public class DatabaseConnection {
      */
     protected void finalize() {
         try {
-            this.activeConnection.close();
+            this.ActiveConnection.close();
         } catch (SQLException e) {
             Logger.ConsoleError("There was an error in closing the database connection in the object destructor: " + e.getLocalizedMessage());
         }
@@ -61,8 +61,8 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void RunActiveQuery() throws SQLException {
-        this.activeStatement = this.activeConnection.createStatement();
-        this.activeResultSet = this.activeStatement.executeQuery(this.activeQuery);
+        this.ActiveStatement = this.ActiveConnection.createStatement();
+        this.ActiveResultSet = this.ActiveStatement.executeQuery(this.activeQuery);
     }
 
     /**
@@ -89,7 +89,7 @@ public class DatabaseConnection {
     /**
      * Fetch a card object from the database by the 5th Edition Heisig Index.
      *
-     * @param m_heisigIndex The Heisig Index that corresponds to the  Kanji character in question.
+     * @param m_heisigIndex The Heisig Index that corresponds to the Kanji character in question.
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy5thEditionIndex(int m_heisigIndex) throws SQLException {
@@ -99,7 +99,7 @@ public class DatabaseConnection {
     /**
      * Fetch a card object from the database by the 6th Edition Heisig Index.
      *
-     * @param m_heisigIndex The Heisig Index that corresponds to the  Kanji character in question.
+     * @param m_heisigIndex The Heisig Index that corresponds to the Kanji character in question.
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy6thEditionIndex(int m_heisigIndex) throws SQLException {
