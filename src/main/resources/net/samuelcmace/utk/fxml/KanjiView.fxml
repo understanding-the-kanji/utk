@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="net.samuelcmace.utk.gui.controller.KanjiBrowserController" prefHeight="600.0" prefWidth="800.0">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="net.samuelcmace.utk.gui.controller.KanjiViewController" prefHeight="600.0" prefWidth="800.0">
 
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label text="Kanji Browser"/>
+    <HBox alignment="CENTER" spacing="20.0">
 
-    <ListView />
+        <VBox spacing="10.0">
+            <Label text="Card ID:"/>
+            <Label text="Kanji Character:"/>
+            <Label text="Heisig Index (5th Edition):"/>
+            <Label text="Heisig Index (6th Edition):"/>
+            <Label text="Heisig Keyword (5th Edition):"/>
+            <Label text="Heisig Keyword (6th Edition):"/>
+            <Label text="On-Reading (Chinese Reading):"/>
+            <Label text="Kun-Reading (Japanese Reading):"/>
+            <Label text="Note:"/>
+        </VBox>
+
+        <VBox spacing="10.0">
+            <Label fx:id="cardIDContents"/>
+            <Label fx:id="cardKanjiContents"/>
+            <Label fx:id="cardHeisigIndex5thEditionContents"/>
+            <Label fx:id="cardHeisigIndex6thEditionContents"/>
+            <Label fx:id="cardHeisigKeyword5thEditionContents"/>
+            <Label fx:id="cardHeisigKeyword6thEditionContents"/>
+            <Label fx:id="cardOnReadingContents"/>
+            <Label fx:id="cardKunReadingContents"/>
+            <Label fx:id="cardNoteContents"/>
+        </VBox>
+
+    </HBox>
 
     <Button fx:id="returnButton" text="Return" onAction="#onClick_returnButton"/>
 
