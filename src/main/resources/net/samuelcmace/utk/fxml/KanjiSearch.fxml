@@ -13,8 +13,33 @@
     </padding>
 
     <HBox>
-        <Label text="Search By "/>
-        <TextField fx:id=""/>
+        <Label text="Search By Kanji Character"/>
+        <TextField fx:id="searchByCharacterTextField"/>
+        <Button fx:id="searchByCharacterButton" onAction="#searchByCharacterButton_onClick"/>
+    </HBox>
+
+    <HBox>
+        <Label text="Search By 5th Edition Heisig Index"/>
+        <TextField fx:id="searchBy5thEditionHeisigIndexTextField"/>
+        <Button fx:id="searchBy5thEditionHeisigIndexButton" onAction="#searchBy5thEditionHeisigIndexButton_onClick"/>
+    </HBox>
+
+    <HBox>
+        <Label text="Search By 6th Edition Heisig Index"/>
+        <TextField fx:id="searchBy6thEditionHeisigIndexTextField"/>
+        <Button fx:id="searchBy6thEditionHeisigIndexButton" onAction="#searchBy6thEditionHeisigIndexButton_onClick"/>
+    </HBox>
+
+    <HBox>
+        <Label text="Search By 5th Edition Heisig Keyword"/>
+        <TextField fx:id="searchBy5thEditionHeisigIndexTextField"/>
+        <Button fx:id="searchBy5thEditionHeisigIndexButton" onAction="#searchBy5thEditionHeisigKeywordButton_onClick"/>
+    </HBox>
+
+    <HBox>
+        <Label text="Search By 6th Edition Heisig Keyword"/>
+        <TextField fx:id="searchBy6thEditionHeisigIndexTextField"/>
+        <Button fx:id="searchBy6thEditionHeisigIndexButton" onAction="#searchBy6thEditionHeisigKeywordButton_onClick"/>
     </HBox>
 
     <Button fx:id="returnButton" text="Return" onAction="#onClick_returnButton"/>

@@ -1,8 +1,11 @@
 package net.samuelcmace.utk.logic.model;
 
 import net.samuelcmace.utk.logic.AppState;
+import net.samuelcmace.utk.logic.DatabaseConnection;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.HashMap;
 
 /**
@@ -81,19 +84,53 @@ public class CardEntity {
     private AppState appState;
 
     /**
+     * The database connection object associated with the entity (to allow for persistence).
+     */
+    private DatabaseConnection databaseConnection;
+
+    /**
+     * The SQLite JDBC connection object.
+     */
+    private Connection connection;
+
+    /**
+     * Database-related querying code shared between all the constructor overloads.
+     */
+    private void commonConstructor()
+    {
+
+    }
+
+    /**
      * Initializes a new instance of CardEntity
      *
-     * @param m_cardID                The primary key associated with the card.
      * @param m_cardKanji             The kanji character for the card.
-     * @param m_heisigIndex5thEdition The Heisig index used in the 5th edition of Heisig's Remembering the Kanji.
-     * @param m_heisigIndex6thEdition The Heisig index used in the 6th edition of Heisig's Remembering the Kanji.
-     * @param m_keyword5thEdition     The keyword used in the 5th edition of Heisig's Remembering the Kanji.
-     * @param m_keyword6thEdition     The keyword used in the 6th edition of Heisig's Remembering the Kanji.
-     * @param m_onReading             The reading of the Kanji character that was borrowed from Middle Chinese.
-     * @param m_kunReading            The reading of the Kanji character that is unique to the Japanese language.
      */
-    public CardEntity(int m_cardID, char m_cardKanji, int m_heisigIndex5thEdition, int m_heisigIndex6thEdition, String m_keyword5thEdition, String m_keyword6thEdition, String m_onReading, String m_kunReading) throws IOException {
+    public CardEntity(char m_cardKanji) throws IOException {
         this.appState = AppState.GetInstance();
+        this.databaseConnection = new DatabaseConnection();
+    }
+
+    /**
+     * Initializes a new instance of CardEntity
+     *
+     * @param m_heisigIndex The Heisig keyword to lookup by.
+     * @param m_editionNumber The edition number associated with the Heisig index (5 or 6);
+     */
+    public CardEntity(int m_heisigIndex, int m_editionNumber)
+    {
+
+    }
+
+    /**
+     * Initializes a new instance of CardEntity
+     *
+     * @param m_keyword The Heisig keyword to lookup by.
+     * @param m_editionNumber The edition number associated with the Heisig index (5 or 6);
+     */
+    public CardEntity(String m_keyword, int m_editionNumber)
+    {
+
     }
 
     /**

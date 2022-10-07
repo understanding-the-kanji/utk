@@ -80,9 +80,8 @@ public class AppState {
      * Retrieves the singleton instance of Configuration.
      *
      * @return The singleton instance of Configuration.
-     * @throws IOException Thrown if the singleton instance failed to initialize.
      */
-    public static AppState GetInstance() throws IOException {
+    public static AppState GetInstance() {
         if (AppState.instance == null) AppState.instance = new AppState();
 
         return AppState.instance;
