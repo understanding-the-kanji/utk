@@ -83,7 +83,7 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardByKanji(String m_kanji) throws SQLException {
-        this.newQuery("SELECT CARD_ID, CARD_KANJI, HEISIG_INDEX_5_EDITION, HEISIG_INDEX_6_EDITION, KEYWORD_5_EDITION, KEYWORD_6_EDITION, ON_READING, KUN_READING, NOTE FROM CARD WHERE CARD.CARD_KANJI = '" + m_kanji + "';");
+        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.CARD_KANJI = '" + m_kanji + "';");
     }
 
     /**
@@ -93,7 +93,7 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy5thEditionIndex(int m_heisigIndex) throws SQLException {
-        this.newQuery("SELECT CARD_ID, CARD_KANJI, HEISIG_INDEX_5_EDITION, HEISIG_INDEX_6_EDITION, KEYWORD_5_EDITION, KEYWORD_6_EDITION, ON_READING, KUN_READING, NOTE FROM CARD WHERE CARD.HEISIG_INDEX_5_EDITION = '" + m_heisigIndex + "';");
+        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_5_EDITION = '" + m_heisigIndex + "';");
     }
 
     /**
@@ -103,7 +103,7 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy6thEditionIndex(int m_heisigIndex) throws SQLException {
-        this.newQuery("SELECT CARD_ID, CARD_KANJI, HEISIG_INDEX_5_EDITION, HEISIG_INDEX_6_EDITION, KEYWORD_5_EDITION, KEYWORD_6_EDITION, ON_READING, KUN_READING, NOTE FROM CARD WHERE CARD.HEISIG_INDEX_6_EDITION = '" + m_heisigIndex + "';");
+        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_6_EDITION = '" + m_heisigIndex + "';");
     }
 
     /**
@@ -113,7 +113,7 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy5thEditionKeyword(String m_keyword) throws SQLException {
-        this.newQuery("SELECT CARD_ID, CARD_KANJI, HEISIG_INDEX_5_EDITION, HEISIG_INDEX_6_EDITION, KEYWORD_5_EDITION, KEYWORD_6_EDITION, ON_READING, KUN_READING, NOTE FROM CARD WHERE CARD.KEYWORD_5_EDITION = '" + m_keyword + "';");
+        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_5_EDITION = '" + m_keyword + "';");
     }
 
     /**
@@ -123,6 +123,6 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy6thEditionKeyword(String m_keyword) throws SQLException {
-        this.newQuery("SELECT CARD_ID, CARD_KANJI, HEISIG_INDEX_5_EDITION, HEISIG_INDEX_6_EDITION, KEYWORD_5_EDITION, KEYWORD_6_EDITION, ON_READING, KUN_READING, NOTE FROM CARD WHERE CARD.KEYWORD_6_EDITION = '" + m_keyword + "';");
+        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_6_EDITION = '" + m_keyword + "';");
     }
 }
