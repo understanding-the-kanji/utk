@@ -1,7 +1,12 @@
 package net.samuelcmace.utk;
 
+import net.samuelcmace.utk.logic.AppState;
 import net.samuelcmace.utk.logic.DatabaseConnection;
 import org.junit.jupiter.api.Test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * A class to store database-related tests.
@@ -18,10 +23,24 @@ public class DatabaseConnectionTests {
     @Test
     public void databaseConnectionTest() {
         try {
-            DatabaseConnection databaseConnection = new DatabaseConnection();
+            AppState appState = AppState.GetInstance();
+            DatabaseConnection databaseConnection = new DatabaseConnection(appState.DBConnectionString);
             databaseConnection.getCardByKanji('覚');
             assert true;
         } catch (Exception e) {
+            e.printStackTrace();
+            assert false;
+        }
+    }
+
+    @Test
+    public void anotherDatabaseConnectionTest()
+    {
+        try {
+            AppState appState = AppState.GetInstance();
+            assert true;
+        } catch (Exception e)
+        {
             e.printStackTrace();
             assert false;
         }

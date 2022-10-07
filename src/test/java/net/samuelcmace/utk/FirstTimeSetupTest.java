@@ -2,7 +2,6 @@ package net.samuelcmace.utk;
 
 import net.samuelcmace.utk.logic.AppState;
 import net.samuelcmace.utk.logic.DatabaseConnection;
-import net.samuelcmace.utk.logic.model.CardEntity;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -33,9 +32,23 @@ public class FirstTimeSetupTest {
     @Test
     public void getCardByKanjiTest() {
         try {
-            DatabaseConnection dbConnection = new DatabaseConnection();
-            CardEntity cardEntity = dbConnection.getCardByKanji('覚');
+            AppState appState = AppState.GetInstance();
+            DatabaseConnection dbConnection = new DatabaseConnection(appState.DBConnectionString);
+            dbConnection.getCardByKanji('何');
 
+            while (dbConnection.activeResultSet.next()) {
+                System.out.println(dbConnection.activeResultSet.getInt("CARD_ID"));
+                System.out.println(dbConnection.activeResultSet.getString("CARD_KANJI"));
+                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
+                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
+                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
+                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
+                System.out.println(dbConnection.activeResultSet.getString("ON_READING"));
+                System.out.println(dbConnection.activeResultSet.getString("KUN_READING"));
+                System.out.println(dbConnection.activeResultSet.getString("NOTE"));
+            }
+
+            dbConnection.activeConnection.close();
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -108,7 +108,6 @@ public class CardEntity {
      */
     public CardEntity(char m_cardKanji) throws IOException {
         this.appState = AppState.GetInstance();
-        this.databaseConnection = new DatabaseConnection();
     }
 
     /**

@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.util.HashMap;
 
 /**
@@ -35,20 +38,14 @@ public class AppState {
     public String DBFilePath;
 
     /**
-     * The Database Connection associated with querying new objects.
-     * When it comes to updating existing objects (persistence), the model setters will have their own connections.
+     * The string containing the database file path (usually a 'kanji.db' file located in the application-level storage directory).
+     */
+    public String DBConnectionString;
+
+    /**
+     * The currently active database connection object.
      */
     private DatabaseConnection dbConnection;
-
-    /**
-     * The CardEntities currently displayed on the KanjiBrowserController at any given time.
-     */
-    private HashMap<Integer, CardEntity> kanjiBrowserWorkspace;
-
-    /**
-     * The CardEntity currently being edited by the KanjiEditorController.
-     */
-    private CardEntity editingCharacter;
 
     /**
      * Ensures that the application-level storage directory and database exist.
@@ -68,18 +65,19 @@ public class AppState {
     }
 
     /**
-     * Initializes a new instance of Configuration.
+     * Initializes a new instance of AppState.
      */
     private AppState() {
         this.AppStorageDir = Paths.get(System.getProperty("user.home") + "/.understanding-the-kanji/").toAbsolutePath().toString();
         this.LogFilePath = Paths.get(this.AppStorageDir, "log.txt").toAbsolutePath().toString();
         this.DBFilePath = Paths.get(this.AppStorageDir, "utk.db").toAbsolutePath().toString();
+        this.DBConnectionString = "jdbc:sqlite:" + this.DBFilePath;
     }
 
     /**
-     * Retrieves the singleton instance of Configuration.
+     * Retrieves the singleton instance of AppState.
      *
-     * @return The singleton instance of Configuration.
+     * @return The singleton instance of AppState.
      */
     public static AppState GetInstance() {
         if (AppState.instance == null) AppState.instance = new AppState();

@@ -1,21 +1,12 @@
 package net.samuelcmace.utk.logic;
 
-import net.samuelcmace.utk.logic.model.CardEntity;
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
- * Defines a direct connection to the SQLite project database.
+ * Defines an object wrapper for a SQLite database connection.
  */
 public class DatabaseConnection {
-
-    /**
-     * Configuration object for the DatabaseConnection class.
-     */
-    private AppState appState;
 
     /**
      * Logger object for the DatabaseConnection class.
@@ -28,77 +19,98 @@ public class DatabaseConnection {
     private String dbConnectionString;
 
     /**
+     * The connection object associated with the instance of DatabaseConnection.
+     */
+    public Connection activeConnection;
+
+    /**
+     * The statement associated with the instance of DatabaseConnection.
+     */
+    public Statement activeStatement;
+
+    /**
+     * The active result set containing the query results.
+     */
+    public ResultSet activeResultSet;
+
+    /**
      * Initializes a new instance of DatabaseConnection.
      *
      * @throws IOException  Thrown if either the Configuration or Logger singleton instances failed to instantiate.
      * @throws SQLException Thrown if the database connection failed.
      */
-    public DatabaseConnection() throws IOException {
-        this.appState = AppState.GetInstance();
-        this.dbConnectionString = "jdbc:sqlite:" + this.appState.DBFilePath;
+    public DatabaseConnection(String m_dbConnectionString) throws IOException {
 
-        this.logger.ConsoleInformation("Database Connection Succeeded");
-        this.logger.ConsoleInformation("Database Connection String: " + this.dbConnectionString);
-    }
-
-    /**
-     * Fetch a card object from the database by Kanji character.
-     *
-     * @param m_kanji The Kanji character in question.
-     * @return The card entity.
-     */
-    public CardEntity getCardByKanji(char m_kanji) throws SQLException {
-        CardEntity cardEntity = null;
-        Connection connection;
+        this.dbConnectionString = m_dbConnectionString;
 
         try {
-            connection = DriverManager.getConnection(this.dbConnectionString);
-            connection.close();
+            this.activeConnection = DriverManager.getConnection(this.dbConnectionString);
         } catch (SQLException e) {
-            e.printStackTrace();
-            this.logger.ConsoleInformation("The connection to the database failed. This is possibly due to an invalid file path.");
+            Logger.ConsoleError("There was an error in connecting to the database " + e.getLocalizedMessage());
         }
 
-        return cardEntity;
+        this.logger.ConsoleInformation("Database Connection String Set: " + this.dbConnectionString);
+    }
+
+//    protected void finalize() {
+//        try {
+//            this.activeConnection.close();
+//        } catch (SQLException e) {
+//            Logger.ConsoleError("There was an error in closing the database connection in the object destructor: " + e.getLocalizedMessage());
+//        }
+//    }
+
+    /**
+     * Fetch a card object from the database by Kanji character and store it in a ResultSet.
+     *
+     * @param m_kanji The Kanji character in question.
+     */
+    public void getCardByKanji(char m_kanji) throws SQLException {
+        try {
+            this.activeStatement = this.activeConnection.createStatement();
+
+            this.activeResultSet = this.activeStatement.executeQuery("SELECT CARD_ID, CARD_KANJI, HEISIG_INDEX_5_EDITION, HEISIG_INDEX_6_EDITION, KEYWORD_5_EDITION, KEYWORD_6_EDITION, ON_READING, KUN_READING, NOTE FROM CARD WHERE CARD.CARD_KANJI = '" + m_kanji + "';");
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+            this.logger.ConsoleInformation("The connection to the database failed. This is likely due to an invalid file path.");
+
+        }
     }
 
     /**
      * Fetch a card object from the database by the 5th Edition Heisig Index.
+     *
      * @param m_heisigIndex The Kanji character in question.
-     * @return The card entity.
      */
-    public CardEntity getCardBy5thEditionIndex(int m_heisigIndex)
-    {
+    public void getCardBy5thEditionIndex(int m_heisigIndex) {
         throw new IllegalCallerException();
     }
 
     /**
      * Fetch a card object from the database by the 6th Edition Heisig Index.
+     *
      * @param m_heisigIndex The Kanji character in question.
-     * @return The card entity.
      */
-    public CardEntity getCardBy6thEditionIndex(int m_heisigIndex)
-    {
+    public void getCardBy6thEditionIndex(int m_heisigIndex) {
         throw new IllegalCallerException();
     }
 
     /**
      * Fetch a card object from the database by the 6th Edition Heisig Keyword.
+     *
      * @param m_heisigIndex The Kanji character in question.
-     * @return The card entity.
      */
-    public CardEntity getCardBy5thEditionKeyword(int m_heisigIndex)
-    {
+    public void getCardBy5thEditionKeyword(int m_heisigIndex) {
         throw new IllegalCallerException();
     }
 
     /**
      * Fetch a card object from the database by the 6th Edition Heisig Keyword.
+     *
      * @param m_heisigIndex The Kanji character in question.
-     * @return The card entity.
      */
-    public CardEntity getCardBy6thEditionKeyword(int m_heisigIndex)
-    {
+    public void getCardBy6thEditionKeyword(int m_heisigIndex) {
         throw new IllegalCallerException();
     }
 }
