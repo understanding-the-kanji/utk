@@ -11,7 +11,7 @@ import java.sql.SQLException;
 /**
  * The controller that corresponds to the KanjiBrowser view.
  */
-public class KanjiBrowserController {
+public class KanjiViewController {
 
     /**
      * The DBConnectionPool singleton instance associated with KanjiBrowserController.
@@ -21,7 +21,7 @@ public class KanjiBrowserController {
     /**
      * Initializes a new instance of KanjiBrowserController.
      */
-    public KanjiBrowserController()
+    public KanjiViewController()
     {
         try {
             this.dbConnectionPool = DBConnectionPool.GetInstance();
@@ -36,7 +36,7 @@ public class KanjiBrowserController {
      * @param actionEvent The default arguments passed to the event.
      */
     public void onClick_returnButton(ActionEvent actionEvent) {
-        ControllerManager.SwitchScene(Controllers.KANJI_SEARCH);
+        ControllerManager.SwitchScene(Controllers.KANJI_BROWSER);
     }
 
 }

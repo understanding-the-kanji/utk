@@ -8,7 +8,6 @@ import net.samuelcmace.utk.gui.ControllerManager;
 import net.samuelcmace.utk.gui.Controllers;
 import net.samuelcmace.utk.gui.MessageBox;
 import net.samuelcmace.utk.logic.AppStoragePaths;
-import net.samuelcmace.utk.logic.DBConnectionPool;
 import net.samuelcmace.utk.logic.Logger;
 
 import java.io.File;

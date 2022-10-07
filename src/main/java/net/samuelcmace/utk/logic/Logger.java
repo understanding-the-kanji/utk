@@ -4,7 +4,6 @@ import net.samuelcmace.utk.gui.MessageBox;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.nio.file.Paths;
 
 /**
  * Abstract (static) class to log messages both to the program and to the console.
@@ -43,16 +42,6 @@ public abstract class Logger {
     }
 
     /**
-     * Logs an informative message to the disk, as well as the console.
-     *
-     * @param m_message The message to be logged.
-     */
-    public static void ConsoleInformation(String m_message) {
-        System.out.println("Information: " + m_message);
-        Logger.logMessage("Information: " + m_message);
-    }
-
-    /**
      * Logs an informative message to the disk, as well as the console and GUI.
      *
      * @param m_message The message to be logged.
@@ -60,6 +49,16 @@ public abstract class Logger {
     public static void Information(String m_message) {
         System.out.println("Information: " + m_message);
         MessageBox.ShowInfoDialog(m_message);
+        Logger.logMessage("Information: " + m_message);
+    }
+
+    /**
+     * Logs an informative message to the disk, as well as the console.
+     *
+     * @param m_message The message to be logged.
+     */
+    public static void ConsoleInformation(String m_message) {
+        System.out.println("Information: " + m_message);
         Logger.logMessage("Information: " + m_message);
     }
 

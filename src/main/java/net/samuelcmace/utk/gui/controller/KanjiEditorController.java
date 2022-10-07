@@ -15,6 +15,6 @@ public class KanjiEditorController {
      * @param actionEvent The default arguments passed to the event.
      */
     public void onClick_returnButton(ActionEvent actionEvent) {
-        ControllerManager.SwitchScene(Controllers.LOAD);
+        ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
     }
 }

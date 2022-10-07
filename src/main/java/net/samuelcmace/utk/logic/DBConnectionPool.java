@@ -1,33 +1,35 @@
 package net.samuelcmace.utk.logic;
 
+import java.sql.SQLException;
+
 /**
- * Manages project-level configuration and first-time file structure setup.
+ * Singleton to manage program-wide database connections.
  */
 public class DBConnectionPool {
 
     /**
-     * The singleton instance of Configuration.
+     * The singleton instance of DBConnectionPool.
      */
     private static DBConnectionPool instance = null;
 
     /**
-     * The currently active database connection object.
+     * The DatabaseConnection object associated with the DBConnectionPool.
      */
-    private DatabaseConnection dbConnection;
+    public DatabaseConnection dbConnection;
 
     /**
-     * Initializes a new instance of AppState.
+     * Initializes a new instance of DBConnectionPool.
      */
-    private DBConnectionPool() {
+    private DBConnectionPool() throws SQLException {
         this.dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
     }
 
     /**
-     * Retrieves the singleton instance of AppState.
+     * Retrieves the singleton instance of DBConnectionPool.
      *
-     * @return The singleton instance of AppState.
+     * @return The singleton instance of DBConnectionPool.
      */
-    public static DBConnectionPool GetInstance() {
+    public static DBConnectionPool GetInstance() throws SQLException {
         if (DBConnectionPool.instance == null) DBConnectionPool.instance = new DBConnectionPool();
 
         return DBConnectionPool.instance;

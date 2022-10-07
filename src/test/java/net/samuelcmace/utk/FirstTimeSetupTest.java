@@ -1,15 +1,12 @@
 package net.samuelcmace.utk;
 
 import net.samuelcmace.utk.logic.AppStoragePaths;
-import net.samuelcmace.utk.logic.DBConnectionPool;
-import net.samuelcmace.utk.logic.DatabaseConnection;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.SQLException;
 
 /**
  * Test to see if the first-time setup procedure
