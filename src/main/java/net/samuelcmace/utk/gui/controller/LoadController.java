@@ -10,15 +10,6 @@ import net.samuelcmace.utk.gui.Controllers;
 public class LoadController {
 
     /**
-     * Called when the quiz button is pressed.
-     *
-     * @param actionEvent The default arguments passed to the event.
-     */
-    public void onClick_quizButton(ActionEvent actionEvent) {
-        ControllerManager.SwitchScene(Controllers.QUIZ);
-    }
-
-    /**
      * Called when the kanji browser button is pressed.
      *
      * @param actionEvent The default arguments passed to the event.

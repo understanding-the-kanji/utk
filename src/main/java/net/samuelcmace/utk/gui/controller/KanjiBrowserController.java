@@ -25,6 +25,18 @@ public class KanjiBrowserController {
     {
         try {
             this.dbConnectionPool = DBConnectionPool.GetInstance();
+
+            while (this.dbConnectionPool.dbConnection.activeResultSet.next()) {
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getInt("CARD_ID"));
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("CARD_KANJI"));
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("ON_READING"));
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("KUN_READING"));
+                System.out.println(this.dbConnectionPool.dbConnection.activeResultSet.getString("NOTE"));
+            }
         } catch (SQLException e) {
             Logger.Error("There was an error in connecting to the database: " + e.getLocalizedMessage());
         }
