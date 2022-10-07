@@ -35,12 +35,8 @@ public class DatabaseConnection {
 
     /**
      * Initializes a new instance of DatabaseConnection.
-     *
-     * @throws IOException  Thrown if either the Configuration or Logger singleton instances failed to instantiate.
-     * @throws SQLException Thrown if the database connection failed.
      */
-    public DatabaseConnection(String m_dbConnectionString) throws IOException {
-
+    public DatabaseConnection(String m_dbConnectionString) {
         this.dbConnectionString = m_dbConnectionString;
 
         try {
@@ -52,13 +48,13 @@ public class DatabaseConnection {
         this.logger.ConsoleInformation("Database Connection String Set: " + this.dbConnectionString);
     }
 
-//    protected void finalize() {
-//        try {
-//            this.activeConnection.close();
-//        } catch (SQLException e) {
-//            Logger.ConsoleError("There was an error in closing the database connection in the object destructor: " + e.getLocalizedMessage());
-//        }
-//    }
+    protected void finalize() {
+        try {
+            this.activeConnection.close();
+        } catch (SQLException e) {
+            Logger.ConsoleError("There was an error in closing the database connection in the object destructor: " + e.getLocalizedMessage());
+        }
+    }
 
     /**
      * Fetch a card object from the database by Kanji character and store it in a ResultSet.

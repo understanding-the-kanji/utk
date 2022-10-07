@@ -1,10 +1,14 @@
 package net.samuelcmace.utk;
 
-import net.samuelcmace.utk.logic.AppState;
+import net.samuelcmace.utk.logic.AppStoragePaths;
+import net.samuelcmace.utk.logic.DBConnectionPool;
 import net.samuelcmace.utk.logic.DatabaseConnection;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 
 /**
@@ -20,41 +24,17 @@ public class FirstTimeSetupTest {
     @Test
     public void firstTimeSetupTest() {
         try {
-            AppState appState = AppState.GetInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     *
-     */
-    @Test
-    public void getCardByKanjiTest() {
-        try {
-            AppState appState = AppState.GetInstance();
-            DatabaseConnection dbConnection = new DatabaseConnection(appState.DBConnectionString);
-            dbConnection.getCardByKanji('何');
-
-            while (dbConnection.activeResultSet.next()) {
-                System.out.println(dbConnection.activeResultSet.getInt("CARD_ID"));
-                System.out.println(dbConnection.activeResultSet.getString("CARD_KANJI"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getInt("HEISIG_INDEX_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_5_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("KEYWORD_6_EDITION"));
-                System.out.println(dbConnection.activeResultSet.getString("ON_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("KUN_READING"));
-                System.out.println(dbConnection.activeResultSet.getString("NOTE"));
+            File appStorageDirectory = new File(AppStoragePaths.GetAppStorageDir());
+            if (!appStorageDirectory.exists()) {
+                appStorageDirectory.mkdir();
             }
 
-            dbConnection.activeConnection.close();
-
+            File databaseFile = new File(AppStoragePaths.GetDBFilePath());
+            if (!databaseFile.exists()) {
+                Files.copy(Main.class.getResourceAsStream("kanji/default.db"), Paths.get(AppStoragePaths.GetDBFilePath()));
+            }
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }

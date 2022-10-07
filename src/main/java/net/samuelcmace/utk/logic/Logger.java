@@ -2,7 +2,9 @@ package net.samuelcmace.utk.logic;
 
 import net.samuelcmace.utk.gui.MessageBox;
 
+import java.io.File;
 import java.io.FileWriter;
+import java.nio.file.Paths;
 
 /**
  * Abstract (static) class to log messages both to the program and to the console.
@@ -25,8 +27,13 @@ public abstract class Logger {
      */
     private static void logMessage(String message) {
         try {
+            File appStorageDirectory = new File(AppStoragePaths.GetAppStorageDir());
+            if (!appStorageDirectory.exists()) {
+                appStorageDirectory.mkdir();
+            }
+
             FileWriter fileWriter;
-            fileWriter = new FileWriter(AppState.GetInstance().LogFilePath, true);
+            fileWriter = new FileWriter(AppStoragePaths.GetLogFilePath(), true);
             fileWriter.write("[" + Logger.getLocalTime() + "] " + message + "\n");
             fileWriter.close();
         } catch (Exception ex) {

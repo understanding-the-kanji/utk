@@ -24,7 +24,7 @@ public class LoadController {
      * @param actionEvent The default arguments passed to the event.
      */
     public void onClick_browserButton(ActionEvent actionEvent) {
-        ControllerManager.SwitchScene(Controllers.KANJI_BROWSER);
+        ControllerManager.SwitchScene(Controllers.KANJI_SEARCH);
     }
 
     /**

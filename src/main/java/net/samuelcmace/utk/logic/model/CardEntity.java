@@ -1,11 +1,10 @@
 package net.samuelcmace.utk.logic.model;
 
-import net.samuelcmace.utk.logic.AppState;
+import net.samuelcmace.utk.logic.DBConnectionPool;
 import net.samuelcmace.utk.logic.DatabaseConnection;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.HashMap;
 
 /**
@@ -81,7 +80,7 @@ public class CardEntity {
      * The application state associated with the CardEntity object.
      * This ensures that if the setters are called, the corresponding data in the database can be updated.
      */
-    private AppState appState;
+    private DBConnectionPool DBConnectionPool;
 
     /**
      * The database connection object associated with the entity (to allow for persistence).
@@ -107,7 +106,7 @@ public class CardEntity {
      * @param m_cardKanji             The kanji character for the card.
      */
     public CardEntity(char m_cardKanji) throws IOException {
-        this.appState = AppState.GetInstance();
+        this.DBConnectionPool = DBConnectionPool.GetInstance();
     }
 
     /**
