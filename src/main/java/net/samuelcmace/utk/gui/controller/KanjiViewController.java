@@ -86,18 +86,18 @@ public class KanjiViewController {
     public void initialize() {
         try {
             this.dbConnectionPool = DBConnectionPool.GetInstance();
-            this.dbConnectionPool.kanjiSearchConnection.RunActiveQuery();
-            while (this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.next()) {
-                this.dbConnectionPool.ActivePrimaryKey = Integer.parseInt(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("CARD_ID"));
+            this.dbConnectionPool.KanjiSearchConnection.RunActiveQuery();
+            while (this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.next()) {
+                this.dbConnectionPool.ActivePrimaryKey = Integer.parseInt(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_ID"));
                 this.cardIDContents.setText(String.valueOf(this.dbConnectionPool.ActivePrimaryKey));
-                this.cardKanjiContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("CARD_KANJI"));
-                this.cardHeisigIndex5thEditionContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_5_EDITION"));
-                this.cardHeisigIndex6thEditionContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_6_EDITION"));
-                this.cardHeisigKeyword5thEditionContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
-                this.cardHeisigKeyword6thEditionContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
-                this.cardOnReadingContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("ON_READING"));
-                this.cardKunReadingContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("KUN_READING"));
-                this.cardNoteContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("NOTE"));
+                this.cardKanjiContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_KANJI"));
+                this.cardHeisigIndex5thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_5_EDITION"));
+                this.cardHeisigIndex6thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_6_EDITION"));
+                this.cardHeisigKeyword5thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
+                this.cardHeisigKeyword6thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
+                this.cardOnReadingContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("ON_READING"));
+                this.cardKunReadingContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KUN_READING"));
+                this.cardNoteContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("NOTE"));
             }
         } catch (SQLException e) {
             Logger.Error("There was an error in connecting to the database: " + e.getLocalizedMessage());

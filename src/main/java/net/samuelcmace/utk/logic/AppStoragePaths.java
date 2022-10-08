@@ -12,7 +12,7 @@ import java.nio.file.Paths;
  */
 public abstract class AppStoragePaths {
     /**
-     * Utility function to fetch the app storage directory
+     * Utility function to fetch the app storage directory.
      *
      * @return The application storage directory.
      */
@@ -21,7 +21,7 @@ public abstract class AppStoragePaths {
     }
 
     /**
-     * Ensures that the application-level storage directory and database exist.
+     * Utility function to set up the initial file structure for the program if it doesn't already exist.
      *
      * @throws IOException Thrown if either the default directory failed to create or the template database file failed to copy.
      */

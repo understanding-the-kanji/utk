@@ -45,7 +45,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
     }
 
     /**
-     * Runs the currently-stored query.
+     * Runs the currently-stored query which was set using the getCardBy* methods.
      *
      * @throws SQLException Thrown if there was a database query-related error.
      */
@@ -56,50 +56,50 @@ public class DatabaseReadConnection extends DatabaseConnection {
     }
 
     /**
-     * Fetch a card object from the database by Kanji character and store it in a ResultSet.
+     * Sets the currently active query string based on the passed-in parameters.
+     * The query still needs to be executed by calling the RunActiveQuery() method.
      *
      * @param m_kanji The Kanji character in question.
-     * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardByKanji(String m_kanji) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.CARD_KANJI = '" + m_kanji + "';";
     }
 
     /**
-     * Fetch a card object from the database by the 5th Edition Heisig Index.
+     * Sets the currently active query string based on the passed-in parameters.
+     * The query still needs to be executed by calling the RunActiveQuery() method.
      *
      * @param m_heisigIndex The Heisig Index that corresponds to the Kanji character in question.
-     * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy5thEditionIndex(int m_heisigIndex) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_5_EDITION = '" + m_heisigIndex + "';";
     }
 
     /**
-     * Fetch a card object from the database by the 6th Edition Heisig Index.
+     * Sets the currently active query string based on the passed-in parameters.
+     * The query still needs to be executed by calling the RunActiveQuery() method.
      *
      * @param m_heisigIndex The Heisig Index that corresponds to the Kanji character in question.
-     * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy6thEditionIndex(int m_heisigIndex) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_6_EDITION = '" + m_heisigIndex + "';";
     }
 
     /**
-     * Fetch a card object from the database by the 6th Edition Heisig Keyword.
+     * Sets the currently active query string based on the passed-in parameters.
+     * The query still needs to be executed by calling the RunActiveQuery() method.
      *
      * @param m_keyword The keyword that corresponds to the Kanji character in question.
-     * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy5thEditionKeyword(String m_keyword) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_5_EDITION = '" + m_keyword + "';";
     }
 
     /**
-     * Fetch a card object from the database by the 6th Edition Heisig Keyword.
+     * Sets the currently active query string based on the passed-in parameters.
+     * The query still needs to be executed by calling the RunActiveQuery() method.
      *
      * @param m_keyword The keyword that corresponds to the Kanji character in question.
-     * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy6thEditionKeyword(String m_keyword) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_6_EDITION = '" + m_keyword + "';";

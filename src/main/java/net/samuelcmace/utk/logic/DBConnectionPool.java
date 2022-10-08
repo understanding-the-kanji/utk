@@ -1,7 +1,5 @@
 package net.samuelcmace.utk.logic;
 
-import java.sql.SQLException;
-
 /**
  * Singleton to manage program-wide database connections.
  */
@@ -20,19 +18,19 @@ public class DBConnectionPool {
     /**
      * The DatabaseConnection object that deals with reading data from the database.
      */
-    public DatabaseReadConnection kanjiSearchConnection;
+    public DatabaseReadConnection KanjiSearchConnection;
 
     /**
      * The DatabaseConnection object that deals with writing data to the database.
      */
-    public DatabaseWriteConnection kanjiEditorConnection;
+    public DatabaseWriteConnection KanjiEditorConnection;
 
     /**
      * Initializes a new instance of DBConnectionPool.
      */
     private DBConnectionPool() {
-        this.kanjiSearchConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
-        this.kanjiEditorConnection = new DatabaseWriteConnection(AppStoragePaths.GetDBConnectionString());
+        this.KanjiSearchConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
+        this.KanjiEditorConnection = new DatabaseWriteConnection(AppStoragePaths.GetDBConnectionString());
     }
 
     /**

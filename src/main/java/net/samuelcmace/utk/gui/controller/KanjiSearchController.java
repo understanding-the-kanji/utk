@@ -69,7 +69,7 @@ public class KanjiSearchController {
      * @param actionEvent The action that called the event.
      */
     public void searchByCharacterButton_onClick(ActionEvent actionEvent) {
-        this.dbConnectionPool.kanjiSearchConnection.getCardByKanji(this.searchByCharacterTextField.getText());
+        this.dbConnectionPool.KanjiSearchConnection.getCardByKanji(this.searchByCharacterTextField.getText());
         ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
     }
 
@@ -79,7 +79,7 @@ public class KanjiSearchController {
      */
     public void searchBy5thEditionHeisigIndexButton_onClick(ActionEvent actionEvent) {
         try {
-            this.dbConnectionPool.kanjiSearchConnection.getCardBy5thEditionIndex(Integer.valueOf(this.searchBy5thEditionHeisigIndexTextField.getText()));
+            this.dbConnectionPool.KanjiSearchConnection.getCardBy5thEditionIndex(Integer.valueOf(this.searchBy5thEditionHeisigIndexTextField.getText()));
             ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
         } catch (NumberFormatException e) {
             Logger.Error("Your Inputted Heisig Index Was Not Formatted Properly: " + e.getLocalizedMessage());
@@ -92,7 +92,7 @@ public class KanjiSearchController {
      */
     public void searchBy6thEditionHeisigIndexButton_onClick(ActionEvent actionEvent) {
         try {
-            this.dbConnectionPool.kanjiSearchConnection.getCardBy6thEditionIndex(Integer.valueOf(this.searchBy6thEditionHeisigIndexTextField.getText()));
+            this.dbConnectionPool.KanjiSearchConnection.getCardBy6thEditionIndex(Integer.valueOf(this.searchBy6thEditionHeisigIndexTextField.getText()));
             ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
         } catch (NumberFormatException e) {
             Logger.Error("Your Inputted Heisig Index Was Not Formatted Properly: " + e.getLocalizedMessage());
@@ -104,7 +104,7 @@ public class KanjiSearchController {
      * @param actionEvent The action that called the event.
      */
     public void searchBy5thEditionHeisigKeywordButton_onClick(ActionEvent actionEvent) {
-        this.dbConnectionPool.kanjiSearchConnection.getCardBy5thEditionKeyword(this.searchBy5thEditionHeisigKeywordTextField.getText());
+        this.dbConnectionPool.KanjiSearchConnection.getCardBy5thEditionKeyword(this.searchBy5thEditionHeisigKeywordTextField.getText());
         ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
     }
 
@@ -113,7 +113,7 @@ public class KanjiSearchController {
      * @param actionEvent The action that called the event.
      */
     public void searchBy6thEditionHeisigKeywordButton_onClick(ActionEvent actionEvent) {
-        this.dbConnectionPool.kanjiSearchConnection.getCardBy6thEditionKeyword(this.searchBy6thEditionHeisigKeywordTextField.getText());
+        this.dbConnectionPool.KanjiSearchConnection.getCardBy6thEditionKeyword(this.searchBy6thEditionHeisigKeywordTextField.getText());
         ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
     }
 }

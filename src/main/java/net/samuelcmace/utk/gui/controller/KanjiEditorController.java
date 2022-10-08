@@ -31,7 +31,7 @@ public class KanjiEditorController {
      */
     public KanjiEditorController()
     {
-
+        this.dbConnectionPool = DBConnectionPool.GetInstance();
     }
 
     /**
@@ -46,7 +46,6 @@ public class KanjiEditorController {
     public void initialize()
     {
         try {
-            this.dbConnectionPool = DBConnectionPool.GetInstance();
             this.loadContentsFromDisk();
         } catch (SQLException e) {
             Logger.Error("There was an error in connecting to the database: " + e.getLocalizedMessage());
@@ -54,23 +53,23 @@ public class KanjiEditorController {
     }
 
     /**
-     * Internal method to write contents to the hard disk.
+     * Internal method to write contents to the hard disk database.
      */
     private void writeContentsToDisk() throws SQLException {
         // Use the custom query method to set the currently active card (from the KanjiViewController) to the modified note contents.
-        this.dbConnectionPool.kanjiEditorConnection.setNote(this.dbConnectionPool.ActivePrimaryKey, this.noteEditor.getText());
+        this.dbConnectionPool.KanjiEditorConnection.setNote(this.dbConnectionPool.ActivePrimaryKey, this.noteEditor.getText());
 
         // Re-set the original note contents to what was modified (to see if it was modified in other areas of the class).
         this.originalNoteContents = this.noteEditor.getText();
     }
 
     /**
-     * Internal method to write contents to the hard disk.
+     * Internal method to read contents from the hard disk database.
      */
     private void loadContentsFromDisk() throws SQLException {
-        this.dbConnectionPool.kanjiSearchConnection.RunActiveQuery();
-        while (this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.next()) {
-            this.originalNoteContents = this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("NOTE");
+        this.dbConnectionPool.KanjiSearchConnection.RunActiveQuery();
+        while (this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.next()) {
+            this.originalNoteContents = this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("NOTE");
             this.noteEditor.setText(this.originalNoteContents);
         }
     }

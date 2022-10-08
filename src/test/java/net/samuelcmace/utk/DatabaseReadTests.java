@@ -2,7 +2,6 @@ package net.samuelcmace.utk;
 
 import net.samuelcmace.utk.logic.AppStoragePaths;
 import net.samuelcmace.utk.logic.DBConnectionPool;
-import net.samuelcmace.utk.logic.DatabaseConnection;
 import net.samuelcmace.utk.logic.DatabaseReadConnection;
 import org.junit.jupiter.api.Test;
 

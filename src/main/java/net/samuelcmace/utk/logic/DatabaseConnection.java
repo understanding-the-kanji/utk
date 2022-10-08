@@ -14,14 +14,14 @@ public abstract class DatabaseConnection {
     protected String dbConnectionString;
 
     /**
-     * The connection object associated with the instance of DatabaseConnection.
-     */
-    public Connection ActiveConnection;
-
-    /**
      * The currently active query string used to generate the ActiveResultSet.
      */
     protected String activeQuery;
+
+    /**
+     * The connection object associated with the instance of DatabaseConnection.
+     */
+    public Connection ActiveConnection;
 
     /**
      * Initializes a new instance of DatabaseConnection.
