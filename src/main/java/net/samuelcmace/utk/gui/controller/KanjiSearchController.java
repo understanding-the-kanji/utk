@@ -8,8 +8,6 @@ import net.samuelcmace.utk.gui.Controllers;
 import net.samuelcmace.utk.logic.DBConnectionPool;
 import net.samuelcmace.utk.logic.Logger;
 
-import java.sql.SQLException;
-
 /**
  * The controller that corresponds to the Quiz view.
  */
@@ -54,11 +52,7 @@ public class KanjiSearchController {
      * Initializes a new instance of KanjiSearchController.
      */
     public KanjiSearchController() {
-        try {
-            this.dbConnectionPool = DBConnectionPool.GetInstance();
-        } catch (SQLException e) {
-            Logger.Error("There was an error in connecting to the database: " + e.getLocalizedMessage());
-        }
+        this.dbConnectionPool = DBConnectionPool.GetInstance();
     }
 
     /**
@@ -75,12 +69,8 @@ public class KanjiSearchController {
      * @param actionEvent The action that called the event.
      */
     public void searchByCharacterButton_onClick(ActionEvent actionEvent) {
-        try {
-            this.dbConnectionPool.kanjiSearchConnection.getCardByKanji(this.searchByCharacterTextField.getText());
-            ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
-        } catch (SQLException e) {
-            Logger.Error("There was an error in querying the database: " + e.getLocalizedMessage());
-        }
+        this.dbConnectionPool.kanjiSearchConnection.getCardByKanji(this.searchByCharacterTextField.getText());
+        ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
     }
 
     /**
@@ -93,8 +83,6 @@ public class KanjiSearchController {
             ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
         } catch (NumberFormatException e) {
             Logger.Error("Your Inputted Heisig Index Was Not Formatted Properly: " + e.getLocalizedMessage());
-        } catch (SQLException e) {
-            Logger.Error("There was an error in querying the database: " + e.getLocalizedMessage());
         }
     }
 
@@ -108,8 +96,6 @@ public class KanjiSearchController {
             ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
         } catch (NumberFormatException e) {
             Logger.Error("Your Inputted Heisig Index Was Not Formatted Properly: " + e.getLocalizedMessage());
-        } catch (SQLException e) {
-            Logger.Error("There was an error in querying the database: " + e.getLocalizedMessage());
         }
     }
 
@@ -118,12 +104,8 @@ public class KanjiSearchController {
      * @param actionEvent The action that called the event.
      */
     public void searchBy5thEditionHeisigKeywordButton_onClick(ActionEvent actionEvent) {
-        try {
-            this.dbConnectionPool.kanjiSearchConnection.getCardBy5thEditionKeyword(this.searchBy5thEditionHeisigKeywordTextField.getText());
-            ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
-        } catch (SQLException e) {
-            Logger.Error("There was an error in querying the database: " + e.getLocalizedMessage());
-        }
+        this.dbConnectionPool.kanjiSearchConnection.getCardBy5thEditionKeyword(this.searchBy5thEditionHeisigKeywordTextField.getText());
+        ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
     }
 
     /**
@@ -131,11 +113,7 @@ public class KanjiSearchController {
      * @param actionEvent The action that called the event.
      */
     public void searchBy6thEditionHeisigKeywordButton_onClick(ActionEvent actionEvent) {
-        try {
-            this.dbConnectionPool.kanjiSearchConnection.getCardBy6thEditionKeyword(this.searchBy6thEditionHeisigKeywordTextField.getText());
-            ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
-        } catch (SQLException e) {
-            Logger.Error("There was an error in querying the database: " + e.getLocalizedMessage());
-        }
+        this.dbConnectionPool.kanjiSearchConnection.getCardBy6thEditionKeyword(this.searchBy6thEditionHeisigKeywordTextField.getText());
+        ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
     }
 }

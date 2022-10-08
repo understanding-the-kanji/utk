@@ -1,9 +1,13 @@
 package net.samuelcmace.utk.logic;
 
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * The DatabaseConnection child class associated with reading data from the database.
+ */
 public class DatabaseReadConnection extends DatabaseConnection {
 
     /**
@@ -11,16 +15,30 @@ public class DatabaseReadConnection extends DatabaseConnection {
      */
     public Statement ActiveStatement;
 
-    public DatabaseReadConnection(String m_dbConnectionString) throws SQLException {
+    /**
+     * The active result set associated with reading data from the database.
+     */
+    public ResultSet ActiveResultSet;
+
+    /**
+     * Initializes a new instance of DatabaseReadConnection.
+     * @param m_dbConnectionString The JDBC connection string.
+     */
+    public DatabaseReadConnection(String m_dbConnectionString) {
         super(m_dbConnectionString);
     }
 
-    public void finalize()
+    /**
+     * Method called by the Java garbage collector before the object is destroyed.
+     * Although this method is not needed in most java programming, it is needed here to ensure that the database
+     * connections are closed before the program exists.
+     */
+    protected void finalize()
     {
+        super.finalize();
         try {
-            this.ActiveResultSet.close();
             this.ActiveStatement.close();
-            this.ActiveConnection.close();
+            this.ActiveResultSet.close();
         } catch (SQLException e) {
             Logger.ConsoleError("The connections failed to close in the DatabaseReadConnection destructor: " + e.getLocalizedMessage());
         }
@@ -43,7 +61,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
      * @param m_kanji The Kanji character in question.
      * @throws SQLException Thrown if there was a database query-related error.
      */
-    public void getCardByKanji(String m_kanji) throws SQLException {
+    public void getCardByKanji(String m_kanji) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.CARD_KANJI = '" + m_kanji + "';";
     }
 
@@ -53,7 +71,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
      * @param m_heisigIndex The Heisig Index that corresponds to the Kanji character in question.
      * @throws SQLException Thrown if there was a database query-related error.
      */
-    public void getCardBy5thEditionIndex(int m_heisigIndex) throws SQLException {
+    public void getCardBy5thEditionIndex(int m_heisigIndex) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_5_EDITION = '" + m_heisigIndex + "';";
     }
 
@@ -63,7 +81,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
      * @param m_heisigIndex The Heisig Index that corresponds to the Kanji character in question.
      * @throws SQLException Thrown if there was a database query-related error.
      */
-    public void getCardBy6thEditionIndex(int m_heisigIndex) throws SQLException {
+    public void getCardBy6thEditionIndex(int m_heisigIndex) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_6_EDITION = '" + m_heisigIndex + "';";
     }
 
@@ -73,7 +91,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
      * @param m_keyword The keyword that corresponds to the Kanji character in question.
      * @throws SQLException Thrown if there was a database query-related error.
      */
-    public void getCardBy5thEditionKeyword(String m_keyword) throws SQLException {
+    public void getCardBy5thEditionKeyword(String m_keyword) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_5_EDITION = '" + m_keyword + "';";
     }
 
@@ -83,7 +101,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
      * @param m_keyword The keyword that corresponds to the Kanji character in question.
      * @throws SQLException Thrown if there was a database query-related error.
      */
-    public void getCardBy6thEditionKeyword(String m_keyword) throws SQLException {
+    public void getCardBy6thEditionKeyword(String m_keyword) {
         this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_6_EDITION = '" + m_keyword + "';";
     }
 }
