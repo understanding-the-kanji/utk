@@ -9,10 +9,9 @@ class gui.controller.LoadSceneController
 class gui.controller.AboutController
 class gui.controller.AboutLicensesController
 class gui.controller.KanjiSearchController
-class gui.controller.KanjiBrowserController
 class gui.controller.KanjiEditorController
 
-class util.AppState <<Singleton>>
+class util.DBConnectionPool <<Singleton>>
 
 abstract util.Logger
 class util.DatabaseConnection
@@ -21,13 +20,12 @@ gui.ControllerManager ..> gui.controller.LoadSceneController
 gui.ControllerManager ..> gui.controller.AboutController
 gui.ControllerManager ..> gui.controller.AboutLicensesController
 gui.ControllerManager ..> gui.controller.KanjiSearchController
-gui.ControllerManager ..> gui.controller.KanjiBrowserController
 gui.ControllerManager ..> gui.controller.KanjiEditorController
 
-util.AppState --> util.DatabaseConnection
+util.DBConnectionPool --> util.DatabaseConnection
 
-gui.controller.KanjiSearchController --> util.AppState
-gui.controller.KanjiBrowserController --> util.AppState
-gui.controller.KanjiEditorController --> util.AppState
+gui.controller.KanjiSearchController --> util.DBConnectionPool
+gui.controller.KanjiBrowserController --> util.DBConnectionPool
+gui.controller.KanjiEditorController --> util.DBConnectionPool
 
 @enduml

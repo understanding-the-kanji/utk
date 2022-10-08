@@ -1,6 +1,14 @@
 # Project Overview
 
-## Copyright Disclaimer
+This tool is meant to aid the learner of the Japanese language in understanding the meaning behind the Kanji characters.
+Many students of Japanese feel as there are too many Kanji characters to remember. However, it turns out that the Kanji
+characters (based on the Chinese writing system), can be broken down into smaller, more-memorable "radicals" (as they
+are called). By piecing these radicals together and coming up with stories to go along with these radicals, one can
+drastically reduce the time and effort required to master the Kanji.
+
+## Licensing
+
+### Copyright Disclaimer
 
 This application is based on the curriculum taught in
 [James W Heisig's "Remembering the Kanji"](https://www.amazon.com/Remembering-Kanji-Complete-Japanese-Characters/dp/0824835921)
@@ -10,12 +18,24 @@ stories and plots not included in this program. Additionally, he teaches you how
 this program will not address. This program also does not provide an explanation into how or why his method is so
 effective. For all of that (and more), you will need to purchase his book (provided in the link above).
 
-## Goals of the Project
+### Other Licensing Information
 
-The Understanding the Kanji education tool will have two main purposes.
+All the source code for this project is licensed under the MIT license. All external assets should contain a LICENSE
+file in the directory in which they are stored. Although the schema for the database is licensed under the same license
+as the project source code (the MIT license), the content stored in that database is licensed under the CC0 1.0
+Universal license.
 
-1. Provide a lookup tool for Kanji characters based on specific search criteria.
-2. Provide a spaced-repetition-based flashcard system to facilitate easy learning of the Kanji.
+## How to Use This Program
+
+This program is not meant to a complete source for Japanese language learning. Many good learning sources already
+exist (such as grammar textbooks, lecture videos, etc.) and this program is not meant to entirely replace those tools.
+However, this tool is meant to _aid_ the learner in Japanese (specifically in remembering the Kanji characters).
+
+## How This Program Works
+
+The main purpose of this program is to provide an easy way to look up the characters and meanings of the Kanji
+characters provided in Heisig's works. It serves as a dictionary-tool (of sorts) by which the user can query for Kanji
+characters.
 
 ### Kanji Lookup Tool
 
@@ -25,54 +45,6 @@ Kanji characters will be available for lookup by three optional search criteria:
 2. Kanji Character Unicode
 3. RTK (Heisig) Keyword
 
-The Kanji lookup page will consist of the three fields, with a "Submit" button below to submit choices. There will also
-be a "Back" button to return to the main screen.
-
-The results page will consist of query results, and the user will be given the option to select one of them.
-
-When one of the results is selected, a new window containing information about the Kanji will be displayed.
-
-### Spaced Repetition Flashcard System (like Anki)
-
-Although the following explanation tries to be as concise and clear as possible, these notes are provided after
-watching [Matt vs Japan's YouTube Video](https://www.youtube.com/watch?v=lz60qTP2Gx0). He provides an explanation of the
-Anki/Spaced Repetition algorithm in a more easy and broken-down fashion.
-
-Spaced repetition flashcard systems are designed to quiz the end user on certain information in certain intervals that
-will make the information more-memorable. At a base level, each spaced repetition flashcard is in one of three
-categories:
-
-1. New
-2. Learning
-3. Learned
-
-New cards are those that have not yet been shown. Learning cards are those that are in the process of being learned, but
-have not yet been mastered for any given day. Learned cards are those that have been mastered on a given day in the
-past, but need to be reviewed to increase one's retention rate.
-
-#### Settings
-
-- _Steps_ can be used to adjust the learning interval. For example, when a user learns a new card, it goes to 10
-  minutes, then 1 day. These default steps can be changed and new ones can be added as desired.
-
-- The _graduating interval_ controls how quickly cards progress 
-
-_steps_: the learning interval
-_graduating interval_: the learned interval
-_easy interval_: going from learning to instant learned (eg. 4 days, etc.)
-
-#### New Cards
-
-When a card is in the "new" category, it does not have any scheduling information, only the order in which the cards are
-to be introduced.
-
-#### Learning Cards
-
-When a card is in the "learning" category, it can either be a new card that is in the process of being learned or a
-lapse.
-
-If the card is new, it will contain a default
-
-#### Buttons
-
-Once a card is in the learning stage, there are three buttons
+The Kanji lookup page allows the user to search based on one of the aforementioned criteria. Since Heisig keeps his
+keywords unique (only one keyword per kanji character), the keywords are strongly-typed and need to match the material
+taught in Heisig's works.

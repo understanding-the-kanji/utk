@@ -44,8 +44,8 @@ public class DatabaseConnection {
 
     /**
      * Destructor called by the garbage collector to close the database connection on program exit.
-     * Although destructors are no longer needed in most java programming, the necessity for a DB connection to persist
-     * for the entire duration of the program (but also closed upon program exit) makes it a necessity in this context.
+     * Although destructors are no longer needed in most java programming, this context requires that the database
+     * connection will remain open for the entire lifespan of the object, but also closed when the object is destroyed.
      */
     protected void finalize() {
         try {

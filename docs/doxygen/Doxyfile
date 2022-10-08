@@ -866,6 +866,7 @@ WARN_LOGFILE           =
 
 INPUT                  +=   ../project-overview.md
 INPUT                  +=   ../../README.md
+INPUT                  +=   ../future-plans.md
 INPUT                  +=	../../src/main/java/net/samuelcmace/utk
 
 # This tag can be used to specify the character encoding of the source files

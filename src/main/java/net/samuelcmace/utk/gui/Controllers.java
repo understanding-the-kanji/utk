@@ -4,7 +4,7 @@ package net.samuelcmace.utk.gui;
  * Defines the Controllers and their corresponding FXML files.
  */
 public enum Controllers {
-    LOAD, ABOUT, ABOUT_LICENSES, KANJI_SEARCH, KANJI_BROWSER, KANJI_VIEW, KANJI_EDITOR;
+    LOAD, ABOUT, ABOUT_LICENSES, KANJI_SEARCH, KANJI_VIEW, KANJI_EDITOR;
 
     /**
      * Retrieve the file path that corresponds to the corresponding controller.
@@ -27,9 +27,6 @@ public enum Controllers {
                 break;
             case KANJI_SEARCH:
                 filePath = "fxml/KanjiSearch.fxml";
-                break;
-            case KANJI_BROWSER:
-                filePath = "fxml/KanjiBrowser.fxml";
                 break;
             case KANJI_VIEW:
                 filePath = "fxml/KanjiView.fxml";
