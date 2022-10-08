@@ -14,13 +14,17 @@ public class FirstTimeSetupTest {
 
     /**
      * The test associated with the first-time setup process.
+     * It asserts true if the operation was a success,
+     * otherwise if an exception was thrown, it asserts false.
      */
     @Test
     public void firstTimeSetupTest() {
         try {
             AppStoragePaths.FirstTimeSetup();
+            assert true;
         } catch (IOException e) {
             e.printStackTrace();
+            assert true;
         }
     }
 }

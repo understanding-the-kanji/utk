@@ -14,6 +14,8 @@ public class DatabaseWriteTests {
 
     /**
      * Test to see if the note can be set properly.
+     * It asserts true if the operation was a success,
+     * otherwise if an exception was thrown, it asserts false.
      */
     @Test
     public void setNote()
