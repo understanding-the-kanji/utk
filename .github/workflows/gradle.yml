@@ -43,4 +43,4 @@ jobs:
       uses: actions/upload-artifact@v3.1.0
       with:
         name: JAR Output
-        path: build/libs/understanding-the-kanji-1.0-SNAPSHOT.jar
+        path: build/libs/utk-1.0-SNAPSHOT.jar
