@@ -2,6 +2,8 @@ package net.samuelcmace.utk;
 
 import net.samuelcmace.utk.logic.AppStoragePaths;
 import net.samuelcmace.utk.logic.DatabaseConnection;
+import net.samuelcmace.utk.logic.DatabaseReadConnection;
+import net.samuelcmace.utk.logic.DatabaseWriteConnection;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -21,7 +23,7 @@ public class DatabaseWriteTests {
     public void setNote()
     {
         try {
-            DatabaseConnection readConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+            DatabaseReadConnection readConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
 
             Integer sharedPrimaryKey = null;
 
@@ -35,7 +37,7 @@ public class DatabaseWriteTests {
 
             String testNote = "When your younger brother starts throwing spoons at your head, you know it's about that time to give him what he wants.";
 
-            DatabaseConnection writeConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+            DatabaseWriteConnection writeConnection = new DatabaseWriteConnection(AppStoragePaths.GetDBConnectionString());
             writeConnection.setNote(sharedPrimaryKey, testNote);
             assert true;
         } catch (SQLException e) {

@@ -3,6 +3,7 @@ package net.samuelcmace.utk;
 import net.samuelcmace.utk.logic.AppStoragePaths;
 import net.samuelcmace.utk.logic.DBConnectionPool;
 import net.samuelcmace.utk.logic.DatabaseConnection;
+import net.samuelcmace.utk.logic.DatabaseReadConnection;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -38,7 +39,7 @@ public class DatabaseReadTests {
     @Test
     public void getCardByKanjiTest() {
         try {
-            DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+            DatabaseReadConnection dbConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardByKanji("何");
             dbConnection.RunActiveQuery();
 
@@ -70,7 +71,7 @@ public class DatabaseReadTests {
     @Test
     public void getCardBy5thEditionHeisigIndex() {
         try {
-            DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+            DatabaseReadConnection dbConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardBy5thEditionIndex(345);
             dbConnection.RunActiveQuery();
 
@@ -102,7 +103,7 @@ public class DatabaseReadTests {
     @Test
     public void getCardBy6thEditionHeisigIndex() {
         try {
-            DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+            DatabaseReadConnection dbConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardBy5thEditionIndex(234);
             dbConnection.RunActiveQuery();
 
@@ -134,7 +135,7 @@ public class DatabaseReadTests {
     @Test
     public void getCardBy5thEditionHeisigKeyword() {
         try {
-            DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+            DatabaseReadConnection dbConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardBy5thEditionKeyword("peach tree");
             dbConnection.RunActiveQuery();
 
@@ -166,7 +167,7 @@ public class DatabaseReadTests {
     @Test
     public void getCardBy6thEditionHeisigKeyword() {
         try {
-            DatabaseConnection dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+            DatabaseReadConnection dbConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
             dbConnection.getCardBy6thEditionKeyword("about that time");
             dbConnection.RunActiveQuery();
 

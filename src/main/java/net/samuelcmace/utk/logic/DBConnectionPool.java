@@ -20,19 +20,19 @@ public class DBConnectionPool {
     /**
      * The DatabaseConnection object that deals with reading data from the database.
      */
-    public DatabaseConnection kanjiSearchConnection;
+    public DatabaseReadConnection kanjiSearchConnection;
 
     /**
      * The DatabaseConnection object that deals with writing data to the database.
      */
-    public DatabaseConnection kanjiEditorConnection;
+    public DatabaseWriteConnection kanjiEditorConnection;
 
     /**
      * Initializes a new instance of DBConnectionPool.
      */
     private DBConnectionPool() throws SQLException {
-        this.kanjiSearchConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
-        this.kanjiEditorConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+        this.kanjiSearchConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
+        this.kanjiEditorConnection = new DatabaseWriteConnection(AppStoragePaths.GetDBConnectionString());
     }
 
     /**
