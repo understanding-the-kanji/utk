@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 /**
- * A class to store database-related tests.
+ * A class to store database-related read tests.
  */
 public class DatabaseReadTests {
 
@@ -159,7 +159,7 @@ public class DatabaseReadTests {
     }
 
     /**
-     * Test to see if a specific 5th edition Heisig keyword and its associated details can be retrieved from the database.
+     * Test to see if a specific 6th edition Heisig keyword and its associated details can be retrieved from the database.
      * It asserts true if the connection was a success,
      * otherwise if an exception was thrown, it asserts false.
      */

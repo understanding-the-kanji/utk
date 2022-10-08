@@ -13,7 +13,7 @@ import java.io.IOException;
 public class FirstTimeSetupTest {
 
     /**
-     * The test associated with the first-time setup.
+     * The test associated with the first-time setup process.
      */
     @Test
     public void firstTimeSetupTest() {
