@@ -2,7 +2,15 @@ package net.samuelcmace.utk.gui;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Region;
 
+import java.util.Optional;
+
+/**
+ * Utility class to create and display message boxes to the user (without any logging).
+ */
 public class MessageBox {
     /**
      * Displays a basic modal info dialog.
@@ -179,5 +187,38 @@ public class MessageBox {
         dialog.setContentText(message);
         if (isModal == false) dialog.show();
         else dialog.showAndWait();
+    }
+
+    /**
+     * Displays a basic yes/no prompt to the user.
+     *
+     * @param message The message to be promoted to the user.
+     * @return Returns true if the user selected YES, otherwise FALSE.
+     */
+    public static boolean ShowInfoPrompt(String message)
+    {
+        Alert dialog = new Alert(AlertType.CONFIRMATION);
+        dialog.setTitle("Confirmation");
+        dialog.setHeaderText(null);
+        dialog.setContentText(message);
+        dialog.getDialogPane().setMaxHeight(Region.USE_PREF_SIZE);
+
+        // Create two new button types to deal with the yes/no response.
+        ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+
+        // Add the buttons to the dialog object, and wait for a response.
+        dialog.getButtonTypes().setAll(yesButton, noButton);
+        Optional<ButtonType> response = dialog.showAndWait();
+
+        // If the response was OK, then return true. Otherwise, return false.
+        if(response.isPresent() && response.get().getButtonData() == ButtonBar.ButtonData.YES)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -13,15 +13,26 @@ public class DBConnectionPool {
     private static DBConnectionPool instance = null;
 
     /**
-     * The DatabaseConnection object associated with the DBConnectionPool.
+     * The active primary key shared between the two database connections.
      */
-    public DatabaseConnection dbConnection;
+    public int ActivePrimaryKey;
+
+    /**
+     * The DatabaseConnection object that deals with reading data from the database.
+     */
+    public DatabaseConnection kanjiSearchConnection;
+
+    /**
+     * The DatabaseConnection object that deals with writing data to the database.
+     */
+    public DatabaseConnection kanjiEditorConnection;
 
     /**
      * Initializes a new instance of DBConnectionPool.
      */
     private DBConnectionPool() throws SQLException {
-        this.dbConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+        this.kanjiSearchConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+        this.kanjiEditorConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
     }
 
     /**

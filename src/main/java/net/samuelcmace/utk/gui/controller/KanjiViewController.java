@@ -15,32 +15,59 @@ import java.sql.SQLException;
  */
 public class KanjiViewController {
 
-    @FXML
-    public Label cardHeisigKeyword6thEditionContents;
-
-    @FXML
-    public Label cardOnReadingContents;
-
-    @FXML
-    public Label cardKunReadingContents;
-
-    @FXML
-    public Label cardNoteContents;
-
+    /**
+     * The FXML Label containing the contents of the card ID.
+     */
     @FXML
     private Label cardIDContents;
 
+    /**
+     * The FXML Label containing the contents of the card's Kanji character.
+     */
     @FXML
     private Label cardKanjiContents;
 
+    /**
+     * The FXML Label containing the contents of the 5th edition Heisig index.
+     */
     @FXML
     private Label cardHeisigIndex5thEditionContents;
 
+    /**
+     * The FXML Label containing the contents of the 6th edition Heisig index.
+     */
     @FXML
     private Label cardHeisigIndex6thEditionContents;
 
+    /**
+     * The FXML Label containing the contents of the 5th edition Heisig keyword.
+     */
     @FXML
     private Label cardHeisigKeyword5thEditionContents;
+
+    /**
+     * The FXML Label containing the contents of the Heisig 6th edition keyword.
+     */
+    @FXML
+    public Label cardHeisigKeyword6thEditionContents;
+
+    /**
+     * The FXML Label containing the Chinese (On) Reading of the Kanji character.
+     */
+    @FXML
+    public Label cardOnReadingContents;
+
+    /**
+     * The FXML Label containing the Japanese (Kun) Reading of the Kanji character.
+     */
+    @FXML
+    public Label cardKunReadingContents;
+
+    /**
+     * The FXML Label containing the user-entered note contents associated with the character (if any).
+     */
+    @FXML
+    public Label cardNoteContents;
 
     /**
      * The DBConnectionPool singleton instance associated with KanjiBrowserController.
@@ -59,16 +86,18 @@ public class KanjiViewController {
     public void initialize() {
         try {
             this.dbConnectionPool = DBConnectionPool.GetInstance();
-            while (this.dbConnectionPool.dbConnection.ActiveResultSet.next()) {
-                this.cardIDContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("CARD_ID"));
-                this.cardKanjiContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("CARD_KANJI"));
-                this.cardHeisigIndex5thEditionContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("HEISIG_INDEX_5_EDITION"));
-                this.cardHeisigIndex6thEditionContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("HEISIG_INDEX_6_EDITION"));
-                this.cardHeisigKeyword5thEditionContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
-                this.cardHeisigKeyword6thEditionContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
-                this.cardOnReadingContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("ON_READING"));
-                this.cardKunReadingContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("KUN_READING"));
-                this.cardNoteContents.setText(this.dbConnectionPool.dbConnection.ActiveResultSet.getString("NOTE"));
+            this.dbConnectionPool.kanjiSearchConnection.RunActiveQuery();
+            while (this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.next()) {
+                this.dbConnectionPool.ActivePrimaryKey = Integer.parseInt(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("CARD_ID"));
+                this.cardIDContents.setText(String.valueOf(this.dbConnectionPool.ActivePrimaryKey));
+                this.cardKanjiContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("CARD_KANJI"));
+                this.cardHeisigIndex5thEditionContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_5_EDITION"));
+                this.cardHeisigIndex6thEditionContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_6_EDITION"));
+                this.cardHeisigKeyword5thEditionContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
+                this.cardHeisigKeyword6thEditionContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
+                this.cardOnReadingContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("ON_READING"));
+                this.cardKunReadingContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("KUN_READING"));
+                this.cardNoteContents.setText(this.dbConnectionPool.kanjiSearchConnection.ActiveResultSet.getString("NOTE"));
             }
         } catch (SQLException e) {
             Logger.Error("There was an error in connecting to the database: " + e.getLocalizedMessage());
@@ -84,4 +113,12 @@ public class KanjiViewController {
         ControllerManager.SwitchScene(Controllers.KANJI_SEARCH);
     }
 
+    /**
+     * Called when the edit button is pressed.
+     *
+     * @param actionEvent The default arguments passed to the event.
+     */
+    public void onClick_editNoteButton(ActionEvent actionEvent) {
+        ControllerManager.SwitchScene(Controllers.KANJI_EDITOR);
+    }
 }

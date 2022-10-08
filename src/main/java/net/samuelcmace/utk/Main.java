@@ -10,10 +10,7 @@ import net.samuelcmace.utk.gui.MessageBox;
 import net.samuelcmace.utk.logic.AppStoragePaths;
 import net.samuelcmace.utk.logic.Logger;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * The main class for the program.
@@ -26,23 +23,6 @@ public class Main extends Application {
     private Scene applicationScene;
 
     /**
-     * Ensures that the application-level storage directory and database exist.
-     *
-     * @throws IOException Thrown if either the default directory failed to create or the template database file failed to copy.
-     */
-    public void FirstTimeSetup() throws IOException {
-        File appStorageDirectory = new File(AppStoragePaths.GetAppStorageDir());
-        if (!appStorageDirectory.exists()) {
-            appStorageDirectory.mkdir();
-        }
-
-        File databaseFile = new File(AppStoragePaths.GetDBFilePath());
-        if (!databaseFile.exists()) {
-            Files.copy(Main.class.getResourceAsStream("kanji/default.db"), Paths.get(AppStoragePaths.GetDBFilePath()));
-        }
-    }
-
-    /**
      * The method called when the JavaFX Application starts.
      *
      * @param stage the primary stage for this application, onto which
@@ -52,12 +32,12 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) {
-        Logger.ConsoleInformation("Application Started at " + java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+        Logger.ConsoleInformation("Application Started");
 
         this.applicationScene = new Scene(new Pane(), 600, 400);
 
         try {
-            this.FirstTimeSetup();
+            AppStoragePaths.FirstTimeSetup();
             Logger.ConsoleInformation("Application Storage Directory: " + AppStoragePaths.GetAppStorageDir());
             Logger.ConsoleInformation("Application Log File Path: " + AppStoragePaths.GetLogFilePath());
             Logger.ConsoleInformation("Application Database Path: " + AppStoragePaths.GetDBFilePath());

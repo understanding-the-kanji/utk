@@ -18,17 +18,22 @@ public class DatabaseConnection {
     public Connection ActiveConnection;
 
     /**
-     * The statement associated with the instance of DatabaseConnection.
+     * The statement object associated with reading data from the database.
      */
     public Statement ActiveStatement;
 
     /**
-     * The active result set containing the query results.
+     * The statement object associated with writing data to the database.
+     */
+    public PreparedStatement ActivePreparedStatement;
+
+    /**
+     * The active result set associated with reading data from the database.
      */
     public ResultSet ActiveResultSet;
 
     /**
-     * The currently active query string used to generate the activeResultSet.
+     * The currently active query string used to generate the ActiveResultSet.
      */
     private String activeQuery;
 
@@ -49,6 +54,9 @@ public class DatabaseConnection {
      */
     protected void finalize() {
         try {
+            this.ActiveResultSet.close();
+            this.ActiveStatement.close();
+            this.ActivePreparedStatement.close();
             this.ActiveConnection.close();
         } catch (SQLException e) {
             Logger.ConsoleError("There was an error in closing the database connection in the object destructor: " + e.getLocalizedMessage());
@@ -66,24 +74,13 @@ public class DatabaseConnection {
     }
 
     /**
-     * Executes a new query based on a newly-provided query string.
-     *
-     * @param m_query The query to be run.
-     * @throws SQLException Thrown if there was a database query-related error.
-     */
-    private void newQuery(String m_query) throws SQLException {
-        this.activeQuery = m_query;
-        this.RunActiveQuery();
-    }
-
-    /**
      * Fetch a card object from the database by Kanji character and store it in a ResultSet.
      *
      * @param m_kanji The Kanji character in question.
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardByKanji(String m_kanji) throws SQLException {
-        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.CARD_KANJI = '" + m_kanji + "';");
+        this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.CARD_KANJI = '" + m_kanji + "';";
     }
 
     /**
@@ -93,7 +90,7 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy5thEditionIndex(int m_heisigIndex) throws SQLException {
-        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_5_EDITION = '" + m_heisigIndex + "';");
+        this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_5_EDITION = '" + m_heisigIndex + "';";
     }
 
     /**
@@ -103,7 +100,7 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy6thEditionIndex(int m_heisigIndex) throws SQLException {
-        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_6_EDITION = '" + m_heisigIndex + "';");
+        this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.HEISIG_INDEX_6_EDITION = '" + m_heisigIndex + "';";
     }
 
     /**
@@ -113,7 +110,7 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy5thEditionKeyword(String m_keyword) throws SQLException {
-        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_5_EDITION = '" + m_keyword + "';");
+        this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_5_EDITION = '" + m_keyword + "';";
     }
 
     /**
@@ -123,6 +120,19 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database query-related error.
      */
     public void getCardBy6thEditionKeyword(String m_keyword) throws SQLException {
-        this.newQuery("SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_6_EDITION = '" + m_keyword + "';");
+        this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.KEYWORD_6_EDITION = '" + m_keyword + "';";
+    }
+
+    /**
+     * Set the card's note information, given the primary key.
+     *
+     * @param m_cardID The primary key that corresponds to the Kanji character in question.
+     * @throws SQLException Thrown if there was a database-related error.
+     */
+    public void setNote(int m_cardID, String m_data) throws SQLException {
+        String query = "UPDATE CARD SET CARD.NOTE = '?' WHERE CARD.CARD_ID = '" + m_cardID + "';";
+        this.ActivePreparedStatement = this.ActiveConnection.prepareStatement(this.activeQuery);
+        this.ActivePreparedStatement.setString(1, m_data);
+        this.ActivePreparedStatement.executeUpdate();
     }
 }
