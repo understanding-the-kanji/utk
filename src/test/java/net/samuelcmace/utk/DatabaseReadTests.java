@@ -10,7 +10,7 @@ import java.sql.SQLException;
 /**
  * A class to store database-related tests.
  */
-public class DatabaseConnectionTests {
+public class DatabaseReadTests {
 
     /**
      * Test to see if the connection to the user's database (usually located in the
@@ -185,40 +185,6 @@ public class DatabaseConnectionTests {
             dbConnection.ActiveResultSet.close();
             dbConnection.ActiveStatement.close();
             dbConnection.ActiveConnection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void setNote()
-    {
-        try {
-            DatabaseConnection readConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
-
-            Integer sharedPrimaryKey = null;
-
-            readConnection.getCardBy6thEditionKeyword("about that time");
-            readConnection.RunActiveQuery();
-
-
-            while (readConnection.ActiveResultSet.next()) {
-                sharedPrimaryKey = readConnection.ActiveResultSet.getInt("CARD_ID");
-                System.out.println(sharedPrimaryKey);
-            }
-
-            readConnection.ActiveResultSet.close();
-            readConnection.ActiveStatement.close();
-            readConnection.ActiveConnection.close();
-
-            String testNote = "When your great uncle starts his usual dinner routine of sticking spoons to his forehead, you know it's about that time to come up with an excuse to excuse yourself.";
-
-            if(sharedPrimaryKey != null)
-            {
-                DatabaseConnection writeConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
-                writeConnection.setNote(sharedPrimaryKey, testNote);
-            }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
