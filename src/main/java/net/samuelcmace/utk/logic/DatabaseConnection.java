@@ -130,9 +130,15 @@ public class DatabaseConnection {
      * @throws SQLException Thrown if there was a database-related error.
      */
     public void setNote(int m_cardID, String m_data) throws SQLException {
-        String query = "UPDATE CARD SET CARD.NOTE = '?' WHERE CARD.CARD_ID = '" + m_cardID + "';";
-        this.ActivePreparedStatement = this.ActiveConnection.prepareStatement(this.activeQuery);
+        this.ActiveConnection = DriverManager.getConnection(this.dbConnectionString);
+
+        String query = "UPDATE CARD SET NOTE = ? WHERE CARD_ID = ?;";
+
+        this.ActivePreparedStatement = this.ActiveConnection.prepareStatement(query);
+
         this.ActivePreparedStatement.setString(1, m_data);
+        this.ActivePreparedStatement.setInt(2, m_cardID);
+
         this.ActivePreparedStatement.executeUpdate();
     }
 }

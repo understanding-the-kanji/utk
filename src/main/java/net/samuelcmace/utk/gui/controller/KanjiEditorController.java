@@ -81,13 +81,17 @@ public class KanjiEditorController {
      * @param actionEvent The default arguments passed to the event.
      */
     public void onClick_returnButton(ActionEvent actionEvent) {
-        boolean response = MessageBox.ShowInfoPrompt("Would you like to save before you exit?");
-        if(response == true)
+        // If the note contents in the note editor differ from the last save, prompt the user to save
+        if(!this.originalNoteContents.equals(this.noteEditor.getText()))
         {
-            try {
-                this.writeContentsToDisk();
-            } catch (SQLException e) {
-                Logger.Error("There was an error in loading the database contents from the disk: " + e.getLocalizedMessage());
+            boolean response = MessageBox.ShowInfoPrompt("Would you like to save before you exit?");
+            if(response == true)
+            {
+                try {
+                    this.writeContentsToDisk();
+                } catch (SQLException e) {
+                    Logger.Error("There was an error in writing the contents to the database: " + e.getLocalizedMessage());
+                }
             }
         }
         ControllerManager.SwitchScene(Controllers.KANJI_VIEW);

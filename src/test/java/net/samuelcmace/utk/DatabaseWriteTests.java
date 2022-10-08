@@ -28,26 +28,19 @@ public class DatabaseWriteTests {
             readConnection.getCardBy6thEditionKeyword("about that time");
             readConnection.RunActiveQuery();
 
-
             while (readConnection.ActiveResultSet.next()) {
                 sharedPrimaryKey = readConnection.ActiveResultSet.getInt("CARD_ID");
                 System.out.println(sharedPrimaryKey);
             }
 
-            readConnection.ActiveResultSet.close();
-            readConnection.ActiveStatement.close();
-            readConnection.ActiveConnection.close();
-
             String testNote = "When your younger brother starts throwing spoons at your head, you know it's about that time to give him what he wants.";
 
-            if(sharedPrimaryKey != null)
-            {
-                DatabaseConnection writeConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
-                writeConnection.setNote(sharedPrimaryKey, testNote);
-            }
-
+            DatabaseConnection writeConnection = new DatabaseConnection(AppStoragePaths.GetDBConnectionString());
+            writeConnection.setNote(sharedPrimaryKey, testNote);
+            assert true;
         } catch (SQLException e) {
             e.printStackTrace();
+            assert false;
         }
     }
 }
