@@ -36,7 +36,7 @@ public class DatabaseWriteTests {
             readConnection.ActiveStatement.close();
             readConnection.ActiveConnection.close();
 
-            String testNote = "When your great uncle starts his usual dinner routine of sticking spoons to his forehead, you know it's about that time to come up with an excuse to excuse yourself.";
+            String testNote = "When your younger brother starts throwing spoons at your head, you know it's about that time to give him what he wants.";
 
             if(sharedPrimaryKey != null)
             {
