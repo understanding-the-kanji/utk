@@ -13,7 +13,8 @@ import net.samuelcmace.utk.logic.Logger;
 import java.io.IOException;
 
 /**
- * The main class for the program.
+ * The main class for the OpenJFX Application.
+ * This class is launched by ApplicationLauncher as a workaround to allow the program to be contained in a JAR file.
  */
 public class Main extends Application {
 
@@ -54,12 +55,8 @@ public class Main extends Application {
         stage.show();
     }
 
-    /**
-     * The main function for the program.
-     *
-     * @param args The arguments passed to the program at runtime.
-     */
-    public static void main(String[] args) {
+    public void launchJavaFX()
+    {
         launch();
     }
 }

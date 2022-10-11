@@ -1,6 +1,6 @@
 package net.samuelcmace.utk.logic;
 
-import net.samuelcmace.utk.Main;
+import net.samuelcmace.utk.ApplicationLauncher;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public abstract class AppStoragePaths {
 
         File databaseFile = new File(AppStoragePaths.GetDBFilePath());
         if (!databaseFile.exists()) {
-            Files.copy(Main.class.getResourceAsStream("kanji/default.db"), Paths.get(AppStoragePaths.GetDBFilePath()));
+            Files.copy(ApplicationLauncher.class.getResourceAsStream("kanji/default.db"), Paths.get(AppStoragePaths.GetDBFilePath()));
         }
     }
 

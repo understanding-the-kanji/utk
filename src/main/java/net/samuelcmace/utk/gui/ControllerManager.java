@@ -3,7 +3,7 @@ package net.samuelcmace.utk.gui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import net.samuelcmace.utk.Main;
+import net.samuelcmace.utk.ApplicationLauncher;
 import net.samuelcmace.utk.logic.Logger;
 
 /**
@@ -30,7 +30,7 @@ public abstract class ControllerManager {
      */
     public static void SwitchScene(Controllers m_controller) {
         try {
-            Parent fxmlLoader = FXMLLoader.load(Main.class.getResource(Controllers.FilePath(m_controller)));
+            Parent fxmlLoader = FXMLLoader.load(ApplicationLauncher.class.getResource(Controllers.FilePath(m_controller)));
             ControllerManager.applicationScene.setRoot(fxmlLoader);
         } catch (Exception e) {
             Logger.Error("The View Failed to Switch: " + e.getLocalizedMessage());
