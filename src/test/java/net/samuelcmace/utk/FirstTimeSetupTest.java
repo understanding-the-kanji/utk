@@ -22,9 +22,9 @@ public class FirstTimeSetupTest {
         try {
             AppStoragePaths.FirstTimeSetup();
             assert true;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            assert true;
+            assert false;
         }
     }
 }

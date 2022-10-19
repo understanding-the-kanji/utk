@@ -57,8 +57,9 @@ public class DatabaseReadTests {
             dbConnection.ActiveResultSet.close();
             dbConnection.ActiveStatement.close();
             dbConnection.ActiveConnection.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            assert false;
         }
     }
 
@@ -89,7 +90,7 @@ public class DatabaseReadTests {
             dbConnection.ActiveResultSet.close();
             dbConnection.ActiveStatement.close();
             dbConnection.ActiveConnection.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -121,7 +122,7 @@ public class DatabaseReadTests {
             dbConnection.ActiveResultSet.close();
             dbConnection.ActiveStatement.close();
             dbConnection.ActiveConnection.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -153,7 +154,7 @@ public class DatabaseReadTests {
             dbConnection.ActiveResultSet.close();
             dbConnection.ActiveStatement.close();
             dbConnection.ActiveConnection.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -185,7 +186,7 @@ public class DatabaseReadTests {
             dbConnection.ActiveResultSet.close();
             dbConnection.ActiveStatement.close();
             dbConnection.ActiveConnection.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

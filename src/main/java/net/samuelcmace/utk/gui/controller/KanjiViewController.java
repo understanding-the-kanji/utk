@@ -101,6 +101,8 @@ public class KanjiViewController {
             }
         } catch (SQLException e) {
             Logger.Error("There was an error in connecting to the database: " + e.getLocalizedMessage());
+        } catch (Exception e) {
+            Logger.Error("There was an error in retrieving the database file path: " + e.getLocalizedMessage());
         }
     }
 

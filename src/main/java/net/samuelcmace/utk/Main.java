@@ -42,7 +42,7 @@ public class Main extends Application {
             Logger.ConsoleInformation("Application Storage Directory: " + AppStoragePaths.GetAppStorageDir());
             Logger.ConsoleInformation("Application Log File Path: " + AppStoragePaths.GetLogFilePath());
             Logger.ConsoleInformation("Application Database Path: " + AppStoragePaths.GetDBFilePath());
-        } catch (IOException e) {
+        } catch (Exception e) {
             MessageBox.ShowErrorDialog("There was an error in setting up the application storage system: " + e.getLocalizedMessage());
         }
 

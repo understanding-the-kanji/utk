@@ -31,7 +31,11 @@ public class KanjiEditorController {
      */
     public KanjiEditorController()
     {
-        this.dbConnectionPool = DBConnectionPool.GetInstance();
+        try {
+            this.dbConnectionPool = DBConnectionPool.GetInstance();
+        } catch (Exception e) {
+            Logger.Error(e.getLocalizedMessage());
+        }
     }
 
     /**

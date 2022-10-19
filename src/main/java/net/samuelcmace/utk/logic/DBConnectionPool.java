@@ -28,7 +28,7 @@ public class DBConnectionPool {
     /**
      * Initializes a new instance of DBConnectionPool.
      */
-    private DBConnectionPool() {
+    private DBConnectionPool() throws Exception {
         this.KanjiSearchConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
         this.KanjiEditorConnection = new DatabaseWriteConnection(AppStoragePaths.GetDBConnectionString());
     }
@@ -38,7 +38,7 @@ public class DBConnectionPool {
      *
      * @return The singleton instance of DBConnectionPool.
      */
-    public static DBConnectionPool GetInstance() {
+    public static DBConnectionPool GetInstance() throws Exception {
         if (DBConnectionPool.instance == null) DBConnectionPool.instance = new DBConnectionPool();
 
         return DBConnectionPool.instance;

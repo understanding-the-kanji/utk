@@ -52,7 +52,11 @@ public class KanjiSearchController {
      * Initializes a new instance of KanjiSearchController.
      */
     public KanjiSearchController() {
-        this.dbConnectionPool = DBConnectionPool.GetInstance();
+        try {
+            this.dbConnectionPool = DBConnectionPool.GetInstance();
+        } catch (Exception e) {
+            Logger.Error(e.getLocalizedMessage());
+        }
     }
 
     /**

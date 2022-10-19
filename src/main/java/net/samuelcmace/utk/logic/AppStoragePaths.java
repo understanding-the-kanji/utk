@@ -3,9 +3,11 @@ package net.samuelcmace.utk.logic;
 import net.samuelcmace.utk.ApplicationLauncher;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 /**
  * Utility class associated with creating and retrieving the default file structure for the project.
@@ -25,10 +27,18 @@ public abstract class AppStoragePaths {
      *
      * @throws IOException Thrown if either the default directory failed to create or the template database file failed to copy.
      */
-    public static void FirstTimeSetup() throws IOException {
+    public static void FirstTimeSetup() throws Exception {
         File appStorageDirectory = new File(AppStoragePaths.GetAppStorageDir());
         if (!appStorageDirectory.exists()) {
             appStorageDirectory.mkdir();
+        }
+
+        File databaseConfigFile = new File(AppStoragePaths.GetDBConfigFilePath());
+        if (!databaseConfigFile.exists()) {
+            FileWriter fileWriter;
+            fileWriter = new FileWriter(AppStoragePaths.GetDBConfigFilePath(), false);
+            fileWriter.write(Paths.get(AppStoragePaths.GetAppStorageDir() + "/utk.db").toAbsolutePath().toString());
+            fileWriter.close();
         }
 
         File databaseFile = new File(AppStoragePaths.GetDBFilePath());
@@ -42,9 +52,17 @@ public abstract class AppStoragePaths {
      *
      * @return The application logging file path.
      */
-    public static String GetLogFilePath()
-    {
+    public static String GetLogFilePath() {
         return Paths.get(AppStoragePaths.GetAppStorageDir(), "log.txt").toAbsolutePath().toString();
+    }
+
+    /**
+     * Utility function to fetch the configuration file containing the database path.
+     *
+     * @return The configuration file path containing the database path.
+     */
+    public static String GetDBConfigFilePath() {
+        return Paths.get(AppStoragePaths.GetAppStorageDir() + "/dbpath.txt").toAbsolutePath().toString();
     }
 
     /**
@@ -52,9 +70,18 @@ public abstract class AppStoragePaths {
      *
      * @return The application logging database path.
      */
-    public static String GetDBFilePath()
-    {
-        return Paths.get(AppStoragePaths.GetAppStorageDir(), "utk.db").toAbsolutePath().toString();
+    public static String GetDBFilePath() throws Exception {
+        String filePath = "";
+
+        File dbFilePathConfigFile = new File(AppStoragePaths.GetDBConfigFilePath());
+        Scanner dbFilePathConfigScanner = new Scanner(dbFilePathConfigFile);
+        while(dbFilePathConfigScanner.hasNextLine())
+        {
+            filePath += dbFilePathConfigScanner.nextLine();
+        }
+        dbFilePathConfigScanner.close();
+
+        return filePath;
     }
 
     /**
@@ -62,8 +89,7 @@ public abstract class AppStoragePaths {
      *
      * @return The JDBC connection string associated with the database file.
      */
-    public static String GetDBConnectionString()
-    {
+    public static String GetDBConnectionString() throws Exception {
         return "jdbc:sqlite:" + AppStoragePaths.GetDBFilePath();
     }
 }

@@ -42,6 +42,9 @@ public class DatabaseWriteTests {
         } catch (SQLException e) {
             e.printStackTrace();
             assert false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            assert false;
         }
     }
 }
