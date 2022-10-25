@@ -35,7 +35,7 @@
             <Label fx:id="cardHeisigKeyword6thEditionContents"/>
             <Label fx:id="cardOnReadingContents"/>
             <Label fx:id="cardKunReadingContents"/>
-            <Label fx:id="cardNoteContents"/>
+            <Label fx:id="cardNoteContents" wrapText="true"/>
         </VBox>
 
     </HBox>

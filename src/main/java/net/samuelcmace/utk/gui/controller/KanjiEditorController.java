@@ -73,7 +73,9 @@ public class KanjiEditorController {
     private void loadContentsFromDisk() throws SQLException {
         this.dbConnectionPool.KanjiSearchConnection.RunActiveQuery();
         while (this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.next()) {
-            this.originalNoteContents = this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("NOTE");
+            String noteContents = this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("NOTE");
+            if (noteContents != null) this.originalNoteContents = noteContents;
+            else this.originalNoteContents = "";
             this.noteEditor.setText(this.originalNoteContents);
         }
     }
@@ -85,11 +87,9 @@ public class KanjiEditorController {
      */
     public void onClick_returnButton(ActionEvent actionEvent) {
         // If the note contents in the note editor differ from the last save, prompt the user to save
-        if(!this.originalNoteContents.equals(this.noteEditor.getText()) && this.originalNoteContents != null)
-        {
+        if (!this.originalNoteContents.equals(this.noteEditor.getText())) {
             boolean response = MessageBox.ShowInfoPrompt("Would you like to save before you exit?");
-            if(response == true)
-            {
+            if (response == true) {
                 try {
                     this.writeContentsToDisk();
                 } catch (SQLException e) {
