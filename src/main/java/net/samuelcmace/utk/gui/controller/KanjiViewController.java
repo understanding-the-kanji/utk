@@ -112,13 +112,13 @@ public class KanjiViewController {
     private void setupHyperlinkStyling()
     {
         this.cardKanjiContents.setBorder(Border.EMPTY);
-        this.cardKanjiContents.setPadding(new Insets(4, 0, 4, 0));
+        this.cardKanjiContents.setPadding(new Insets(0, 0, 0, 0));
 
         this.cardHeisigKeyword5thEditionContents.setBorder(Border.EMPTY);
-        this.cardHeisigKeyword5thEditionContents.setPadding(new Insets(4, 0, 4, 0));
+        this.cardHeisigKeyword5thEditionContents.setPadding(new Insets(0, 0, 0, 0));
 
         this.cardHeisigKeyword6thEditionContents.setBorder(Border.EMPTY);
-        this.cardHeisigKeyword6thEditionContents.setPadding(new Insets(4, 0, 4, 0));
+        this.cardHeisigKeyword6thEditionContents.setPadding(new Insets(0, 0, 0, 0));
     }
 
     /**
