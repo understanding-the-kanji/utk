@@ -21,11 +21,11 @@
         </VBox>
 
         <VBox alignment="CENTER" spacing="20.0">
-            <TextField fx:id="searchByCharacterTextField"/>
-            <TextField fx:id="searchBy5thEditionHeisigIndexTextField"/>
-            <TextField fx:id="searchBy6thEditionHeisigIndexTextField"/>
-            <TextField fx:id="searchBy5thEditionHeisigKeywordTextField"/>
-            <TextField fx:id="searchBy6thEditionHeisigKeywordTextField"/>
+            <TextField onAction="#searchByCharacterButton_onClick" fx:id="searchByCharacterTextField"/>
+            <TextField onAction="#searchBy5thEditionHeisigIndexButton_onClick" fx:id="searchBy5thEditionHeisigIndexTextField"/>
+            <TextField onAction="#searchBy6thEditionHeisigIndexButton_onClick" fx:id="searchBy6thEditionHeisigIndexTextField"/>
+            <TextField onAction="#searchBy5thEditionHeisigKeywordButton_onClick" fx:id="searchBy5thEditionHeisigKeywordTextField"/>
+            <TextField onAction="#searchBy6thEditionHeisigKeywordButton_onClick" fx:id="searchBy6thEditionHeisigKeywordTextField"/>
         </VBox>
 
         <VBox alignment="CENTER" spacing="20.0">

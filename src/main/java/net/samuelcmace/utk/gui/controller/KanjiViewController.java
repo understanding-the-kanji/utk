@@ -2,6 +2,7 @@ package net.samuelcmace.utk.gui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import net.samuelcmace.utk.gui.ControllerManager;
 import net.samuelcmace.utk.gui.Controllers;
@@ -70,6 +71,12 @@ public class KanjiViewController {
     public Label cardNoteContents;
 
     /**
+     * The FXML Button that allows the user to edit the note.
+     */
+    @FXML
+    public Button editNoteButton;
+
+    /**
      * The DBConnectionPool singleton instance associated with KanjiBrowserController.
      */
     private DBConnectionPool dbConnectionPool;
@@ -88,16 +95,21 @@ public class KanjiViewController {
             this.dbConnectionPool = DBConnectionPool.GetInstance();
             this.dbConnectionPool.KanjiSearchConnection.RunActiveQuery();
             while (this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.next()) {
-                this.dbConnectionPool.ActivePrimaryKey = Integer.parseInt(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_ID"));
-                this.cardIDContents.setText(String.valueOf(this.dbConnectionPool.ActivePrimaryKey));
-                this.cardKanjiContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_KANJI"));
-                this.cardHeisigIndex5thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_5_EDITION"));
-                this.cardHeisigIndex6thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_6_EDITION"));
-                this.cardHeisigKeyword5thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
-                this.cardHeisigKeyword6thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
-                this.cardOnReadingContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("ON_READING"));
-                this.cardKunReadingContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KUN_READING"));
-                this.cardNoteContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("NOTE"));
+                String activePrimaryKeyString = this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_ID");
+                if(activePrimaryKeyString != null)
+                {
+                    this.dbConnectionPool.ActivePrimaryKey = Integer.parseInt(activePrimaryKeyString);
+                    this.cardIDContents.setText(String.valueOf(this.dbConnectionPool.ActivePrimaryKey));
+                    this.cardKanjiContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_KANJI"));
+                    this.cardHeisigIndex5thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_5_EDITION"));
+                    this.cardHeisigIndex6thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("HEISIG_INDEX_6_EDITION"));
+                    this.cardHeisigKeyword5thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KEYWORD_5_EDITION"));
+                    this.cardHeisigKeyword6thEditionContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KEYWORD_6_EDITION"));
+                    this.cardOnReadingContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("ON_READING"));
+                    this.cardKunReadingContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("KUN_READING"));
+                    this.cardNoteContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("NOTE"));
+                    this.editNoteButton.setDisable(false);
+                }
             }
         } catch (SQLException e) {
             Logger.Error("There was an error in connecting to the database: " + e.getLocalizedMessage());
