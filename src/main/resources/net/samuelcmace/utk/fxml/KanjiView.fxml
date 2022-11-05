@@ -28,11 +28,11 @@
 
         <VBox spacing="10.0">
             <Label fx:id="cardIDContents"/>
-            <Label fx:id="cardKanjiContents"/>
+            <Hyperlink fx:id="cardKanjiContents" onAction="#onClick_cardKanjiContents" disable="true"/>
             <Label fx:id="cardHeisigIndex5thEditionContents"/>
             <Label fx:id="cardHeisigIndex6thEditionContents"/>
-            <Label fx:id="cardHeisigKeyword5thEditionContents"/>
-            <Label fx:id="cardHeisigKeyword6thEditionContents"/>
+            <Hyperlink fx:id="cardHeisigKeyword5thEditionContents" onAction="#onClick_cardHeisigKeyword5thEditionContents" disable="true"/>
+            <Hyperlink fx:id="cardHeisigKeyword6thEditionContents" onAction="#onClick_cardHeisigKeyword6thEditionContents" disable="true"/>
             <Label fx:id="cardOnReadingContents"/>
             <Label fx:id="cardKunReadingContents"/>
             <Label fx:id="cardNoteContents" wrapText="true"/>
