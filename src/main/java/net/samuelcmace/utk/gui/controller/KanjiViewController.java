@@ -179,7 +179,7 @@ public class KanjiViewController {
      */
     public void onClick_cardKanjiContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://japandict.com/kanji/" + this.cardKanjiContents.getText()));
+            Desktop.getDesktop().browse(new URI("https://japandict.com/kanji/" + this.cardKanjiContents.getText().replace(" ", "%20")));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -195,7 +195,7 @@ public class KanjiViewController {
      */
     public void onClick_cardHeisigKeyword5thEditionContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + this.cardHeisigKeyword5thEditionContents.getText()));
+            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + this.cardHeisigKeyword5thEditionContents.getText().replace(" ", "%20")));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -211,7 +211,7 @@ public class KanjiViewController {
      */
     public void onClick_cardHeisigKeyword6thEditionContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + this.cardHeisigKeyword6thEditionContents.getText()));
+            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + this.cardHeisigKeyword6thEditionContents.getText().replace(" ", "%20")));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
