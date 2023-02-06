@@ -59,6 +59,16 @@ public class DatabaseReadConnection extends DatabaseConnection {
      * Sets the currently active query string based on the passed-in parameters.
      * The query still needs to be executed by calling the RunActiveQuery() method.
      *
+     * @param m_id The Kanji character in question.
+     */
+    public void getCardByID(int m_id) {
+        this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.CARD_ID = '" + m_id + "';";
+    }
+
+    /**
+     * Sets the currently active query string based on the passed-in parameters.
+     * The query still needs to be executed by calling the RunActiveQuery() method.
+     *
      * @param m_kanji The Kanji character in question.
      */
     public void getCardByKanji(String m_kanji) {

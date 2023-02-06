@@ -218,4 +218,26 @@ public class KanjiViewController {
             Logger.Error("There was an Error in the URL Syntax: " + e.getLocalizedMessage());
         }
     }
+
+    /**
+     * Called when the user clicks on the Previous button.
+     *
+     * @param actionEvent The default arguments passed to the event.
+     */
+    public void onClick_previousButton(ActionEvent actionEvent) {
+        this.dbConnectionPool.KanjiSearchConnection.getCardByID(this.dbConnectionPool.ActivePrimaryKey - 1);
+        this.dbConnectionPool.ActivePrimaryKey--;
+        ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
+    }
+
+    /**
+     * Called when the user clicks on the Next button.
+     *
+     * @param actionEvent The default arguments passed to the event.
+     */
+    public void onClick_nextButton(ActionEvent actionEvent) {
+        this.dbConnectionPool.KanjiSearchConnection.getCardByID(this.dbConnectionPool.ActivePrimaryKey + 1);
+        this.dbConnectionPool.ActivePrimaryKey++;
+        ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
+    }
 }
