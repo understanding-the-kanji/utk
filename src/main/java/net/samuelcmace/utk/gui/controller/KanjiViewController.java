@@ -12,12 +12,13 @@ import net.samuelcmace.utk.gui.Controllers;
 import net.samuelcmace.utk.logic.DBConnectionPool;
 import net.samuelcmace.utk.logic.Logger;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
-
-import java.awt.Desktop;
 
 /**
  * The controller that corresponds to the KanjiBrowser view.
@@ -98,8 +99,7 @@ public class KanjiViewController {
     /**
      * Enables the lookup hyperlinks and edit note button upon the completion of a successful database query.
      */
-    private void enableFields()
-    {
+    private void enableFields() {
         this.cardKanjiContents.setDisable(false);
         this.cardHeisigKeyword5thEditionContents.setDisable(false);
         this.cardHeisigKeyword6thEditionContents.setDisable(false);
@@ -109,8 +109,7 @@ public class KanjiViewController {
     /**
      * Sets up the default styling for the hyperlinks.
      */
-    private void setupHyperlinkStyling()
-    {
+    private void setupHyperlinkStyling() {
         this.cardKanjiContents.setBorder(Border.EMPTY);
         this.cardKanjiContents.setPadding(new Insets(0, 0, 0, 0));
 
@@ -130,8 +129,7 @@ public class KanjiViewController {
             this.dbConnectionPool.KanjiSearchConnection.RunActiveQuery();
             while (this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.next()) {
                 String activePrimaryKeyString = this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_ID");
-                if(activePrimaryKeyString != null)
-                {
+                if (activePrimaryKeyString != null) {
                     this.dbConnectionPool.ActivePrimaryKey = Integer.parseInt(activePrimaryKeyString);
                     this.cardIDContents.setText(String.valueOf(this.dbConnectionPool.ActivePrimaryKey));
                     this.cardKanjiContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_KANJI"));
@@ -179,7 +177,8 @@ public class KanjiViewController {
      */
     public void onClick_cardKanjiContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://japandict.com/kanji/" + this.cardKanjiContents.getText().replace(" ", "%20")));
+            String url = URLEncoder.encode(this.cardKanjiContents.getText(), StandardCharsets.UTF_8);
+            Desktop.getDesktop().browse(new URI("https://japandict.com/kanji/" + url));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -195,7 +194,8 @@ public class KanjiViewController {
      */
     public void onClick_cardHeisigKeyword5thEditionContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + this.cardHeisigKeyword5thEditionContents.getText().replace(" ", "%20")));
+            String url = URLEncoder.encode(this.cardHeisigKeyword5thEditionContents.getText(), StandardCharsets.UTF_8);
+            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + url));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -211,7 +211,8 @@ public class KanjiViewController {
      */
     public void onClick_cardHeisigKeyword6thEditionContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + this.cardHeisigKeyword6thEditionContents.getText().replace(" ", "%20")));
+            String url = URLEncoder.encode(this.cardHeisigKeyword6thEditionContents.getText(), StandardCharsets.UTF_8);
+            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + url));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
