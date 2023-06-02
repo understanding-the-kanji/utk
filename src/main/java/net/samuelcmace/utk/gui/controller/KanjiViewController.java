@@ -26,65 +26,55 @@ import java.sql.SQLException;
 public class KanjiViewController {
 
     /**
-     * The FXML Label containing the contents of the card ID.
-     */
-    @FXML
-    private Label cardIDContents;
-
-    /**
-     * The FXML Label containing the contents of the card's Kanji character.
-     */
-    @FXML
-    private Hyperlink cardKanjiContents;
-
-    /**
-     * The FXML Label containing the contents of the 5th edition Heisig index.
-     */
-    @FXML
-    private Label cardHeisigIndex5thEditionContents;
-
-    /**
-     * The FXML Label containing the contents of the 6th edition Heisig index.
-     */
-    @FXML
-    private Label cardHeisigIndex6thEditionContents;
-
-    /**
-     * The FXML Label containing the contents of the 5th edition Heisig keyword.
-     */
-    @FXML
-    private Hyperlink cardHeisigKeyword5thEditionContents;
-
-    /**
      * The FXML Label containing the contents of the Heisig 6th edition keyword.
      */
     @FXML
     public Hyperlink cardHeisigKeyword6thEditionContents;
-
     /**
      * The FXML Label containing the Chinese (On) Reading of the Kanji character.
      */
     @FXML
     public Label cardOnReadingContents;
-
     /**
      * The FXML Label containing the Japanese (Kun) Reading of the Kanji character.
      */
     @FXML
     public Label cardKunReadingContents;
-
     /**
      * The FXML Label containing the user-entered note contents associated with the character (if any).
      */
     @FXML
     public Label cardNoteContents;
-
     /**
      * The FXML Button that allows the user to edit the note.
      */
     @FXML
     public Button editNoteButton;
-
+    /**
+     * The FXML Label containing the contents of the card ID.
+     */
+    @FXML
+    private Label cardIDContents;
+    /**
+     * The FXML Label containing the contents of the card's Kanji character.
+     */
+    @FXML
+    private Hyperlink cardKanjiContents;
+    /**
+     * The FXML Label containing the contents of the 5th edition Heisig index.
+     */
+    @FXML
+    private Label cardHeisigIndex5thEditionContents;
+    /**
+     * The FXML Label containing the contents of the 6th edition Heisig index.
+     */
+    @FXML
+    private Label cardHeisigIndex6thEditionContents;
+    /**
+     * The FXML Label containing the contents of the 5th edition Heisig keyword.
+     */
+    @FXML
+    private Hyperlink cardHeisigKeyword5thEditionContents;
     /**
      * The DBConnectionPool singleton instance associated with KanjiBrowserController.
      */

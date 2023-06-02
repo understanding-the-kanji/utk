@@ -22,6 +22,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
 
     /**
      * Initializes a new instance of DatabaseReadConnection.
+     *
      * @param m_dbConnectionString The JDBC connection string.
      */
     public DatabaseReadConnection(String m_dbConnectionString) {
@@ -33,8 +34,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
      * Although this method is not needed in most java programming, it is needed here to ensure that the database
      * connections are closed before the program exists.
      */
-    protected void finalize()
-    {
+    protected void finalize() {
         super.finalize();
         try {
             this.ActiveStatement.close();

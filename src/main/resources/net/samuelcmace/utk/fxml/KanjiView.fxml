@@ -1,53 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="net.samuelcmace.utk.gui.controller.KanjiViewController" prefHeight="600.0" prefWidth="800.0">
+<?import javafx.geometry.Insets?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" prefHeight="600.0" prefWidth="800.0"
+    spacing="20.0" xmlns="http://javafx.com/javafx" fx:controller="net.samuelcmace.utk.gui.controller.KanjiViewController">
 
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <HBox alignment="CENTER" spacing="20.0">
 
         <VBox spacing="10.0">
-            <Label text="Card ID:"/>
-            <Label text="Kanji Character:"/>
-            <Label text="Heisig Index (5th Edition):"/>
-            <Label text="Heisig Index (6th Edition):"/>
-            <Label text="Heisig Keyword (5th Edition):"/>
-            <Label text="Heisig Keyword (6th Edition):"/>
-            <Label text="On-Reading (Chinese Reading):"/>
-            <Label text="Kun-Reading (Japanese Reading):"/>
-            <Label text="Note:"/>
+            <Label text="Card ID:" />
+            <Label text="Kanji Character:" />
+            <Label text="Heisig Index (5th Edition):" />
+            <Label text="Heisig Index (6th Edition):" />
+            <Label text="Heisig Keyword (5th Edition):" />
+            <Label text="Heisig Keyword (6th Edition):" />
+            <Label text="On-Reading (Chinese Reading):" />
+            <Label text="Kun-Reading (Japanese Reading):" />
+            <Label text="Note:" />
         </VBox>
 
         <VBox spacing="10.0">
-            <Label fx:id="cardIDContents"/>
-            <Hyperlink fx:id="cardKanjiContents" onAction="#onClick_cardKanjiContents" disable="true"/>
-            <Label fx:id="cardHeisigIndex5thEditionContents"/>
-            <Label fx:id="cardHeisigIndex6thEditionContents"/>
-            <Hyperlink fx:id="cardHeisigKeyword5thEditionContents" onAction="#onClick_cardHeisigKeyword5thEditionContents" disable="true"/>
-            <Hyperlink fx:id="cardHeisigKeyword6thEditionContents" onAction="#onClick_cardHeisigKeyword6thEditionContents" disable="true"/>
-            <Label fx:id="cardOnReadingContents"/>
-            <Label fx:id="cardKunReadingContents"/>
-            <Label fx:id="cardNoteContents" wrapText="true"/>
+            <Label fx:id="cardIDContents" />
+            <Hyperlink disable="true" onAction="#onClick_cardKanjiContents" fx:id="cardKanjiContents" />
+            <Label fx:id="cardHeisigIndex5thEditionContents" />
+            <Label fx:id="cardHeisigIndex6thEditionContents" />
+            <Hyperlink disable="true"
+                onAction="#onClick_cardHeisigKeyword5thEditionContents" fx:id="cardHeisigKeyword5thEditionContents" />
+            <Hyperlink disable="true"
+                onAction="#onClick_cardHeisigKeyword6thEditionContents" fx:id="cardHeisigKeyword6thEditionContents" />
+            <Label fx:id="cardOnReadingContents" />
+            <Label fx:id="cardKunReadingContents" />
+            <Label wrapText="true" fx:id="cardNoteContents" />
         </VBox>
 
     </HBox>
 
     <HBox alignment="CENTER" spacing="20.0">
-        <Button fx:id="editNoteButton" text="Edit Note" onAction="#onClick_editNoteButton" disable="true"/>
-        <Button fx:id="returnButton" text="Return" onAction="#onClick_returnButton"/>
+        <Button disable="true" onAction="#onClick_editNoteButton" text="Edit Note" fx:id="editNoteButton" />
+        <Button onAction="#onClick_returnButton" text="Return" fx:id="returnButton" />
     </HBox>
 
     <HBox alignment="CENTER" spacing="20.0">
-        <Button fx:id="previousButton" text="Previous Note" onAction="#onClick_previousButton"/>
-        <Button fx:id="nextButton" text="Next Note" onAction="#onClick_nextButton"/>
+        <Button onAction="#onClick_previousButton" text="Previous Note" fx:id="previousButton" />
+        <Button onAction="#onClick_nextButton" text="Next Note" fx:id="nextButton" />
     </HBox>
 
 </VBox>

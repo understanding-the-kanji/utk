@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="net.samuelcmace.utk.gui.controller.LoadController">
+<?import javafx.geometry.Insets?><?import javafx.scene.control.*?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" spacing="10.0"
+    fx:controller="net.samuelcmace.utk.gui.controller.LoadController">
 
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label text="Understanding the Kanji"/>
-    <Label text="A Tool to Help Remember the Construction of Kanji Characters"/>
+    <Label text="Understanding the Kanji" />
+    <Label text="A Tool to Help Remember the Construction of Kanji Characters" />
 
-    <Button fx:id="browserButton" text="Kanji Browser" onAction="#onClick_browserButton"/>
+    <Button onAction="#onClick_browserButton" text="Kanji Browser" fx:id="browserButton" />
 
     <HBox alignment="CENTER" spacing="20.0">
-        <Button fx:id="aboutButton" text="About" onAction="#onClick_aboutButton"/>
-        <Button fx:id="exitButton" text="Exit" onAction="#onClick_exitButton"/>
+        <Button onAction="#onClick_aboutButton" text="About" fx:id="aboutButton" />
+        <Button onAction="#onClick_exitButton" text="Exit" fx:id="exitButton" />
     </HBox>
 
 </VBox>

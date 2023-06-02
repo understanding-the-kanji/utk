@@ -119,14 +119,14 @@ public class MessageBox {
      * @param message       The message to be displayed to the user.
      * @param title         The title of the message box.
      * @param headerContent The header content of the message box.
-     * @param isModal       Specifies whether or not the message box is modal. The default value is true.
+     * @param isModal       Specifies whether the message box is modal. The default value is true.
      */
     public static void ShowWarningDialog(String message, String title, String headerContent, boolean isModal) {
         Alert dialog = new Alert(AlertType.WARNING);
         dialog.setTitle(title);
         dialog.setHeaderText(headerContent);
         dialog.setContentText(message);
-        if (isModal == false) dialog.show();
+        if (!isModal) dialog.show();
         else dialog.showAndWait();
     }
 
@@ -195,8 +195,7 @@ public class MessageBox {
      * @param message The message to be promoted to the user.
      * @return Returns true if the user selected YES, otherwise FALSE.
      */
-    public static boolean ShowInfoPrompt(String message)
-    {
+    public static boolean ShowInfoPrompt(String message) {
         Alert dialog = new Alert(AlertType.CONFIRMATION);
         dialog.setTitle("Confirmation");
         dialog.setHeaderText(null);
@@ -212,12 +211,9 @@ public class MessageBox {
         Optional<ButtonType> response = dialog.showAndWait();
 
         // If the response was OK, then return true. Otherwise, return false.
-        if(response.isPresent() && response.get().getButtonData() == ButtonBar.ButtonData.YES)
-        {
+        if (response.isPresent() && response.get().getButtonData() == ButtonBar.ButtonData.YES) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }

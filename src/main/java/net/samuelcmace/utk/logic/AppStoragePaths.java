@@ -75,8 +75,7 @@ public abstract class AppStoragePaths {
 
         File dbFilePathConfigFile = new File(AppStoragePaths.GetDBConfigFilePath());
         Scanner dbFilePathConfigScanner = new Scanner(dbFilePathConfigFile);
-        while(dbFilePathConfigScanner.hasNextLine())
-        {
+        while (dbFilePathConfigScanner.hasNextLine()) {
             filePath += dbFilePathConfigScanner.nextLine();
         }
         dbFilePathConfigScanner.close();

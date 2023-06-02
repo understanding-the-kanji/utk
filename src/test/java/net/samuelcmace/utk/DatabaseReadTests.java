@@ -5,8 +5,6 @@ import net.samuelcmace.utk.logic.DBConnectionPool;
 import net.samuelcmace.utk.logic.DatabaseReadConnection;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
-
 /**
  * A class to store database-related read tests.
  */
