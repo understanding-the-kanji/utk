@@ -22,6 +22,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
 
     /**
      * Initializes a new instance of DatabaseReadConnection.
+     *
      * @param m_dbConnectionString The JDBC connection string.
      */
     public DatabaseReadConnection(String m_dbConnectionString) {
@@ -33,8 +34,7 @@ public class DatabaseReadConnection extends DatabaseConnection {
      * Although this method is not needed in most java programming, it is needed here to ensure that the database
      * connections are closed before the program exists.
      */
-    protected void finalize()
-    {
+    protected void finalize() {
         super.finalize();
         try {
             this.ActiveStatement.close();
@@ -53,6 +53,16 @@ public class DatabaseReadConnection extends DatabaseConnection {
         this.ActiveConnection = DriverManager.getConnection(this.dbConnectionString);
         this.ActiveStatement = this.ActiveConnection.createStatement();
         this.ActiveResultSet = this.ActiveStatement.executeQuery(this.activeQuery);
+    }
+
+    /**
+     * Sets the currently active query string based on the passed-in parameters.
+     * The query still needs to be executed by calling the RunActiveQuery() method.
+     *
+     * @param m_id The Kanji character in question.
+     */
+    public void getCardByID(int m_id) {
+        this.activeQuery = "SELECT CARD.* FROM CARD WHERE CARD.CARD_ID = '" + m_id + "';";
     }
 
     /**

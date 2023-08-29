@@ -16,6 +16,7 @@ public class DatabaseWriteConnection extends DatabaseConnection {
 
     /**
      * Initializes a new instance of DatabaseWriteConnection.
+     *
      * @param m_dbConnectionString The JDBC connection string.
      */
     public DatabaseWriteConnection(String m_dbConnectionString) {
@@ -27,8 +28,7 @@ public class DatabaseWriteConnection extends DatabaseConnection {
      * Although this method is not needed in most java programming, it is needed here to ensure that the database
      * connections are closed before the program exists.
      */
-    protected void finalize()
-    {
+    protected void finalize() {
         super.finalize();
         try {
             this.ActivePreparedStatement.close();

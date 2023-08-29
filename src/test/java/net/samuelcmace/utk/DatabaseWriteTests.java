@@ -19,8 +19,7 @@ public class DatabaseWriteTests {
      * otherwise if an exception was thrown, it asserts false.
      */
     @Test
-    public void setNote()
-    {
+    public void setNote() {
         try {
             DatabaseReadConnection readConnection = new DatabaseReadConnection(AppStoragePaths.GetDBConnectionString());
 

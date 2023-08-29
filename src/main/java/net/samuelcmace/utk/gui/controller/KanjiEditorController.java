@@ -25,12 +25,16 @@ public class KanjiEditorController {
      * Singleton instance of dbConnectionPool associated with the KanjiEditorController object.
      */
     private DBConnectionPool dbConnectionPool;
+    /**
+     * FXML GUI object containing the text that the user is entering.
+     */
+    @FXML
+    private TextArea noteEditor;
 
     /**
      * Initializes a new instance of KanjiEditorController.
      */
-    public KanjiEditorController()
-    {
+    public KanjiEditorController() {
         try {
             this.dbConnectionPool = DBConnectionPool.GetInstance();
         } catch (Exception e) {
@@ -39,16 +43,9 @@ public class KanjiEditorController {
     }
 
     /**
-     * FXML GUI object containing the text that the user is entering.
-     */
-    @FXML
-    private TextArea noteEditor;
-
-    /**
      * Method called by the FXML Loader when the view is loaded.
      */
-    public void initialize()
-    {
+    public void initialize() {
         try {
             this.loadContentsFromDisk();
         } catch (SQLException e) {
@@ -107,8 +104,7 @@ public class KanjiEditorController {
      */
     public void onClick_resetButton(ActionEvent actionEvent) {
         boolean response = MessageBox.ShowInfoPrompt("Are you sure you want to reset?");
-        if(response == true)
-        {
+        if (response == true) {
             try {
                 this.loadContentsFromDisk();
             } catch (SQLException e) {
@@ -122,8 +118,7 @@ public class KanjiEditorController {
      *
      * @param actionEvent The default arguments passed to the event.
      */
-    public void onClick_saveButton(ActionEvent actionEvent)
-    {
+    public void onClick_saveButton(ActionEvent actionEvent) {
         try {
             this.writeContentsToDisk();
             Logger.Information("Your notes have been saved.");

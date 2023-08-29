@@ -9,19 +9,17 @@ import java.sql.SQLException;
 public abstract class DatabaseConnection {
 
     /**
+     * The connection object associated with the instance of DatabaseConnection.
+     */
+    public Connection ActiveConnection;
+    /**
      * The JDBC connection string that corresponds to the database.
      */
     protected String dbConnectionString;
-
     /**
      * The currently active query string used to generate the ActiveResultSet.
      */
     protected String activeQuery;
-
-    /**
-     * The connection object associated with the instance of DatabaseConnection.
-     */
-    public Connection ActiveConnection;
 
     /**
      * Initializes a new instance of DatabaseConnection.

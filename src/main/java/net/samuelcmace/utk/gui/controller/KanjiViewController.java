@@ -12,12 +12,13 @@ import net.samuelcmace.utk.gui.Controllers;
 import net.samuelcmace.utk.logic.DBConnectionPool;
 import net.samuelcmace.utk.logic.Logger;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
-
-import java.awt.Desktop;
 
 /**
  * The controller that corresponds to the KanjiBrowser view.
@@ -25,65 +26,55 @@ import java.awt.Desktop;
 public class KanjiViewController {
 
     /**
-     * The FXML Label containing the contents of the card ID.
-     */
-    @FXML
-    private Label cardIDContents;
-
-    /**
-     * The FXML Label containing the contents of the card's Kanji character.
-     */
-    @FXML
-    private Hyperlink cardKanjiContents;
-
-    /**
-     * The FXML Label containing the contents of the 5th edition Heisig index.
-     */
-    @FXML
-    private Label cardHeisigIndex5thEditionContents;
-
-    /**
-     * The FXML Label containing the contents of the 6th edition Heisig index.
-     */
-    @FXML
-    private Label cardHeisigIndex6thEditionContents;
-
-    /**
-     * The FXML Label containing the contents of the 5th edition Heisig keyword.
-     */
-    @FXML
-    private Hyperlink cardHeisigKeyword5thEditionContents;
-
-    /**
      * The FXML Label containing the contents of the Heisig 6th edition keyword.
      */
     @FXML
     public Hyperlink cardHeisigKeyword6thEditionContents;
-
     /**
      * The FXML Label containing the Chinese (On) Reading of the Kanji character.
      */
     @FXML
     public Label cardOnReadingContents;
-
     /**
      * The FXML Label containing the Japanese (Kun) Reading of the Kanji character.
      */
     @FXML
     public Label cardKunReadingContents;
-
     /**
      * The FXML Label containing the user-entered note contents associated with the character (if any).
      */
     @FXML
     public Label cardNoteContents;
-
     /**
      * The FXML Button that allows the user to edit the note.
      */
     @FXML
     public Button editNoteButton;
-
+    /**
+     * The FXML Label containing the contents of the card ID.
+     */
+    @FXML
+    private Label cardIDContents;
+    /**
+     * The FXML Label containing the contents of the card's Kanji character.
+     */
+    @FXML
+    private Hyperlink cardKanjiContents;
+    /**
+     * The FXML Label containing the contents of the 5th edition Heisig index.
+     */
+    @FXML
+    private Label cardHeisigIndex5thEditionContents;
+    /**
+     * The FXML Label containing the contents of the 6th edition Heisig index.
+     */
+    @FXML
+    private Label cardHeisigIndex6thEditionContents;
+    /**
+     * The FXML Label containing the contents of the 5th edition Heisig keyword.
+     */
+    @FXML
+    private Hyperlink cardHeisigKeyword5thEditionContents;
     /**
      * The DBConnectionPool singleton instance associated with KanjiBrowserController.
      */
@@ -98,8 +89,7 @@ public class KanjiViewController {
     /**
      * Enables the lookup hyperlinks and edit note button upon the completion of a successful database query.
      */
-    private void enableFields()
-    {
+    private void enableFields() {
         this.cardKanjiContents.setDisable(false);
         this.cardHeisigKeyword5thEditionContents.setDisable(false);
         this.cardHeisigKeyword6thEditionContents.setDisable(false);
@@ -109,8 +99,7 @@ public class KanjiViewController {
     /**
      * Sets up the default styling for the hyperlinks.
      */
-    private void setupHyperlinkStyling()
-    {
+    private void setupHyperlinkStyling() {
         this.cardKanjiContents.setBorder(Border.EMPTY);
         this.cardKanjiContents.setPadding(new Insets(0, 0, 0, 0));
 
@@ -130,8 +119,7 @@ public class KanjiViewController {
             this.dbConnectionPool.KanjiSearchConnection.RunActiveQuery();
             while (this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.next()) {
                 String activePrimaryKeyString = this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_ID");
-                if(activePrimaryKeyString != null)
-                {
+                if (activePrimaryKeyString != null) {
                     this.dbConnectionPool.ActivePrimaryKey = Integer.parseInt(activePrimaryKeyString);
                     this.cardIDContents.setText(String.valueOf(this.dbConnectionPool.ActivePrimaryKey));
                     this.cardKanjiContents.setText(this.dbConnectionPool.KanjiSearchConnection.ActiveResultSet.getString("CARD_KANJI"));
@@ -179,7 +167,8 @@ public class KanjiViewController {
      */
     public void onClick_cardKanjiContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://japandict.com/kanji/" + this.cardKanjiContents.getText().replace(" ", "%20")));
+            String url = URLEncoder.encode(this.cardKanjiContents.getText(), StandardCharsets.UTF_8);
+            Desktop.getDesktop().browse(new URI("https://japandict.com/kanji/" + url));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -195,7 +184,8 @@ public class KanjiViewController {
      */
     public void onClick_cardHeisigKeyword5thEditionContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + this.cardHeisigKeyword5thEditionContents.getText().replace(" ", "%20")));
+            String url = URLEncoder.encode(this.cardHeisigKeyword5thEditionContents.getText(), StandardCharsets.UTF_8);
+            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + url));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -211,11 +201,34 @@ public class KanjiViewController {
      */
     public void onClick_cardHeisigKeyword6thEditionContents(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + this.cardHeisigKeyword6thEditionContents.getText().replace(" ", "%20")));
+            String url = URLEncoder.encode(this.cardHeisigKeyword6thEditionContents.getText(), StandardCharsets.UTF_8);
+            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + url));
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
             Logger.Error("There was an Error in the URL Syntax: " + e.getLocalizedMessage());
         }
+    }
+
+    /**
+     * Called when the user clicks on the Previous button.
+     *
+     * @param actionEvent The default arguments passed to the event.
+     */
+    public void onClick_previousButton(ActionEvent actionEvent) {
+        this.dbConnectionPool.KanjiSearchConnection.getCardByID(this.dbConnectionPool.ActivePrimaryKey - 1);
+        this.dbConnectionPool.ActivePrimaryKey--;
+        ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
+    }
+
+    /**
+     * Called when the user clicks on the Next button.
+     *
+     * @param actionEvent The default arguments passed to the event.
+     */
+    public void onClick_nextButton(ActionEvent actionEvent) {
+        this.dbConnectionPool.KanjiSearchConnection.getCardByID(this.dbConnectionPool.ActivePrimaryKey + 1);
+        this.dbConnectionPool.ActivePrimaryKey++;
+        ControllerManager.SwitchScene(Controllers.KANJI_VIEW);
     }
 }

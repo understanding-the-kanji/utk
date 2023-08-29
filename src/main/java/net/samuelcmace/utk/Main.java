@@ -10,8 +10,6 @@ import net.samuelcmace.utk.gui.MessageBox;
 import net.samuelcmace.utk.logic.AppStoragePaths;
 import net.samuelcmace.utk.logic.Logger;
 
-import java.io.IOException;
-
 /**
  * The main class for the OpenJFX Application.
  * This class is launched by ApplicationLauncher as a workaround to allow the program to be contained in a JAR file.
@@ -55,8 +53,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void launchJavaFX()
-    {
+    public void launchJavaFX() {
         launch();
     }
 }

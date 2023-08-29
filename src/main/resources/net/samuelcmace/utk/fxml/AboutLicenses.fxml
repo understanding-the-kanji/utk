@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="net.samuelcmace.utk.gui.controller.AboutLicensesController" prefHeight="600.0" prefWidth="800.0">
+<?import javafx.geometry.Insets?><?import javafx.scene.control.*?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" prefHeight="600.0" prefWidth="800.0"
+    spacing="20.0" xmlns="http://javafx.com/javafx" fx:controller="net.samuelcmace.utk.gui.controller.AboutLicensesController">
 
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label text="Understanding the Kanji"/>
-    <Label text="Samuel Mace, 2022"/>
-    <Label wrapText="true"
-           text="The kanji characters, keywords, and primitives used in the database were created by James W. Heisig. The use of his material in this program covers only part of his original work and is used for educational purposes. The SQLite database that contains this data is based on some CSV files provided by Aleksa Sarai and is licensed under the CC0 1.0 Universal License."/>
+    <Label text="Understanding the Kanji" />
+    <Label text="Samuel Mace, 2022" />
+    <Label text="The kanji characters, keywords, and primitives used in the database were created by James W. Heisig. The use of his material in this program covers only part of his original work and is used for educational purposes. The SQLite database that contains this data is based on some CSV files provided by Aleksa Sarai and is licensed under the CC0 1.0 Universal License."
+        wrapText="true" />
 
-    <Label wrapText="true" text="This project makes use of the OpenJDK and OpenJFX, which are licensed under the GNU General Public License v2, with the Classpath Exception. This project also uses the Gradle Build System, which is licensed under the Apache License 2.0."/>
+    <Label text="This project makes use of the OpenJDK and OpenJFX, which are licensed under the GNU General Public License v2, with the Classpath Exception. This project also uses the Gradle Build System, which is licensed under the Apache License 2.0."
+        wrapText="true" />
 
-    <Label wrapText="true" text="All of the source code contained in this project is licensed under the MIT License."/>
+    <Label text="All of the source code contained in this project is licensed under the MIT License." wrapText="true" />
 
     <HBox alignment="CENTER" spacing="10.0">
-        <Button fx:id="returnButton" text="Return" onAction="#onClick_returnButton"/>
-        <Button fx:id="homeButton" text="Home" onAction="#onClick_homeButton"/>
+        <Button onAction="#onClick_returnButton" text="Return" fx:id="returnButton" />
+        <Button onAction="#onClick_homeButton" text="Home" fx:id="homeButton" />
     </HBox>
 
 </VBox>
