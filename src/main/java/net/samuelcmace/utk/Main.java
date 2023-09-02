@@ -10,6 +10,8 @@ import net.samuelcmace.utk.gui.MessageBox;
 import net.samuelcmace.utk.logic.AppStoragePaths;
 import net.samuelcmace.utk.logic.Logger;
 
+import java.net.URL;
+
 /**
  * The main class for the OpenJFX Application.
  * This class is launched by ApplicationLauncher as a workaround to allow the program to be contained in a JAR file.
@@ -34,6 +36,9 @@ public class Main extends Application {
         Logger.ConsoleInformation("Application Started");
 
         this.applicationScene = new Scene(new Pane(), 600, 400);
+
+        URL inputStream = this.getClass().getResource("JavaFX-Dark-Theme/style.css");
+        if (inputStream != null) this.applicationScene.getStylesheets().add(inputStream.toString());
 
         try {
             AppStoragePaths.FirstTimeSetup();
