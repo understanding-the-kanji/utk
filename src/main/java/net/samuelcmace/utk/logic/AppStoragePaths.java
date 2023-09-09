@@ -12,7 +12,15 @@ import java.util.Scanner;
 /**
  * Utility class associated with creating and retrieving the default file structure for the project.
  */
-public abstract class AppStoragePaths {
+public final class AppStoragePaths {
+
+    /**
+     * Private constructor that prevents instantiation.
+     */
+    private AppStoragePaths() {
+
+    }
+
     /**
      * Utility function to fetch the app storage directory.
      *

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
-<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" prefHeight="600.0" prefWidth="800.0"
-    spacing="20.0" xmlns="http://javafx.com/javafx" fx:controller="net.samuelcmace.utk.gui.controller.KanjiViewController">
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="20.0"
+    xmlns="http://javafx.com/javafx" fx:controller="net.samuelcmace.utk.gui.controller.KanjiViewController">
 
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -27,10 +27,10 @@
             <Hyperlink disable="true" onAction="#onClick_cardKanjiContents" fx:id="cardKanjiContents" />
             <Label fx:id="cardHeisigIndex5thEditionContents" />
             <Label fx:id="cardHeisigIndex6thEditionContents" />
-            <Hyperlink disable="true"
-                onAction="#onClick_cardHeisigKeyword5thEditionContents" fx:id="cardHeisigKeyword5thEditionContents" />
-            <Hyperlink disable="true"
-                onAction="#onClick_cardHeisigKeyword6thEditionContents" fx:id="cardHeisigKeyword6thEditionContents" />
+            <Hyperlink disable="true" onAction="#onClick_cardHeisigKeyword5thEditionContents"
+                fx:id="cardHeisigKeyword5thEditionContents" />
+            <Hyperlink disable="true" onAction="#onClick_cardHeisigKeyword6thEditionContents"
+                fx:id="cardHeisigKeyword6thEditionContents" />
             <Label fx:id="cardOnReadingContents" />
             <Label fx:id="cardKunReadingContents" />
             <Label wrapText="true" fx:id="cardNoteContents" />

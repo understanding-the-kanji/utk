@@ -8,7 +8,14 @@ import java.io.FileWriter;
 /**
  * Abstract (static) class to log messages both to the program and to the console.
  */
-public abstract class Logger {
+public final class Logger {
+
+    /**
+     * Private constructor that prevents instantiation.
+     */
+    private Logger() {
+
+    }
 
     /**
      * Utility function to fetch the local time in a preferred format.

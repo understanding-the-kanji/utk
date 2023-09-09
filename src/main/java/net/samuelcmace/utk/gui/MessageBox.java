@@ -11,7 +11,15 @@ import java.util.Optional;
 /**
  * Utility class to create and display message boxes to the user (without any logging).
  */
-public class MessageBox {
+public final class MessageBox {
+
+    /**
+     * Private class that prevents instantiation.
+     */
+    private MessageBox() {
+
+    }
+
     /**
      * Displays a basic modal info dialog.
      *
@@ -60,14 +68,14 @@ public class MessageBox {
      * @param message       The message to be displayed to the user.
      * @param title         The title of the message box.
      * @param headerContent The header content of the message box.
-     * @param isModal       Specifies whether or not the message box is modal. The default value is true.
+     * @param isModal       Specifies whether the message box is modal. The default value is true.
      */
     public static void ShowInfoDialog(String message, String title, String headerContent, boolean isModal) {
         Alert dialog = new Alert(AlertType.INFORMATION);
         dialog.setTitle(title);
         dialog.setHeaderText(headerContent);
         dialog.setContentText(message);
-        if (isModal == false) dialog.show();
+        if (!isModal) dialog.show();
         else dialog.showAndWait();
     }
 
@@ -185,7 +193,7 @@ public class MessageBox {
         dialog.setTitle(title);
         dialog.setHeaderText(headerContent);
         dialog.setContentText(message);
-        if (isModal == false) dialog.show();
+        if (!isModal) dialog.show();
         else dialog.showAndWait();
     }
 
@@ -211,10 +219,6 @@ public class MessageBox {
         Optional<ButtonType> response = dialog.showAndWait();
 
         // If the response was OK, then return true. Otherwise, return false.
-        if (response.isPresent() && response.get().getButtonData() == ButtonBar.ButtonData.YES) {
-            return true;
-        } else {
-            return false;
-        }
+        return response.isPresent() && response.get().getButtonData() == ButtonBar.ButtonData.YES;
     }
 }
