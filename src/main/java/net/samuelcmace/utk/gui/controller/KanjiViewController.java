@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Border;
+import net.samuelcmace.utk.gui.UIHelperMethods;
 import net.samuelcmace.utk.gui.ControllerManager;
 import net.samuelcmace.utk.gui.Controllers;
 import net.samuelcmace.utk.logic.DBConnectionPool;
@@ -167,8 +168,8 @@ public class KanjiViewController {
      */
     public void onClick_cardKanjiContents(ActionEvent actionEvent) {
         try {
-            String url = URLEncoder.encode(this.cardKanjiContents.getText(), StandardCharsets.UTF_8);
-            Desktop.getDesktop().browse(new URI("https://japandict.com/kanji/" + url));
+            String character = this.cardKanjiContents.getText();
+            UIHelperMethods.OpenWebLink("https://japandict.com/kanji/" + character);
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -184,8 +185,8 @@ public class KanjiViewController {
      */
     public void onClick_cardHeisigKeyword5thEditionContents(ActionEvent actionEvent) {
         try {
-            String url = URLEncoder.encode(this.cardHeisigKeyword5thEditionContents.getText(), StandardCharsets.UTF_8);
-            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + url));
+            String word = this.cardHeisigKeyword5thEditionContents.getText();
+            UIHelperMethods.OpenWebLink("https://www.merriam-webster.com/dictionary/" + word);
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -201,8 +202,8 @@ public class KanjiViewController {
      */
     public void onClick_cardHeisigKeyword6thEditionContents(ActionEvent actionEvent) {
         try {
-            String url = URLEncoder.encode(this.cardHeisigKeyword6thEditionContents.getText(), StandardCharsets.UTF_8);
-            Desktop.getDesktop().browse(new URI("https://www.merriam-webster.com/dictionary/" + url));
+            String word = this.cardHeisigKeyword6thEditionContents.getText();
+            UIHelperMethods.OpenWebLink("https://www.merriam-webster.com/dictionary/" + word);
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
