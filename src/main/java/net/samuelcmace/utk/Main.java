@@ -37,8 +37,11 @@ public class Main extends Application {
 
         this.applicationScene = new Scene(new Pane(), 600, 400);
 
-        URL inputStream = this.getClass().getResource("JavaFX-Dark-Theme/style.css");
-        if (inputStream != null) this.applicationScene.getStylesheets().add(inputStream.toString());
+        URL mainThemeStylesheet = this.getClass().getResource("main.css");
+        if (mainThemeStylesheet != null) this.applicationScene.getStylesheets().add(mainThemeStylesheet.toString());
+
+        URL darkThemeStylesheet = this.getClass().getResource("JavaFX-Dark-Theme/style.css");
+        if (darkThemeStylesheet != null) this.applicationScene.getStylesheets().add(darkThemeStylesheet.toString());
 
         try {
             AppStoragePaths.FirstTimeSetup();
