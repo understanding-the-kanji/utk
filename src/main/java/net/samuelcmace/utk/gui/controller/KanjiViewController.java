@@ -169,7 +169,7 @@ public class KanjiViewController {
     public void onClick_cardKanjiContents(ActionEvent actionEvent) {
         try {
             String character = this.cardKanjiContents.getText();
-            UIHelperMethods.OpenWebLink("https://japandict.com/kanji/" + character);
+            UIHelperMethods.OpenWebLink("https://japandict.com/kanji/", character);
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -186,7 +186,7 @@ public class KanjiViewController {
     public void onClick_cardHeisigKeyword5thEditionContents(ActionEvent actionEvent) {
         try {
             String word = this.cardHeisigKeyword5thEditionContents.getText();
-            UIHelperMethods.OpenWebLink("https://www.merriam-webster.com/dictionary/" + word);
+            UIHelperMethods.OpenWebLink("https://www.merriam-webster.com/dictionary/", word);
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {
@@ -203,7 +203,7 @@ public class KanjiViewController {
     public void onClick_cardHeisigKeyword6thEditionContents(ActionEvent actionEvent) {
         try {
             String word = this.cardHeisigKeyword6thEditionContents.getText();
-            UIHelperMethods.OpenWebLink("https://www.merriam-webster.com/dictionary/" + word);
+            UIHelperMethods.OpenWebLink("https://www.merriam-webster.com/dictionary/", word);
         } catch (IOException e) {
             Logger.Error("There was an Input-Output Exception: " + e.getLocalizedMessage());
         } catch (URISyntaxException e) {

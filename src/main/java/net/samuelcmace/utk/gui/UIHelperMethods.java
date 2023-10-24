@@ -18,16 +18,17 @@ public final class UIHelperMethods {
     /**
      * Helper method to open a URL in the default web browser in an operating system independent fashion.
      *
-     * @param url The original non-encoded URL.
+     * @param mainUrl     The URL that corresponds to the search engine.
+     * @param searchQuery Search query to be sent to the search engine.
      * @throws IOException        Thrown if there is an issue in opening the web link on Linux-based platforms.
      * @throws URISyntaxException Thrown if there is an issue in opening the web link on Windows, macOS, or other non-Linux platforms.
      */
-    public static void OpenWebLink(String url) throws IOException, URISyntaxException {
+    public static void OpenWebLink(String mainUrl, String searchQuery) throws IOException, URISyntaxException {
+        String encodedQuery = URLEncoder.encode(searchQuery, StandardCharsets.UTF_8);
         if (System.getProperty("os.name").equals("Linux")) {
-            Runtime.getRuntime().exec(new String[]{"xdg-open", url});
+            Runtime.getRuntime().exec(new String[]{"xdg-open", mainUrl + encodedQuery});
         } else {
-            String encoded_url = URLEncoder.encode(url, StandardCharsets.UTF_8);
-            Desktop.getDesktop().browse(new URI(encoded_url));
+            Desktop.getDesktop().browse(new URI(mainUrl + encodedQuery));
         }
     }
 
