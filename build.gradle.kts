@@ -1,15 +1,15 @@
 plugins {
     java
     application
-    id("org.openjfx.javafxplugin") version "0.0.13"
+    id("org.openjfx.javafxplugin") version "0.1.0"
 }
 
 group = "net.samuelcmace"
 version = "1.0-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 application {
@@ -18,7 +18,7 @@ application {
 }
 
 javafx {
-    version = "20"
+    version = "26"
     modules("javafx.controls", "javafx.fxml")
 }
 
